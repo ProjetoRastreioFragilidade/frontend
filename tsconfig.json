@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
+    "baseUrl": "src",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -14,6 +15,19 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@models": ["app/_models"],
+      "@models/*": ["app/_models/*"],
+      "@services/*": ["app/_services/*"],
+      "@services": ["app/_services"],
+      "@constants/*": ["app/shared/constants/*"],
+      "@constants": ["app/shared/constants"],
+      "@guards/*": ["app/_guards/*"],
+      "@guards": ["app/_guards"],
+      "@resolvers/*": ["app/_resolvers/*"],
+      "@resolvers": ["app/_resolvers"],
+      "@env/*": ["environments/*"]
+    }
   }
 }
