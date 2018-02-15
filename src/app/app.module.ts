@@ -3,6 +3,7 @@ import { MaterializeModule } from 'angular2-materialize';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { providers } from './app.module.providers';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -22,7 +23,7 @@ import { RegisterPatientComponent } from './register-patient/register-patient.co
     BrowserModule,
     routing
   ],
-  providers: [],
+  providers: [...providers],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
