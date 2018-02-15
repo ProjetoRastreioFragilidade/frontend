@@ -2,17 +2,17 @@
   <form class="col s12">
     <div class="row">
       <div class="input-field col s12">
-          <input id="user" type="text" class="validate">
+          <input id="user" type="text" class="validate" [(ngModel)]="username" name="username">
           <label for="user">Usuário</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="password" type="password" class="validate">
+        <input id="password" type="password" class="validate" [(ngModel)]="password" name="password">
         <label for="password">Senha</label>
       </div>
     </div>
-
-  <a class="waves-effect waves-light btn">Entrar</a>
+    <span *ngIf="errorMessage">{{errorMessage}}</span>
+    <a class="waves-effect waves-light btn" (click)="login()" >Entrar</a>
   </form>
 </div>
