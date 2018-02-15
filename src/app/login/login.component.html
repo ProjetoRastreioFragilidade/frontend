@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" (ngSubmit)="doLogin()" class="login">
+<!--form [formGroup]="loginForm" (ngSubmit)="doLogin()" class="login">
   <div class="one-col-grid">
     <h1>PPSUS</h1>
     <hr>
@@ -9,4 +9,23 @@
   <div align="center" class="one-col-grid flow-btn">
     <input type="submit" class="btn btn-primary btn-large" style="margin: 10px" value="Entrar">
   <div>
+</form-->
+
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s12">
+          <input id="user" type="text" class="validate" [(ngModel)]="username" name="username">
+          <label for="user">Usuário</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" type="password" class="validate" [(ngModel)]="password" name="password">
+        <label for="password">Senha</label>
+      </div>
+    </div>
+    <span *ngIf="errorMessage">{{errorMessage}}</span>
+    <a class="waves-effect waves-light btn" (click)="login()" >Entrar</a>
   </form>
+</div>
