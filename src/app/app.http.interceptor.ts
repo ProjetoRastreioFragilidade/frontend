@@ -26,7 +26,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
         if (this.authUser) {
             request = request.clone({
                 setHeaders: {
-                    Authorization: this.authUser.token
+                    Authorization: 'JWT ' + this.authUser.token
                 }
             });
         }
