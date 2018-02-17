@@ -1,3 +1,37 @@
-<p>
-  home works!
-</p>
+
+<div class="login">
+  <div class="one-col-grid reg-div">
+    <div style="margin-bottom:15px">
+        <button type="button" class="btn btn-primary btn-large" (click)="createPatient()">Cadastrar Paciente</button>
+        <button type="button" class="btn btn-primary btn-large" (click)="createHealthCenter()">Cadastrar Posto</button>
+    </div>
+    <div class="one-col-grid src-div">
+      <input type="text" placeholder="Digite o número SUS do paciente" name="pct_sus" id="sus" class="busca-pct" maxlength="18">
+      <input type="submit" class="src-btn" value="Procurar paciente">
+    </div>
+  </div>
+  <div class="one-col-grid">
+    <table style="width:100%">
+      <caption>teste teste - 123 4567 8901 2345</caption>
+      <tbody>
+        <tr>
+          <th>Paciente</th>
+          <th>Formulário</th>
+          <th>Início</th>
+          <th>Fim</th>
+        </tr>
+        <tr class="subjetiva">
+          <td>teste teste</td>
+          <td>Subjetiva</td>
+          <td>2018-02-07 15:11:58</td>
+          <td>2018-02-07 15:12:16</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="one-col-grid" style="margin-top:15px; margin-bottom:15px">
+    <input type="submit" name="form2" class="btn btn-success btn-large btn-edmonton" (click)="newEdmonton()" value="Novo Edmonton">
+    <input type="submit" name="form1" class="btn btn-primary btn-large" style="margin-left:10px" (click)="newSubjective()" value="Nova Subjetiva">
+  </div>
+  <input type="submit" class="btn-large btn-danger" name="logoff" value="LOGOUT" (click)="logout()">
+</div>

@@ -14,13 +14,21 @@ import { AppHttpInterceptor } from './app.http.interceptor';
 import { AuthenticationService } from './_services/index';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterHealthCenterComponent } from './register-health-center/register-health-center.component';
+import { EdmontonAnalyzeComponent } from './edmonton-analyze/edmonton-analyze.component';
+import { SubjectiveAnalyzeComponent } from './subjective-analyze/subjective-analyze.component';
+import { FinalComponent } from './final/final.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegisterPatientComponent
+    RegisterPatientComponent,
+    RegisterHealthCenterComponent,
+    EdmontonAnalyzeComponent,
+    SubjectiveAnalyzeComponent,
+    FinalComponent
   ],
   imports: [
     BrowserModule,
