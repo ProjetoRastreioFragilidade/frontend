@@ -19,6 +19,8 @@ import { EdmontonAnalyzeComponent } from './edmonton-analyze/edmonton-analyze.co
 import { SubjectiveAnalyzeComponent } from './subjective-analyze/subjective-analyze.component';
 import { FinalComponent } from './final/final.component';
 
+import { NgxMaskModule } from 'ngx-mask';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,14 +30,15 @@ import { FinalComponent } from './final/final.component';
     RegisterHealthCenterComponent,
     EdmontonAnalyzeComponent,
     SubjectiveAnalyzeComponent,
-    FinalComponent
+    FinalComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     HttpClientModule,
-    routing
+    routing,
+    NgxMaskModule.forRoot()
   ],
   providers: [...providers,
     {

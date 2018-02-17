@@ -6,8 +6,11 @@
         <button type="button" class="btn btn-primary btn-large" (click)="createHealthCenter()">Cadastrar Posto</button>
     </div>
     <div class="one-col-grid src-div">
-      <input type="text" placeholder="Digite o número SUS do paciente" name="pct_sus" id="sus" class="busca-pct" maxlength="18">
-      <input type="submit" class="src-btn" value="Procurar paciente">
+      <input type="text" placeholder="Digite o número SUS do paciente" name="pct_sus" id="sus" class="busca-pct" maxlength="18" 
+        mask="000.0000.0000.0000"
+        [(ngModel)]="susNumber">
+        
+      <input type="submit" class="src-btn" value="Procurar paciente" (click)="searchPatient()">
     </div>
   </div>
   <div class="one-col-grid">

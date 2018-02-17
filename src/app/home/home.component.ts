@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '@services';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +10,12 @@ import { AuthenticationService } from '@services';
 })
 export class HomeComponent implements OnInit {
 
+  public susNumber: string;
+
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -35,4 +39,14 @@ export class HomeComponent implements OnInit {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
   }
+  
+  public searchPatient() {
+    if (this.susNumber.length < 15) {
+      console.log("número sus inválido!");
+    } else {
+      console.log(this.susNumber);
+      // this.http.post('http://localhost:8000/'+'123456789012345'+'/');
+    }
+  }
 }
+// http://localhost:8000/busca/123456789012345/

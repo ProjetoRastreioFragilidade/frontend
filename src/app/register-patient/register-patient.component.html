@@ -12,10 +12,10 @@
           <input type="text" name="sobrenome" class="myInputTxt" placeholder="Sobrenome" id="sobrenome" required="">
       </div>
       <div class="one-col-grid">
-          <input type="text" name="sus" id="sus" class="myInputTxt" placeholder="Número SUS" pattern="\d\d\d\s\d\d\d\d\s\d\d\d\d\s\d\d\d\d" required="" maxlength="18">
+          <input mask="000.0000.0000.0000" type="text" name="sus" id="sus" class="myInputTxt" placeholder="Número SUS" required="" maxlength="18">
       </div>
       <div class="one-col-grid">
-          <input type="date" name="nascimento" id="nascimento" class="myInputTxt" placeholder="Data de nascimento" required="">
+          <input mask="00/00/0000" name="nascimento" id="nascimento" class="myInputTxt" placeholder="Data de nascimento" required="">
       </div>
       <div align="center" class="one-col-grid flow-btn">
           <input type="button" class="btn btn-warning btn-large" style="margin: 10px" value="Voltar" (click)="back()">
