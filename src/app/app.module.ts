@@ -9,7 +9,6 @@ import { LoginComponent } from './login/login.component';
 import { routing } from './app.routing';
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
