@@ -1,0 +1,158 @@
+/* verde: #4CAF50*/
+
+.login {
+        margin: 0;
+        text-align: center;
+        background-color: #eaeaea;
+}
+
+.one-col-grid {
+    width: 100%;
+}
+
+.myInputTxt {
+    width:70%;
+    height:69px;
+    font-size: 1.7em;
+    padding-left: 15px;
+    border-radius: 12px;
+    border: 1px solid #aaa;
+    margin-bottom: 12px;
+}
+.btn-large {
+    padding: 16px 50px;
+    font-size: 1.3em;
+    text-align: center !important;
+    border-radius: 8px;
+}
+
+.two-col-grid {
+    width: 50%;
+    float: left;
+} 
+
+
+.three-col-grid {
+    width: 33.33333% !important;
+    float: left;
+    text-align: middle;
+    border: 2px solid black;
+} 
+
+.six-col-grid {
+    width: 16.66666%;
+    float: left;
+} 
+
+
+
+.btn-sair {
+    margin-top:15px;
+    font-weight: bold;
+    background-color: #7a7a7a;
+    border: 2px solid #333;
+    color:#fff;
+}
+
+.reg-div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.src-div {
+    margin-bottom: 20px;
+}
+
+
+.busca-pct {
+    width:70%;
+    height:69px;
+    font-size: 1.7em;
+    padding-left: 15px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-left: 1px solid #aaa;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    border-right: 0px;
+    vertical-align: middle;
+}
+
+.src-btn {
+    background-color: #337AB7; 
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.3em;
+    cursor: pointer;
+    border-left: 0px;
+    border-top: 1px solid #286090;
+    border-bottom: 1px solid #286090;
+    border-right: 1px solid #286090;
+    white-space: normal;
+    position: relative;
+    right: 5px;
+    width:15%;
+    height:69px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.src-btn:hover {
+    background-color: #285F90; 
+}
+
+/* .btn-edmonton {
+    background-color: #278e57;
+}
+
+.btn-edmonton:hover {
+    background-color: #1f7554;
+} */
+
+hr {
+    margin-top: 25px;
+    height: 10px;
+    border: 0;
+    box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+th {
+    background-color: #7a7a7a;
+    color: #fff;
+}
+
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    font-size: 1.2em;
+}
+
+th, td {
+    padding: 30px;
+    text-align: left;
+}
+
+.edmonton{
+    cursor: pointer;
+    color: green;
+}
+
+.subjetiva{
+    cursor: pointer;
+    color: blue;
+}
+
+caption {
+    color: #000;
+    font-weight: bold;
+    padding-left: 10px;
+    font-size: 1.4em !important;
+}
+
+.pct_nome {
+    font-size: 1.6em;
+}

@@ -1,12 +1,12 @@
-<div class="one-col-grid">
-  <h1>PPSUS</h1>
-  <hr>
-</div>
-<input type="text" name="login" class="myInputTxt" placeholder="Login" id="login">
-<input type="password" name="password" class="myInputTxt" placeholder="Senha">
-<input type="submit" class="btn btn-primary btn-large" style="margin: 10px" value="Entrar">
-
-
-<div class="alert alert-primary" role="alert">
-  This is a primary alert—check it out!
-</div>
+<form [formGroup]="loginForm" (ngSubmit)="doLogin()" class="login">
+  <div class="one-col-grid">
+    <h1>PPSUS</h1>
+    <hr>
+  </div>
+  <input type="text" name="login" class="myInputTxt" placeholder="Login" id="login" formControlName="username" [ngClass]="loginForm | formControlClass: 'username'">
+  <input type="password" name="password" class="myInputTxt" placeholder="Senha" formControlName="password" [ngClass]="loginForm | formControlClass: 'password'">
+  
+  <div align="center" class="one-col-grid flow-btn">
+    <input type="submit" class="btn btn-primary btn-large" style="margin: 10px" value="Entrar">
+  <div>
+  </form>
