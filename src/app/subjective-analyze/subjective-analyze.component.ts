@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubjectiveAnalyzeComponent implements OnInit {
 
+  public question = 1;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public goTo(question: number) {
+    this.question = question;
   }
 
 }
