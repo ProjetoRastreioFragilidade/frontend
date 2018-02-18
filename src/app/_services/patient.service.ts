@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { Patient } from '@models';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable()
 export class PatientService {

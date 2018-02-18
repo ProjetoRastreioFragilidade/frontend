@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
- 
+import { environment } from '../../environments/environment.prod';
+
 @Injectable()
 export class AuthenticationService {
     public token: string;
@@ -14,7 +15,7 @@ export class AuthenticationService {
     }
 
     public authenticate(username: string, password: string): Observable<any> {
-        return this.http.post('http://localhost:8000/api-token-auth/', { username: username, password: password });
+        return this.http.post(environment.baseUrl + 'api-token-auth/', { username: username, password: password });
     }
  
     public logout(): void {
