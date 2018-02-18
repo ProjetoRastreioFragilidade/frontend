@@ -1,0 +1,43 @@
+<div class="one-col-grid main">
+  <form>
+    <h2 align="center">Questão 4</h2>
+    <hr>
+    <div align="center" style="padding-bottom: 14px">Quando você precisa de ajuda, você pode contar com a ajuda de alguém que atenda as suas necessidades?</div>
+    <label class="one-col-grid opt-question" id="label-Sempre" onclick="radioClick('Sempre', 2)" align="center">
+      <input type="radio" name="answer" id="radio-Sempre" value="Sempre"> Sempre
+    </label>
+    <label class="one-col-grid opt-question" id="label-As_vezes" onclick="radioClick('As_vezes', 2)" align="center">
+      <input type="radio" name="answer" id="radio-As_vezes" value="As vezes"> As vezes
+    </label>
+    <label class="one-col-grid opt-question" id="label-Nunca" onclick="radioClick('Nunca', 2)" align="center">
+      <input type="radio" name="answer" id="radio-Nunca" value="Nunca"> Nunca
+    </label>
+    <div align="center" class="one-col-grid flow-btn">
+      <div class="three-col-grid">
+        <button type="button" class="btn btn-primary btn-large" onclick="previousQuestion(this, '4', 2)" value="3">
+          <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Anterior</button>
+      </div>
+      <div class="three-col-grid">
+        <p id="agent-name">PPSUS - Edmonton
+          <br>
+          <strong>Agente: lucinete gomes</strong>
+        </p>
+        <strong>
+          <a href="../paciente.php" style="font-size:30px;">Sair</a>
+        </strong>
+      </div>
+      <div class="three-col-grid">
+        <button type="button" class="btn btn-primary btn-large" onclick="nextQuestion(this, '4', 2)" value="5a">Próxima
+          <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div>
+
+        <!--<footer style="position: fixed; bottom: 0px; width: 100%;">
+    <p id="agent-name"></p>
+</footer>-->
+      </div>
+
+    </div>
+  </form>
+</div>
