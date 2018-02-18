@@ -7,7 +7,7 @@ export class AuthGuard implements CanActivate {
     constructor(private router: Router) { }
  
     canActivate() {
-        if (localStorage.getItem('currentUser')) {
+        if (this.isLoggedIn()) {
             // logged in so return true
             return true;
         }
@@ -15,5 +15,9 @@ export class AuthGuard implements CanActivate {
         // not logged in so redirect to login page
         this.router.navigate(['/login']);
         return false;
+    }
+
+    private isLoggedIn() {
+        return Boolean(localStorage.getItem('currentUser'));
     }
 }

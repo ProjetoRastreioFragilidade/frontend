@@ -1,0 +1,76 @@
+    <div class="one-col-grid main">
+      <form>
+        <h2 align="center">Questão 3</h2>
+        <hr>
+        <div align="center" style="padding-bottom: 14px">Quantas das seguintes atividades o Sr(a) precisa de ajuda?</div>
+        <select id="select_3" style="display: none" multiple="">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </select>
+        <label class="two-col-grid-especial opt-question1" id="label-1" onclick="selectionClick('1')" align="center">
+          <strong>Preparar refeição (Cozinhar)</strong>
+        </label>
+        <label class="two-col-grid-especial-complete" align="center">
+          &nbsp;
+        </label>
+        <label class="two-col-grid-especial opt-question1" id="label-2" onclick="selectionClick('2')" align="center">
+          <strong>Usar o telefone</strong>
+        </label>
+
+        <label class="two-col-grid-especial opt-question1" id="label-3" onclick="selectionClick('3')" align="center">
+          <strong>Transporte (se locomover)</strong>
+        </label>
+        <label class="two-col-grid-especial-complete" align="center">
+          &nbsp;
+        </label>
+        <label class="two-col-grid-especial opt-question1" id="label-4" onclick="selectionClick('4')" align="center">
+          <strong>Lavar a roupa</strong>
+        </label>
+
+        <label class="two-col-grid-especial opt-question1" id="label-5" onclick="selectionClick('5')" align="center">
+          <strong>Cuidar da casa (limpar / arrumar)</strong>
+        </label>
+        <label class="two-col-grid-especial-complete" align="center">
+          &nbsp;
+        </label>
+        <label class="two-col-grid-especial opt-question1" id="label-6" onclick="selectionClick('6')" align="center">
+          <strong>Cuidar do dinheiro</strong>
+        </label>
+
+        <label class="two-col-grid-especial opt-question1" id="label-7" onclick="selectionClick('7')" align="center">
+          <strong>Fazer compras</strong>
+        </label>
+        <label class="two-col-grid-especial-complete" align="center">
+          &nbsp;
+        </label>
+        <label class="two-col-grid-especial opt-question1" id="label-8" onclick="selectionClick('8')" align="center">
+          <strong>Tomar remédios</strong>
+        </label>
+        <div align="center" class="one-col-grid flow-btn">
+          <div class="three-col-grid">
+            <button type="button" class="btn btn-primary btn-large" onclick="previousQuestion(this, '3', 2)" value="2b">
+              <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Anterior</button>
+          </div>
+          <div class="three-col-grid">
+            <p id="agent-name">PPSUS - Edmonton
+              <br>
+              <strong>Agente: lucinete gomes</strong>
+            </p>
+            <strong>
+              <a href="../paciente.php" style="font-size:30px;">Sair</a>
+            </strong>
+          </div>
+          <div class="three-col-grid">
+            <button type="button" class="btn btn-primary btn-large" onclick="nextQuestion(this, '3', 2)" value="4">Próxima
+              <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
