@@ -43,13 +43,14 @@ export class HomeComponent implements OnInit {
   
   public searchPatient() {
     if (this.susNumber.length < 15) {
-      console.log("número sus inválido!");
+      this.errorMessage = "Número sus inválido!";
+      return;
     } else {
       this.patientService.findBySUSNumber(this.susNumber).subscribe(res => {
-        console.log(res);     
+        console.log(res);
+        
       }, err => {
-        // TODO Ver se é assim que ele vai retornar o erro
-        this.errorMessage = err;
+        this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
         console.log(err);
       })
     }

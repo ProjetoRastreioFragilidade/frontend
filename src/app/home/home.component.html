@@ -1,11 +1,14 @@
 
-<div class="login">
+<div class="body">
   <div class="one-col-grid reg-div">
     <div style="margin-bottom:15px">
         <button type="button" class="btn btn-primary btn-large" (click)="createPatient()">Cadastrar Paciente</button>
         <button type="button" class="btn btn-primary btn-large" (click)="createHealthCenter()">Cadastrar Posto</button>
     </div>
     <div class="one-col-grid src-div">
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+            {{errorMessage}}
+        </div>
       <input type="text" placeholder="Digite o número SUS do paciente" name="pct_sus" id="sus" class="busca-pct" maxlength="18" 
         mask="000.0000.0000.0000"
         [(ngModel)]="susNumber">
