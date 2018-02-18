@@ -4,7 +4,7 @@
     <hr>
   </div>
   <div class="alert alert-success" role="alert" *ngIf="successCreated">
-        Posto {{nomePosto}} Cadastrado com Sucesso!
+        Paciente {{nomePatient}} Cadastrado com Sucesso!
   </div>
   <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
         {{errorMessage}}
@@ -23,7 +23,7 @@
         <input type="text" name="end" id="end" class="myInputTxt" placeholder="Endereço" required="" [(ngModel)]="patient.end_rua">
     </div>
     <div class="one-col-grid">
-        <input type="text" name="bairro" id="bairro" class="myInputTxt" placeholder="Bairro" required="" [(ngModel)]="patient.end_bairo">
+        <input type="text" name="bairro" id="bairro" class="myInputTxt" placeholder="Bairro" required="" [(ngModel)]="patient.end_bairro">
     </div>
     <div class="one-col-grid">
         <input mask="0000" type="text" name="numb" id="numb" class="myInputTxt" placeholder="Número" required="" maxlength="4"  id="nome" required="" [(ngModel)]="patient.end_numero">
@@ -35,7 +35,6 @@
     <div align="center" class="one-col-grid flow-btn">
         <input type="button" class="btn btn-warning btn-large" style="margin: 10px" value="Voltar" (click)="back()">
         <input type="submit" class="btn btn-primary btn-large" style="margin: 10px" value="Cadastrar" (click)="submit()">
-        <!-- <button type="button" class="btn btn-primary btn-large" onclick="goInsertPatientPage()">Entrar</button> -->
     </div>
   </section>
 </div>

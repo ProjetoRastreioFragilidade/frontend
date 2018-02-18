@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PatientService } from '@services';
 import { Patient } from '@models';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-register-patient',
@@ -14,9 +15,9 @@ export class RegisterPatientComponent implements OnInit {
     nome: '',
     nro_sus: '',
     data_nascimento: '',
-    end_bairo: '',
+    end_bairro: '',
     end_rua: '',
-    end_numero: 1,
+    end_numero: null,
     cep: '',
     posto: 1
   };
@@ -42,6 +43,7 @@ export class RegisterPatientComponent implements OnInit {
   public submit() {
     this.errorMessage = '';
     this.successCreated = false;
+    console.log(moment(this.patient.data_nascimento, "DDMMYYYY"))
     this.patient.data_nascimento = this.getInputDate();
 
     if (!this.patient.nome) {
@@ -56,19 +58,7 @@ export class RegisterPatientComponent implements OnInit {
       this.errorMessage = 'Data de nascimento inválida';
       return;
     }
-    if (!this.patient.end_rua) {
-      this.errorMessage = 'Endereço inválido';
-      return;
-    }
-    if (!this.patient.end_bairo) {
-      this.errorMessage = 'Bairro inválido';
-      return;
-    }
-    if (!this.patient.end_numero) {
-      this.errorMessage = 'Número inválido';
-      return;
-    }
-    if (!this.patient.cep || this.patient.cep.length < 8) {
+    if (this.patient.cep && this.patient.cep.length < 8) {
       this.errorMessage = 'CEP inválido';
       return;
     }
@@ -81,16 +71,14 @@ export class RegisterPatientComponent implements OnInit {
         nome: '',
         nro_sus: '',
         data_nascimento: '',
-        end_bairo: '',
+        end_bairro: '',
         end_rua: '',
         end_numero: null,
         cep: '',
         posto: 1
       };
     }, err => {
-      // TODO Ver se é assim que ele vai retornar o erro
-      this.errorMessage = 'Erro em conectar com o servidor, tente novamente mais tarde ou contate o suporte';
-      console.log(err);
+      this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
     })
   }
 

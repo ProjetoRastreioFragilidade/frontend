@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '@services';
-import { HttpClient } from '@angular/common/http';
+import { AuthenticationService, PatientService } from '@services';
+
 
 @Component({
   selector: 'app-home',
@@ -12,10 +12,11 @@ export class HomeComponent implements OnInit {
 
   public susNumber: string;
 
+  public errorMessage: string;
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
-    private http: HttpClient
+    private patientService: PatientService
   ) { }
 
   ngOnInit() {
@@ -44,9 +45,13 @@ export class HomeComponent implements OnInit {
     if (this.susNumber.length < 15) {
       console.log("número sus inválido!");
     } else {
-      console.log(this.susNumber);
-      // this.http.post('http://localhost:8000/'+'123456789012345'+'/');
+      this.patientService.findBySUSNumber(this.susNumber).subscribe(res => {
+        console.log(res);     
+      }, err => {
+        // TODO Ver se é assim que ele vai retornar o erro
+        this.errorMessage = err;
+        console.log(err);
+      })
     }
   }
 }
-// http://localhost:8000/busca/123456789012345/

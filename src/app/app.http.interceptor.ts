@@ -43,6 +43,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
                             // localStorage.clear();
                             // this.router.navigate(['login']);
                             // location.reload();
+                            // TODO -> descomentar esse código
                             break;
                         }
                         default: {
