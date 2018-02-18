@@ -1,3 +1,26 @@
-<p>
-  register-patient works!
-</p>
+<div class="login">
+  <div class="one-col-grid">
+    <h1>Cadastrar Paciente</h1>
+    <hr>
+  </div>
+  
+  <section class="one-col-grid" style="margin-top: 15px;">
+      <div class="one-col-grid">
+          <input type="text" name="nome" class="myInputTxt" placeholder="Nome" id="nome" required="">
+      </div>
+      <div class="one-col-grid">
+          <input type="text" name="sobrenome" class="myInputTxt" placeholder="Sobrenome" id="sobrenome" required="">
+      </div>
+      <div class="one-col-grid">
+          <input mask="000.0000.0000.0000" type="text" name="sus" id="sus" class="myInputTxt" placeholder="Número SUS" required="" maxlength="18">
+      </div>
+      <div class="one-col-grid">
+          <input mask="00/00/0000" name="nascimento" id="nascimento" class="myInputTxt" placeholder="Data de nascimento" required="">
+      </div>
+      <div align="center" class="one-col-grid flow-btn">
+          <input type="button" class="btn btn-warning btn-large" style="margin: 10px" value="Voltar" (click)="back()">
+          <input type="submit" class="btn btn-primary btn-large" style="margin: 10px" value="Cadastrar">
+          <!-- <button type="button" class="btn btn-primary btn-large" onclick="goInsertPatientPage()">Entrar</button> -->
+      </div>
+  </section>
+</div>

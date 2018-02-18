@@ -1,0 +1,5 @@
+bootstrap@4.0.0 requires a peer of popper.js@^1.12.9
+codelyzer@4.1.0 requires a peer of tslint@^5.0.0
+@angular-devkit/schematics@0.0.52 requires a peer of @angular-devkit/core@0.0.29
+@schematics/angular@0.1.17 requires a peer of @angular-devkit/core@0.0.29
+ajv-keywords@3.1.0 requires a peer of ajv@^6.0.0
