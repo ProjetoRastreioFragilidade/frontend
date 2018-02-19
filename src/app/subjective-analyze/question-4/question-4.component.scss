@@ -24,6 +24,12 @@
     float: left;
 } 
 
+.selected {
+    background-color: #205077 !important;
+    color: #fff !important;
+    font-weight: bold !important;
+}
+
 .two-col-grid {
     width: 50%;
     float: left;

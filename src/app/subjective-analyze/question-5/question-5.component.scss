@@ -19,6 +19,12 @@
     user-select: none;
 }
 
+.selected {
+    background-color: #205077 !important;
+    color: #fff !important;
+    font-weight: bold !important;
+}
+
 .one-col-grid {
     width: 100%;
     float: left;

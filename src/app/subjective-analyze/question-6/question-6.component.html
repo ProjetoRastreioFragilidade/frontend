@@ -4,22 +4,22 @@
     <h2 align="center">Questão 6</h2>
     <hr>
     <div align="center" style="padding-bottom: 14px">O(a) Sr(a) sentiu que não conseguiria levar adiante as suas tarefas?</div>
-    <label class="one-col-grid opt-question" id="label-Nunca_ou_raramente" (click)="never()" align="center">
+    <label class="one-col-grid opt-question" id="label-Nunca_ou_raramente" (click)="never()" align="center" [ngClass]="{ selected: Q6 === 1 ? true : false }">
         <input type="radio" name="answer" id="radio-Nunca_ou_raramente" value="Nunca ou raramente"> Nunca ou raramente
       </label>
-      <label class="one-col-grid opt-question" id="label-As_vezes" (click)="sometimes()" align="center">
+      <label class="one-col-grid opt-question" id="label-As_vezes" (click)="sometimes()" align="center" [ngClass]="{ selected: Q6 === 2 ? true : false }">
         <input type="radio" name="answer" id="radio-As_vezes" value="Às vezes"> Às vezes
       </label>
-      <label class="one-col-grid opt-question" id="label-Frequentemente" (click)="freq()" align="center">
+      <label class="one-col-grid opt-question" id="label-Frequentemente" (click)="freq()" align="center" [ngClass]="{ selected: Q6 === 3 ? true : false }">
         <input type="radio" name="answer" id="radio-Frequentemente" value="Frequentemente"> Frequentemente
       </label>
-      <label class="one-col-grid opt-question" id="label-Sempre" (click)="aways()" align="center">
+      <label class="one-col-grid opt-question" id="label-Sempre" (click)="aways()" align="center" [ngClass]="{ selected: Q6 === 4 ? true : false }">
         <input type="radio" name="answer" id="radio-Sempre" value="Sempre"> Sempre
       </label>
     <div align="center" class="one-col-grid flow-btn">
       <div class="three-col-grid">
         <button type="button" class="btn btn-primary btn-large" (click)="nextQuestion(5)" value="5">
-          <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Anterior</button>
+          <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> <i class="fa fa-caret-left"></i> Anterior</button>
       </div>
       <div class="three-col-grid">
         <p id="agent-name">PPSUS - Avaliação Subjetiva
@@ -30,7 +30,7 @@
         </strong>
       </div>
       <div class="three-col-grid">
-        <button type="button" class="btn btn-primary btn-large" (click)="saveTest()">SALVAR AVALIAÇÂO</button>
+        <button type="button" class="btn btn-primary btn-large" (click)="saveTest()">Salvar Avaliação <i class="fa fa-save"></i></button>
       </div>
     </div>
   </form>

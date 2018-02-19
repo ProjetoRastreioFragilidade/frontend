@@ -41,6 +41,8 @@ import { QuestionEdmonton8Component } from './edmonton-analyze/question-edmonton
 import { QuestionEdmonton9Component } from './edmonton-analyze/question-edmonton-9/question-edmonton-9.component';
 import { FinalEdmontonComponent } from './final-edmonton/final-edmonton.component';
 
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +79,8 @@ import { FinalEdmontonComponent } from './final-edmonton/final-edmonton.componen
     HttpModule,
     HttpClientModule,
     routing,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    Angular2FontawesomeModule
   ],
   providers: [...providers,
     {

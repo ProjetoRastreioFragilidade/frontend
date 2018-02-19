@@ -1,5 +1,14 @@
 /* verde: #4CAF50*/
-
+@media (max-width: 1200px) { 
+    .hide-text-medium {
+        display: none;
+    }
+ }
+ @media (max-width: 600px) { 
+    .hide-text-min {
+        display: none;
+    }
+ }
 .body {
     margin: 0;
     text-align: center;

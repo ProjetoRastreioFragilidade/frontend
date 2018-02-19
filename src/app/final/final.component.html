@@ -12,7 +12,15 @@
         <strong>{{patient.nome}}</strong>
       </p>
       <p>Condição:
-        <strong>{{test.fragilidade}}</strong>
+        <ng-container *ngIf="test.fragilidade === 'F'">
+            <strong>Frágil</strong>
+          </ng-container>
+          <ng-container *ngIf="test.fragilidade === 'N'">
+            <strong>Não Frágil</strong>
+          </ng-container>
+          <ng-container *ngIf="test.fragilidade === 'P'">
+            <strong>Pré Frágil</strong>
+          </ng-container>
       </p>
       <br>
       <p>

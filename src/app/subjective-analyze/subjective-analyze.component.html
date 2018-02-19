@@ -1,27 +1,76 @@
 <div class="body">
-  <span class="patient-name" id="patient-name"><font color="black">Paciente:</font> TESTE TESTE</span>
-  <div class="one-col-grid">
-      <nav class="one-col-grid">
-          <div class="nav-bar">
-              <!--label class="six-col-grid" id="nav-q1" style="color: rgb(255, 255, 255); background-color: rgb(24, 65, 96);">Q1<br> <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span></label-->
-              <label class="six-col-grid active" id="nav-q1" (click)="goTo(1)">Q1<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="six-col-grid active" id="nav-q2" (click)="goTo(2)">Q2<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="six-col-grid active" id="nav-q3" (click)="goTo(3)">Q3<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="six-col-grid active" id="nav-q4" (click)="goTo(4)">Q4<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="six-col-grid active" id="nav-q5" (click)="goTo(5)">Q5<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="six-col-grid active" id="nav-q6" (click)="goTo(6)">Q6<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-          </div>
-      </nav>
-      <div class="one-col-grid src-div">
-        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    <span class="patient-name" id="patient-name">
+        <font color="black">Paciente:</font> TESTE TESTE</span>
+    <div class="one-col-grid">
+        <nav class="one-col-grid">
+            <div class="nav-bar">
+                <!--label class="six-col-grid" id="nav-q1" style="color: rgb(255, 255, 255); background-color: rgb(24, 65, 96);">Q1<br> <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span></label-->
+                <label class="six-col-grid active" id="nav-q1" (click)="goTo(1)">Q1
+                    <br>
+                    <ng-container *ngIf="!this.subjective.q1_perdeu_peso; else answeredQ1">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ1>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+                <label class="six-col-grid active" id="nav-q2" (click)="goTo(2)">Q2
+                    <br>
+                    <ng-container *ngIf="!this.subjective.q2_ativ_fisica; else answeredQ2">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ2>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+                <label class="six-col-grid active" id="nav-q3" (click)="goTo(3)">Q3
+                    <br>
+                    <ng-container *ngIf="!this.subjective.q3_red_forca; else answeredQ3">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ3>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+                <label class="six-col-grid active" id="nav-q4" (click)="goTo(4)">Q4
+                    <br>
+                    <ng-container *ngIf="!this.subjective.q4_red_caminhada; else answeredQ4">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ4>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+                <label class="six-col-grid active" id="nav-q5" (click)="goTo(5)">Q5
+                    <br>
+                    <ng-container *ngIf="!this.subjective.q5_fadiga; else answeredQ5">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ5>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+                <label class="six-col-grid active" id="nav-q6" (click)="goTo(6)">Q6
+                    <br>
+                    <ng-container *ngIf="!this.subjective.q6_desanimo; else answeredQ6">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ6>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+            </div>
+        </nav>
+        <div class="one-col-grid src-div">
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
                 {{errorMessage}}
             </div>
         </div>
-      <app-question-1 *ngIf="question === 1" (q1)="saveQ1($event)" (next)="goTo($event)" (q1_kg_emitter)="get_kg($event)"></app-question-1>
-      <app-question-2 *ngIf="question === 2" (q2)="saveQ2($event)" (next)="goTo($event)"></app-question-2>
-      <app-question-3 *ngIf="question === 3" (q3)="saveQ3($event)" (next)="goTo($event)"></app-question-3>
-      <app-question-4 *ngIf="question === 4" (q4)="saveQ4($event)" (next)="goTo($event)"></app-question-4>
-      <app-question-5 *ngIf="question === 5" (q5)="saveQ5($event)" (next)="goTo($event)"></app-question-5>
-      <app-question-6 *ngIf="question === 6" (q6)="saveQ6($event)" (next)="goTo($event)" (save)="saveTest()"></app-question-6>
-  </div>
+        <app-question-1 *ngIf="question === 1" (q1)="saveQ1($event)" (next)="goTo($event)" (q1_kg_emitter)="get_kg($event)" [Q1] = "this.subjective.q1_perdeu_peso" [KG]="this.subjective.q1_perdeu_peso_kg"></app-question-1>
+        <app-question-2 *ngIf="question === 2" (q2)="saveQ2($event)" (next)="goTo($event)" [Q2] = "this.subjective.q2_ativ_fisica"></app-question-2>
+        <app-question-3 *ngIf="question === 3" (q3)="saveQ3($event)" (next)="goTo($event)" [Q3] = "this.subjective.q3_red_forca"></app-question-3>
+        <app-question-4 *ngIf="question === 4" (q4)="saveQ4($event)" (next)="goTo($event)" [Q4] = "this.subjective.q4_red_caminhada"></app-question-4>
+        <app-question-5 *ngIf="question === 5" (q5)="saveQ5($event)" (next)="goTo($event)" [Q5] = "this.subjective.q5_fadiga"></app-question-5>
+        <app-question-6 *ngIf="question === 6" (q6)="saveQ6($event)" (next)="goTo($event)" (save)="saveTest()" [Q6] = "this.subjective.q6_desanimo"></app-question-6>
+    </div>
 </div>

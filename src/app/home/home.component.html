@@ -2,8 +2,8 @@
 <div class="body">
   <div class="one-col-grid reg-div">
     <div style="margin-bottom:15px">
-        <button type="button" class="btn btn-primary btn-large" (click)="createPatient()">Cadastrar Paciente</button>
-        <button type="button" class="btn btn-primary btn-large" (click)="createHealthCenter()">Cadastrar Posto</button>
+        <button type="button" class="btn btn-primary btn-large" (click)="createPatient()"><ng-container class="hide-text-min">Cadastrar Paciente</ng-container> <i class="fa fa-medkit"></i></button>
+        <button type="button" class="btn btn-primary btn-large" (click)="createHealthCenter()"><ng-container class="hide-text-min">Cadastrar Posto</ng-container> <i class="fa fa-user"></i></button>
     </div>
     <div class="one-col-grid src-div">
         <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
@@ -12,8 +12,7 @@
       <input type="text" placeholder="Digite o número SUS do paciente" name="pct_sus" id="sus" class="busca-pct" maxlength="18" 
         mask="000.0000.0000.0000"
         [(ngModel)]="susNumber">
-        
-      <input type="submit" class="src-btn" value="Procurar paciente" (click)="searchPatient()">
+      <button type="button" class="src-btn" (click)="searchPatient()"><i class="fa fa-search"></i><div class="hide-text-medium">Procurar paciente</div> </button>
     </div>
   </div>
   <div class="one-col-grid" *ngIf="patient">
