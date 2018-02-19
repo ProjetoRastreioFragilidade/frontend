@@ -10,7 +10,7 @@ export interface Subjective {
     data_inicio?: string;
     data_fim?: string;
     fragilidade?: string;
-    fatores?: string[];
+    fatores?: string;
     q1_perdeu_peso?: number;
     q1_perdeu_peso_kg?: number;
     q2_ativ_fisica?: number;

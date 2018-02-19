@@ -39,6 +39,7 @@ import { QuestionEdmonton6Component } from './edmonton-analyze/question-edmonton
 import { QuestionEdmonton7Component } from './edmonton-analyze/question-edmonton-7/question-edmonton-7.component';
 import { QuestionEdmonton8Component } from './edmonton-analyze/question-edmonton-8/question-edmonton-8.component';
 import { QuestionEdmonton9Component } from './edmonton-analyze/question-edmonton-9/question-edmonton-9.component';
+import { FinalEdmontonComponent } from './final-edmonton/final-edmonton.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { QuestionEdmonton9Component } from './edmonton-analyze/question-edmonton
     QuestionEdmonton7Component,
     QuestionEdmonton8Component,
     QuestionEdmonton9Component,
+    FinalEdmontonComponent,
   ],
   imports: [
     BrowserModule,

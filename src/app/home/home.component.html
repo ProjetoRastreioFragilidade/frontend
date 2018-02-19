@@ -16,11 +16,14 @@
       <input type="submit" class="src-btn" value="Procurar paciente" (click)="searchPatient()">
     </div>
   </div>
-
+  <div class="one-col-grid" *ngIf="patient">
+    <h1>{{patient.nome}} - {{patient.nro_sus}}</h1>
+    <p>Endereço:
+      <strong>{{patient.end_bairro}} {{patient.end_numero ? ', ' + patient.end_numero : ''}} {{patient.end_bairro ? ', ' + patient.end_bairro : ''}}</strong>
+    </p>
+    <br>
+</div>
   <div class="one-col-grid" *ngIf="tests.length !== 0">
-    <div class="one-col-grid">
-        <h1>{{patient.nome}} - {{patient.nro_sus}}</h1>
-    </div>
     <table style="width:100%">
       <tbody>
         <tr>
@@ -30,13 +33,13 @@
           <th>Fim</th>
         </tr>
         <tr class="subjetiva" *ngFor="let test of tests">
-          <td>{{patient.nome}}</td>
-          <td *ngIf="test.tipo === 'e';else subjective">Edmonton</td>
-          <ng-template #subjective>
-              <td>Subjetiva</td>
-          </ng-template>
-          <td>{{test.data_inicio}}</td>
-          <td>{{test.data_fim}}</td>
+              <td (click)="seeResults(test.id, test.tipo)" >{{patient.nome}}</td>
+              <td *ngIf="test.tipo === 'e';else subjective" (click)="seeResults(test.id, test.tipo)">Edmonton</td>
+              <ng-template #subjective>
+                  <td (click)="seeResults(test.id, test.tipo)">Subjetiva</td>
+              </ng-template>
+              <td (click)="seeResults(test.id, test.tipo)">{{test.data_inicio}}</td>
+              <td (click)="seeResults(test.id, test.tipo)">{{test.data_fim}}</td>
         </tr>
       </tbody>
     </table>

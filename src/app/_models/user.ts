@@ -1,4 +1,5 @@
 export interface User {
+    username?: string;
     nome?: string;
     nro_sus?: number;
     data_nascimento?: string;
@@ -7,4 +8,6 @@ export interface User {
     end_numero?: number;
     cep?: number;
     posto?: number;
+    password?: string;
+    user_permissions?: any;
 }

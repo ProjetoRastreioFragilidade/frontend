@@ -12,7 +12,12 @@
               <label class="six-col-grid active" id="nav-q6" (click)="goTo(6)">Q6<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
           </div>
       </nav>
-      <app-question-1 *ngIf="question === 1" (q1)="saveQ1($event)" (next)="goTo($event)"></app-question-1>
+      <div class="one-col-grid src-div">
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                {{errorMessage}}
+            </div>
+        </div>
+      <app-question-1 *ngIf="question === 1" (q1)="saveQ1($event)" (next)="goTo($event)" (q1_kg_emitter)="get_kg($event)"></app-question-1>
       <app-question-2 *ngIf="question === 2" (q2)="saveQ2($event)" (next)="goTo($event)"></app-question-2>
       <app-question-3 *ngIf="question === 3" (q3)="saveQ3($event)" (next)="goTo($event)"></app-question-3>
       <app-question-4 *ngIf="question === 4" (q4)="saveQ4($event)" (next)="goTo($event)"></app-question-4>

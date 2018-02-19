@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   public susNumber: string;
   
-  public tests: Test[] = [];
+  public tests: Test[];
   public patient: Patient;
 
   public isEmpty = false;
@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.tests = [];
   }
   public createPatient() {
     this.router.navigate(['/registra-paciente']); 
@@ -43,6 +44,14 @@ export class HomeComponent implements OnInit {
   public newSubjective() { //passa ir do paciente
     this.router.navigate(['/subjetiva', this.patient.id]); 
   }
+  
+  public seeResults(testId: number, testTipo: string) {
+    if (testTipo === 'e') {
+      this.router.navigate(['/final', testId]); 
+    } else {
+      this.router.navigate(['/final', testId]); 
+    }
+  }
 
   public logout() {
     this.authenticationService.logout();
@@ -53,7 +62,7 @@ export class HomeComponent implements OnInit {
     
     this.tests = [];
     this.isEmpty = false;
-
+    this.errorMessage = '';
     if (this.susNumber.length < 15) {
       this.errorMessage = "Número SUS inválido!";
       return;
@@ -68,7 +77,11 @@ export class HomeComponent implements OnInit {
           }
         });
         }, err => {
-          this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
+          if(err.status === 400) {
+            this.errorMessage = "Usuário não encontrado";
+          } else {
+            this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
+          }
           console.log(err);
         }
       );
