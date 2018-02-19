@@ -14,4 +14,7 @@ export class PostoService {
   public createPosto(posto: Posto): Observable<any> {
     return this.http.post<Posto>(environment.baseUrl + 'posto/', posto);
   }
+  public listPosto(): Observable<Posto[]> {
+    return this.http.get<Posto[]>(environment.baseUrl + 'posto/');
+  }
 }

@@ -31,10 +31,16 @@
     <div class="one-col-grid">
         <input mask="00000-000" type="text" name="cep" id="cep" class="myInputTxt" placeholder="CEP" required="" maxlength="9" [(ngModel)]="patient.cep">
     </div>
+    <div class="one-col-grid">
+        <select class="custom-select myInputTxt" #selectedCategory>
+            <option [selected] ="patient.posto" value="">Escolha um Posto</option>
+            <option [value]="posto.id" *ngFor="let posto of postos">{{posto.nome}}</option>
+        </select>
+    </div>
 
     <div align="center" class="one-col-grid flow-btn">
         <input type="button" class="btn btn-warning btn-large" style="margin: 10px" value="Voltar" (click)="back()">
-        <input type="submit" class="btn btn-primary btn-large" style="margin: 10px" value="Cadastrar" (click)="submit()">
+        <input type="submit" class="btn btn-primary btn-large" style="margin: 10px" value="Cadastrar" (click)="submit(selectedCategory.value)">
     </div>
   </section>
 </div>

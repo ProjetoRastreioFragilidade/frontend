@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PatientService } from '@services';
-import { Patient } from '@models';
+import { PatientService, PostoService } from '@services';
+import { Patient, Posto } from '@models';
 import * as moment from 'moment';
 
 @Component({
@@ -19,7 +19,7 @@ export class RegisterPatientComponent implements OnInit {
     end_rua: '',
     end_numero: null,
     cep: '',
-    posto: 1
+    posto: null
   };
 
   public successCreated = false;
@@ -27,25 +27,37 @@ export class RegisterPatientComponent implements OnInit {
   public errorMessage = '';
 
   public inputDate: string;
+
+  public postos: Posto[] = [];
   
   constructor(
     private router: Router,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private postoService: PostoService
   ) { }
 
   ngOnInit() {
+    this.postoService.listPosto().subscribe(postos => {
+      this.postos = postos;
+    }, err => {
+      this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
+    });
   }
 
   public back() {
     this.router.navigate(['/']); 
   }
 
-  public submit() {
+  public submit(postoId: number) {
+    console.log(postoId);
     this.errorMessage = '';
     this.successCreated = false;
-    console.log(moment(this.patient.data_nascimento, "DDMMYYYY"))
     this.patient.data_nascimento = this.getInputDate();
-
+    this.patient.posto = postoId;
+    console.log(this.patient.data_nascimento)
+    console.log(moment(this.patient.data_nascimento, "DDMMYYYY"))
+    console.log(this.patient.data_nascimento)
+    //return;
     if (!this.patient.nome) {
       this.errorMessage = 'Nome inválido';
       return;
@@ -62,6 +74,10 @@ export class RegisterPatientComponent implements OnInit {
       this.errorMessage = 'CEP inválido';
       return;
     }
+    if (!this.patient.posto) {
+      this.errorMessage = 'É necessário selecionar um Posto';
+      return;
+    }
   
     this.patientService.createPatient(this.patient).subscribe(res => {
       console.log(res);     
@@ -75,10 +91,16 @@ export class RegisterPatientComponent implements OnInit {
         end_rua: '',
         end_numero: null,
         cep: '',
-        posto: 1
+        posto: null
       };
+      this.inputDate = '';
     }, err => {
-      this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
+      console.log(err);
+      if (err.status === 400) {
+        this.errorMessage = 'Data de nascimento inválida';
+      } else {
+        this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
+      }
     })
   }
 

@@ -11,7 +11,7 @@ export class FinalComponent implements OnInit, OnDestroy {
 
   public sub: any;
   public testId: number;
-  public test: Subjective = '';
+  public test: Subjective = {};
   constructor(
     private activatedRoute: ActivatedRoute,
     private testService: TestService
