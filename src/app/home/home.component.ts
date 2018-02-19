@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService, PatientService } from '@services';
+import { AuthenticationService, PatientService, TestService } from '@services';
+import { Patient, Test } from '@models';
 
-
+// TODO -> arrumar data 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,12 +12,19 @@ import { AuthenticationService, PatientService } from '@services';
 export class HomeComponent implements OnInit {
 
   public susNumber: string;
+  
+  public tests: Test[] = [];
+  public patient: Patient;
 
+  public isEmpty = false;
   public errorMessage: string;
+
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private testService: TestService
   ) { }
 
   ngOnInit() {
@@ -42,17 +50,28 @@ export class HomeComponent implements OnInit {
   }
   
   public searchPatient() {
+    
+    this.tests = [];
+    this.isEmpty = false;
+
     if (this.susNumber.length < 15) {
-      this.errorMessage = "Número sus inválido!";
+      this.errorMessage = "Número SUS inválido!";
       return;
     } else {
-      this.patientService.findBySUSNumber(this.susNumber).subscribe(res => {
-        console.log(res);
-        
-      }, err => {
-        this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
-        console.log(err);
-      })
+      this.patientService.findBySUSNumber(this.susNumber).subscribe((patient: Patient) => {
+        this.patient = patient;
+        console.log(patient);
+        this.testService.findByPatientId(this.patient.id).subscribe((tests: Test[]) => {
+          this.tests = tests;
+          if (tests.length === 0) {
+            this.isEmpty = true;
+          }
+        });
+        }, err => {
+          this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
+          console.log(err);
+        }
+      );
     }
   }
 }

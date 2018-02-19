@@ -1,6 +1,6 @@
 import { Provider } from '@angular/core';
 import {
-    AuthenticationService, PostoService, PatientService
+    AuthenticationService, PostoService, PatientService, TestService
 } from '@services';
 
 import {
@@ -11,5 +11,6 @@ export const providers: Provider[] = [
     AuthenticationService,
     AuthGuard,
     PostoService,
-    PatientService
+    PatientService,
+    TestService
 ];

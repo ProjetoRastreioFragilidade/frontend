@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://ppsus.com.br:8000/'
+  baseUrl: 'http://localhost:8000/'
 };

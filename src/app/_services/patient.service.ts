@@ -16,7 +16,7 @@ export class PatientService {
     return this.http.post<Patient>(environment.baseUrl + 'paciente/', patient);
   }
 
-  public findBySUSNumber(susNumber: string): Observable<any> {
+  public findBySUSNumber(susNumber: string): Observable<Patient> {
     return this.http.get<Patient>(environment.baseUrl + 'busca/' + susNumber + '/');
   }
   
