@@ -46,4 +46,7 @@ export class FinalComponent implements OnInit, OnDestroy {
     this.router.navigate(['/']); 
   }
 
+  public createPDF() {
+    // TODO -> gerar pdf
+  }
 }
