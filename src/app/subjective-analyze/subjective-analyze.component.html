@@ -4,7 +4,7 @@
       <nav class="one-col-grid">
           <div class="nav-bar">
               <!--label class="six-col-grid" id="nav-q1" style="color: rgb(255, 255, 255); background-color: rgb(24, 65, 96);">Q1<br> <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span></label-->
-              <label class="six-col-grid active" id="nav-q2" (click)="goTo(1)">Q2<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
+              <label class="six-col-grid active" id="nav-q1" (click)="goTo(1)">Q1<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
               <label class="six-col-grid active" id="nav-q2" (click)="goTo(2)">Q2<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
               <label class="six-col-grid active" id="nav-q3" (click)="goTo(3)">Q3<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
               <label class="six-col-grid active" id="nav-q4" (click)="goTo(4)">Q4<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
@@ -12,15 +12,11 @@
               <label class="six-col-grid active" id="nav-q6" (click)="goTo(6)">Q6<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
           </div>
       </nav>
-      <app-question-1 *ngIf="question === 1"></app-question-1>
-      <app-question-2 *ngIf="question === 2"></app-question-2>
-      <app-question-3 *ngIf="question === 3"></app-question-3>
-      <app-question-4 *ngIf="question === 4"></app-question-4>
-      <app-question-5 *ngIf="question === 5"></app-question-5>
-      <app-question-6 *ngIf="question === 6"></app-question-6>
-
-      <!--<footer style="position: fixed; bottom: 0px; width: 100%;">
-          <p id="agent-name"></p>
-      </footer>-->
+      <app-question-1 *ngIf="question === 1" (q1)="saveQ1($event)" (next)="goTo($event)"></app-question-1>
+      <app-question-2 *ngIf="question === 2" (q2)="saveQ2($event)" (next)="goTo($event)"></app-question-2>
+      <app-question-3 *ngIf="question === 3" (q3)="saveQ3($event)" (next)="goTo($event)"></app-question-3>
+      <app-question-4 *ngIf="question === 4" (q4)="saveQ4($event)" (next)="goTo($event)"></app-question-4>
+      <app-question-5 *ngIf="question === 5" (q5)="saveQ5($event)" (next)="goTo($event)"></app-question-5>
+      <app-question-6 *ngIf="question === 6" (q6)="saveQ6($event)" (next)="goTo($event)" (save)="saveTest()"></app-question-6>
   </div>
 </div>

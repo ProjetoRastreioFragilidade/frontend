@@ -43,10 +43,10 @@
     <div class="alert alert-danger" role="alert" *ngIf="isEmpty">
       Não há nenhuma avaliação para esse paciente.
     </div>
-  </div>
-  <div class="one-col-grid" style="margin-top:15px; margin-bottom:15px">
-    <input type="submit" name="form2" class="btn btn-success btn-large btn-edmonton" (click)="newEdmonton()" value="Novo Edmonton">
-    <input type="submit" name="form1" class="btn btn-primary btn-large" style="margin-left:10px" (click)="newSubjective()" value="Nova Subjetiva">
+    <div class="one-col-grid" style="margin-top:15px; margin-bottom:15px">
+        <input type="submit" name="form2" class="btn btn-success btn-large btn-edmonton" (click)="newEdmonton()" value="Novo Edmonton">
+        <input type="submit" name="form1" class="btn btn-primary btn-large" style="margin-left:10px" (click)="newSubjective()" value="Nova Subjetiva">
+    </div>
   </div>
   <input type="submit" class="btn-large btn-danger" name="logoff" value="LOGOUT" (click)="logout()">
 </div>

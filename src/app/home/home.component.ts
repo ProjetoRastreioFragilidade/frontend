@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   public newSubjective() { //passa ir do paciente
-    this.router.navigate(['/subjetiva']); 
+    this.router.navigate(['/subjetiva', this.patient.id]); 
   }
 
   public logout() {

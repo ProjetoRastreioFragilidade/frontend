@@ -6,6 +6,11 @@ export interface Test {
 }
 
 export interface Subjective {
+    id?: number;
+    data_inicio?: string;
+    data_fim?: string;
+    fragilidade?: string;
+    fatores?: string[];
     q1_perdeu_peso?: number;
     q1_perdeu_peso_kg?: number;
     q2_ativ_fisica?: number;
@@ -14,6 +19,8 @@ export interface Subjective {
     q5_fadiga?: number;
     q6_desanimo?: number;
     paciente?: number;
+    usuario?: number;
+    usuario_edit?: string;
 }
 
 export interface Edmonton {

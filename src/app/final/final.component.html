@@ -1,3 +1,57 @@
-<p>
-  final works!
-</p>
+<div class="body">
+  <section class="one-col-grid">
+    <div id="answers-div" style="float:left;width:100%; text-align:left; font-size:1.3em; padding-left:20px">
+      <p></p>
+      <h1 align="center">Avaliação Subjetiva - PPSUS</h1>
+      <p></p>
+      <hr>
+      <p>Agente:
+        <strong>Lucinete Gomes</strong>
+      </p>
+      <p>Paciente:
+        <strong>{{test.paciente}}</strong>
+      </p>
+      <p>Condição:
+        <strong>{{test.fragilidade}}</strong>
+      </p>
+      <br>
+      <p>
+        <strong>Q1)</strong> Nos últimos 12 meses (último ano) O(a) Sr(a) acha que perdeu peso sem fazer nenhuma dieta?
+        <br>Resposta:
+        <strong>{{test.q1_perdeu_peso}}</strong>
+      </p>
+      <p>
+        <strong>Q2)</strong> O(a) Sr(a) acha que faz menos atividades físicas do que há 12 meses atrás (há um ano)?
+        <br>Resposta:
+        <strong>{{test.q2_ativ_fisica}}</strong>
+      </p>
+      <p>
+        <strong>Q3)</strong> Nos últimos 12 meses (último ano), o(a) Sr(a) acha que sua força diminuiu?
+        <br>Resposta:
+        <strong>{{test.q3_red_forca}}</strong>
+      </p>
+      <p>
+        <strong>Q4)</strong> O(a) Sr(a) acha que hoje está caminhando mais devagar do que caminhava há 12 meses atrás (um ano)?
+        <br>Resposta:
+        <strong>{{test.q4_red_caminhada}}</strong>
+      </p>
+      <p>
+        <strong>Q5)</strong> O(a) Sr(a) sentiu que teve que fazer algum esforço para dar conta de suas tarefas do dia-a-dia?
+        <br>Resposta:
+        <strong>{{test.q5_fadiga}}</strong>
+      </p>
+      <p>
+        <strong>Q6)</strong> O(a) Sr(a) sentiu que não conseguiria levar adiante as suas tarefas?
+        <br>Resposta:
+        <strong>{{test.q6_desanimo}}</strong>
+      </p>
+    </div>
+    <!--<div style="float:left;width:15%">&nbsp</div>-->
+    <div align="center" class="one-col-grid flow-btn">
+      <button type="button" class="btn btn-primary btn-large" style="margin: 10px;" (click)="back()">Voltar</button>
+      <button type="button" class="btn btn-primary btn-large" style="margin: 10px;" (click)="createPDF()">Salvar PDF</button>
+      <div>
+      </div>
+    </div>
+  </section>
+</div>
