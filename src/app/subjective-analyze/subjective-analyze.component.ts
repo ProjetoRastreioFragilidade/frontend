@@ -76,7 +76,7 @@ export class SubjectiveAnalyzeComponent implements OnInit, OnDestroy {
         this.errorMessage = "Questão 1 não foi respondida";
         return;
       }
-      if(this.subjective.q1_perdeu_peso && !this.subjective.q1_perdeu_peso_kg) {
+      if(this.subjective.q1_perdeu_peso === 1 && !this.subjective.q1_perdeu_peso_kg) {
         this.errorMessage = "Questão 1 não foi informado o peso";
         return;
       }

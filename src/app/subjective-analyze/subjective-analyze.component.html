@@ -1,6 +1,4 @@
 <div class="body">
-    <span class="patient-name" id="patient-name">
-        <font color="black">Paciente:</font> TESTE TESTE</span>
     <div class="one-col-grid">
         <nav class="one-col-grid">
             <div class="nav-bar">
@@ -66,7 +64,7 @@
                 {{errorMessage}}
             </div>
         </div>
-        <app-question-1 *ngIf="question === 1" (q1)="saveQ1($event)" (next)="goTo($event)" (q1_kg_emitter)="get_kg($event)" [Q1] = "this.subjective.q1_perdeu_peso" [KG]="this.subjective.q1_perdeu_peso_kg"></app-question-1>
+        <app-question-1 *ngIf="question === 1" (q1)="saveQ1($event)" (next)="goTo($event)" [Q1] = "this.subjective.q1_perdeu_peso" (q1_kg_emitter)="get_kg($event)" [KG]="this.subjective.q1_perdeu_peso_kg"></app-question-1>
         <app-question-2 *ngIf="question === 2" (q2)="saveQ2($event)" (next)="goTo($event)" [Q2] = "this.subjective.q2_ativ_fisica"></app-question-2>
         <app-question-3 *ngIf="question === 3" (q3)="saveQ3($event)" (next)="goTo($event)" [Q3] = "this.subjective.q3_red_forca"></app-question-3>
         <app-question-4 *ngIf="question === 4" (q4)="saveQ4($event)" (next)="goTo($event)" [Q4] = "this.subjective.q4_red_caminhada"></app-question-4>

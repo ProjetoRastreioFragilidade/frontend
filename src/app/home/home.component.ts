@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit {
           }
         });
         }, err => {
-          if(err.status === 400) {
+          if(err.status === 404) {
             this.errorMessage = "Usuário não encontrado";
           } else {
             this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];

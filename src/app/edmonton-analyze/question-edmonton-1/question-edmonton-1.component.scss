@@ -9,6 +9,11 @@ body {
 * {
     box-sizing: border-box;
 }
+.selected {
+    background-color: #1f7554 !important;
+    color: #fff !important;
+    font-weight: bold !important;
+}
 
 .unselectable {
     -webkit-touch-callout: none;

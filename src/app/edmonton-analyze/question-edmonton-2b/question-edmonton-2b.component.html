@@ -3,31 +3,39 @@
         <h2 align="center">Questão 2b</h2>
         <hr>
         <div align="center" class="one-col-grid" style="padding-bottom: 14px;">De modo geral, como você descreveria sua saúde?</div>
-        <label class="one-col-grid opt-question" id="label-Excelente" onclick="radioClick('Excelente', 2)" align="center">
+        <label class="one-col-grid opt-question" id="label-Excelente" (click)="excelente()"  [ngClass]="{ selected: Q2b === 1 ? true : false }"  align="center">
             <input type="radio" name="answer" id="radio-Excelente" value="Excelente"> Excelente
         </label>
-        <label class="one-col-grid opt-question" id="label-Muito_boa" onclick="radioClick('Muito_boa', 2)" align="center">
+        <label class="one-col-grid opt-question" id="label-Muito_boa" (click)="veryGood()" [ngClass]="{ selected: Q2b === 2 ? true : false }"  align="center">
             <input type="radio" name="answer" id="radio-Muito_boa" value="Muito boa"> Muito boa
         </label>
-        <label class="one-col-grid opt-question" id="label-Boa" onclick="radioClick('Boa', 2)" align="center">
+        <label class="one-col-grid opt-question" id="label-Boa" (click)="good()" [ngClass]="{ selected: Q2b === 3 ? true : false }"  align="center">
             <input type="radio" name="answer" id="radio-Boa" value="Boa"> Boa
         </label>
-        <label class="one-col-grid opt-question" id="label-Razoavel" onclick="radioClick('Razoavel', 2)" align="center">
+        <label class="one-col-grid opt-question" id="label-Razoavel" (click)="reasonable()" [ngClass]="{ selected: Q2b === 4 ? true : false }"  align="center">
             <input type="radio" name="answer" id="radio-Razoavel" value="Razoável"> Razoável
         </label>
-        <label class="one-col-grid opt-question" id="label-Ruim" onclick="radioClick('Ruim', 2)" align="center">
+        <label class="one-col-grid opt-question" id="label-Ruim" (click)="bad()" [ngClass]="{ selected: Q2b === 5 ? true : false }"  align="center">
             <input type="radio" name="answer" id="radio-Ruim" value="Ruim"> Ruim
         </label>
         <div align="center" class="one-col-grid flow-btn">
             <div class="three-col-grid">
-                <button type="button" class="btn btn-primary btn-large" onclick="previousQuestion(this, '2b', 2)" value="2a"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Anterior</button>
+                <button type="button" class="btn btn-primary btn-large" (click)="nextQuestion(2)" value="1">
+                    <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                    <i class="fa fa-caret-left"></i> Anterior</button>
             </div>
             <div class="three-col-grid">
-                <p id="agent-name">PPSUS - Edmonton<br><strong>Agente: lucinete gomes</strong></p><strong>
-                <a href="../paciente.php" style="font-size:30px;">Sair</a></strong>
+                <p id="agent-name">PPSUS - Edmonton
+                    <br>
+                </p>
+                <strong>
+                    <a routerLink="/" style="font-size:30px;">Sair</a>
+                </strong>
             </div>
             <div class="three-col-grid">
-                <button type="button" class="btn btn-primary btn-large" onclick="nextQuestion(this, '2b', 2)" value="3">Próxima <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-primary btn-large" (click)="nextQuestion(4)" value="2">Próxima
+                    <i class="fa fa-caret-right"></i>
+                </button>
             </div>
         </div>
     </form>
