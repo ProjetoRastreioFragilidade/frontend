@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '@services';
+import { AuthenticationService, SharedService } from '@services';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
@@ -13,7 +13,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private sharedService: SharedService
   ) { }
 
   ngOnInit() {
@@ -25,14 +26,20 @@ export class LoginComponent implements OnInit {
       this.errorMessage = 'Insira seu login e sua senha.'
       return;
     }
-    this.authService.authenticate(this.username, this.password).subscribe(res => {
+    this.sharedService.startBlockUI();
+    this.authService.authenticate(this.username, this.password)
+    .subscribe(res => {
       console.log(res);
-      localStorage.setItem('currentUser', JSON.stringify(
-        {username: this.username, token: res.token}));
+      localStorage.setItem('currentUser', JSON.stringify({
+        username: this.username, 
+        token: res.token
+      }));
+      this.sharedService.stopBlockUI();
       this.router.navigate(['/']); 
     }, err => {
       this.errorMessage = err.error[Object.keys(err.error)[0]][0];
       console.log(err);
+      this.sharedService.stopBlockUI();
     })
     
   }

@@ -42,6 +42,7 @@ import { QuestionEdmonton9Component } from './edmonton-analyze/question-edmonton
 import { FinalEdmontonComponent } from './final-edmonton/final-edmonton.component';
 
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
+import { BlockUIModule } from 'ng-block-ui';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawe
     FinalEdmontonComponent,
   ],
   imports: [
+    BlockUIModule,
     BrowserModule,
     FormsModule,
     HttpModule,

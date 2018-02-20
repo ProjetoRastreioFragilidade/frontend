@@ -25,8 +25,11 @@ export class TestService {
     return this.http.post<Subjective>(environment.baseUrl + 'edmonton/', edmonton);
   }
 
-  public findTestById(testId: number): Observable<Subjective> {
+  public findSubjetivaById(testId: number): Observable<Subjective> {
     return this.http.get<Subjective>(environment.baseUrl + 'subjetiva/' + testId + '/');
+  }
+  public findEdmontonById(testId: number): Observable<Edmonton> {
+    return this.http.get<Edmonton>(environment.baseUrl + 'edmonton/' + testId + '/');
   }
   
 }

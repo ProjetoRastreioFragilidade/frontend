@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PatientService, PostoService } from '@services';
+import { PatientService, PostoService, SharedService } from '@services';
 import { Patient, Posto } from '@models';
 import * as moment from 'moment';
 
@@ -33,14 +33,18 @@ export class RegisterPatientComponent implements OnInit {
   constructor(
     private router: Router,
     private patientService: PatientService,
-    private postoService: PostoService
+    private postoService: PostoService,
+    private sharedService: SharedService
   ) { }
 
   ngOnInit() {
+    this.sharedService.startBlockUI();
     this.postoService.listPosto().subscribe(postos => {
       this.postos = postos;
+      this.sharedService.stopBlockUI();
     }, err => {
       this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
+      this.sharedService.stopBlockUI();
     });
   }
 
@@ -78,7 +82,7 @@ export class RegisterPatientComponent implements OnInit {
       this.errorMessage = 'É necessário selecionar um Posto';
       return;
     }
-  
+    this.sharedService.startBlockUI();
     this.patientService.createPatient(this.patient).subscribe(res => {
       console.log(res);     
       this.successCreated = true;
@@ -94,6 +98,7 @@ export class RegisterPatientComponent implements OnInit {
         posto: null
       };
       this.inputDate = '';
+      this.sharedService.stopBlockUI();
     }, err => {
       console.log(err);
       if (err.status === 400) {
@@ -101,6 +106,7 @@ export class RegisterPatientComponent implements OnInit {
       } else {
         this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
       }
+      this.sharedService.stopBlockUI();
     })
   }
 

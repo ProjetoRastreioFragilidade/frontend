@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Posto } from '@models';
-import { PostoService } from '@services';
+import { PostoService, SharedService } from '@services';
 
 @Component({
   selector: 'app-register-health-center',
@@ -25,7 +25,8 @@ export class RegisterHealthCenterComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private postoService: PostoService
+    private postoService: PostoService,
+    private sharedService: SharedService
   ) { }
 
   ngOnInit() {
@@ -63,6 +64,7 @@ export class RegisterHealthCenterComponent implements OnInit {
       this.errorMessage = 'Número de telefone inválido';
       return;
     }
+    this.sharedService.startBlockUI();
     this.postoService.createPosto(this.posto).subscribe(res => {
       console.log(res);     
       this.successCreated = true;
@@ -75,10 +77,12 @@ export class RegisterHealthCenterComponent implements OnInit {
         cep: '',
         telefone: ''
       };
+      this.sharedService.stopBlockUI();
     }, err => {
       // TODO Ver se é assim que ele vai retornar o erro
       this.errorMessage = err.msg;
       console.log(err);
+      this.sharedService.stopBlockUI();
     })
   }
 

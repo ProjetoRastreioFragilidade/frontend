@@ -38,5 +38,10 @@ export interface Edmonton {
     q9_desemp_func?: number;
     q9_desemp_func_tempo?: number; //TODO como salvar time field
     paciente?: number;
+}
 
+export interface PhotoFile {
+    filename?: string;
+    filetype?: string;
+    value?: any;
 }

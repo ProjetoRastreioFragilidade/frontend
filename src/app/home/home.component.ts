@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService, PatientService, TestService } from '@services';
+import { AuthenticationService, PatientService, TestService, SharedService } from '@services';
 import { Patient, Test } from '@models';
 
 // TODO -> arrumar data 
@@ -24,7 +24,8 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private patientService: PatientService,
-    private testService: TestService
+    private testService: TestService,
+    private sharedService: SharedService
   ) { }
 
   ngOnInit() {
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   public newEdmonton() { //passa ir do paciente
-    this.router.navigate(['/edmonton']); 
+    this.router.navigate(['/edmonton', this.patient.id]); 
   }
 
   public newSubjective() { //passa ir do paciente
@@ -67,6 +68,8 @@ export class HomeComponent implements OnInit {
       this.errorMessage = "Número SUS inválido!";
       return;
     } else {
+      
+      this.sharedService.startBlockUI();
       this.patientService.findBySUSNumber(this.susNumber).subscribe((patient: Patient) => {
         this.patient = patient;
         console.log(patient);
@@ -75,6 +78,7 @@ export class HomeComponent implements OnInit {
           if (tests.length === 0) {
             this.isEmpty = true;
           }
+          this.sharedService.stopBlockUI();
         });
         }, err => {
           if(err.status === 404) {
@@ -83,6 +87,7 @@ export class HomeComponent implements OnInit {
             this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
           }
           console.log(err);
+          this.sharedService.stopBlockUI();
         }
       );
     }

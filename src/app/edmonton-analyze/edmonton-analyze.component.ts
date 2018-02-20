@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Edmonton } from '@models';
-import { TestService } from '@services';
+import { Edmonton, PhotoFile } from '@models';
+import { TestService, SharedService } from '@services';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -20,10 +20,13 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
 
   public q3_array: number[] = [];
 
+  public photo_file: PhotoFile = {};
+
   constructor(
     private testService: TestService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private sharedService: SharedService
   ) { }
 
   ngOnInit() {
@@ -99,8 +102,11 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
 
     console.log(this.q3_array);
     console.log(this.edmonton);
+    console.log(this.photo_file);
     
-    /*if(!this.edmonton.q1_cognicao) {
+    this.edmonton.q1_foto_relogio = this.photo_file.value;
+
+    if(!this.edmonton.q1_cognicao) {
       this.errorMessage = "Questão 1 não foi respondida";
       return;
     }
@@ -110,10 +116,6 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
     }
     if(!this.edmonton.q2_estado_saude_B) {
       this.errorMessage = "Questão 2 não foi respondida";
-      return;
-    }
-    if(!this.edmonton.q3_ind_func) {
-      this.errorMessage = "Questão 3 não foi respondida";
       return;
     }
     if(!this.edmonton.q4_sup_social) {
@@ -150,13 +152,17 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
     }
     this.edmonton.paciente = this.patientId;
     console.log(this.edmonton)
-    this.testService.subjective(this.edmonton).subscribe(subjective => {
-      console.log(subjective);
-      this.router.navigate(['/final', subjective.id]);
+    this.sharedService.startBlockUI();
+    this.testService.edmonton(this.edmonton)
+    .subscribe(edmonton => {
+      console.log(edmonton);
+      this.router.navigate(['/final-edmonton', edmonton.id]);
+      this.sharedService.stopBlockUI();
     }, err => {
       // TODO Ver se é assim que ele vai retornar o erro
       this.errorMessage = err.msg;
       console.log(err);
-    })*/
+      this.sharedService.stopBlockUI();
+    })
   }
 }

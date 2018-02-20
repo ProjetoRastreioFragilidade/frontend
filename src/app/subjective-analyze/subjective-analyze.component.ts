@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subjective } from '@models';
-import { TestService } from '@services';
+import { TestService, SharedService } from '@services';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
@@ -22,7 +22,8 @@ export class SubjectiveAnalyzeComponent implements OnInit, OnDestroy {
   constructor(
     private testService: TestService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private sharedService: SharedService
   ) { }
 
   ngOnInit() {
@@ -102,13 +103,17 @@ export class SubjectiveAnalyzeComponent implements OnInit, OnDestroy {
       }
       this.subjective.paciente = this.patientId;
       console.log(this.subjective)
+
+      this.sharedService.startBlockUI();
       this.testService.subjective(this.subjective).subscribe(subjective => {
         console.log(subjective);
         this.router.navigate(['/final', subjective.id]);
+        this.sharedService.stopBlockUI();
       }, err => {
         // TODO Ver se é assim que ele vai retornar o erro
         this.errorMessage = err.msg;
         console.log(err);
+        this.sharedService.stopBlockUI();
       })
   }
 }
