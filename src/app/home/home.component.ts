@@ -30,6 +30,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.tests = [];
+    this.susNumber = localStorage.getItem('nro_sus');
+    if(this.susNumber) {
+      this.searchPatient();
+    }
   }
   public createPatient() {
     this.router.navigate(['/registra-paciente']); 
@@ -78,6 +82,7 @@ export class HomeComponent implements OnInit {
           if (tests.length === 0) {
             this.isEmpty = true;
           }
+          localStorage.setItem('nro_sus', this.susNumber);
           this.sharedService.stopBlockUI();
         });
         }, err => {

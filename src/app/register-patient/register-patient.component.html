@@ -33,7 +33,9 @@
     </div>
     <div class="one-col-grid">
         <select class="custom-select myInputTxt" #selectedCategory>
-            <option [selected] ="patient.posto" value="">Escolha um Posto</option>
+            <ng-container *ngIf="!patient?.posto">
+                <option>Escolha um Posto</option>
+            </ng-container>
             <option [value]="posto.id" *ngFor="let posto of postos">{{posto.nome}}</option>
         </select>
     </div>

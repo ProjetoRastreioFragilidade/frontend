@@ -101,10 +101,12 @@ export class RegisterPatientComponent implements OnInit {
       this.sharedService.stopBlockUI();
     }, err => {
       console.log(err);
-      if (err.status === 400) {
-        this.errorMessage = 'Data de nascimento inválida';
+      if(Object.keys(err.error)[0] === 'data_nascimento') {
+        this.errorMessage = 'Data de nascimento inválida.';
+      } else if(Object.keys(err.error)[0] === 'nro_sus') {
+        this.errorMessage = 'Já existe um paciente cadastrado com esse número SUS.';
       } else {
-        this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
+        this.errorMessage = err.error[Object.keys(err.error)[0]][0];
       }
       this.sharedService.stopBlockUI();
     })

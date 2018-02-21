@@ -95,7 +95,7 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
 
   public get_time(time: number) {
     this.edmonton.q9_desemp_func_tempo = time;
-    console.log('RESPOSTA: ', time);
+    console.log('RESPOSTA TIME: ', time);
   }
 
   public saveTest() {

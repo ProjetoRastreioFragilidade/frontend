@@ -27,7 +27,7 @@
         <strong>Q1)</strong> Nos últimos 12 meses (último ano) O(a) Sr(a) acha que perdeu peso sem fazer nenhuma dieta?
         <br>Resposta:
         <ng-container *ngIf="test.q1_perdeu_peso === 1">
-          <strong>Sim</strong>
+          <strong>Sim, {{test.q1_perdeu_peso_kg}} Kg</strong>
         </ng-container>
         <ng-container *ngIf="test.q1_perdeu_peso === 2">
           <strong>Não</strong>
