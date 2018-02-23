@@ -76,7 +76,6 @@ export class HomeComponent implements OnInit {
       this.sharedService.startBlockUI();
       this.patientService.findBySUSNumber(this.susNumber).subscribe((patient: Patient) => {
         this.patient = patient;
-        console.log(patient);
         this.testService.findByPatientId(this.patient.id).subscribe((tests: Test[]) => {
           this.tests = tests;
           if (this.tests.length === 0) {

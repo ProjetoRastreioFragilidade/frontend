@@ -48,7 +48,6 @@ export class QuestionEdmonton9Component implements OnInit {
 
   public onSearchChange() {
     this.time_emitter.emit(this.time);
-    console.log('aqui');
   }
 
 }

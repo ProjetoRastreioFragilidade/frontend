@@ -48,57 +48,45 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
 
   public saveQ1(Q1: number) {
     this.edmonton.q1_cognicao = Q1;
-    console.log('RESPOSTA: ', Q1);
   }
   public saveQ2a(Q2: number) {
     this.edmonton.q2_estado_saude_A = Q2;
-    console.log('RESPOSTA: ', Q2);
   }
 
   public saveQ2b(Q3: number) {
     this.edmonton.q2_estado_saude_B = Q3;
-    console.log('RESPOSTA: ', Q3);
   }
 
   public saveQ3(Q4: number[]) {
     this.edmonton.q3_ind_func = Q4;
-    console.log('RESPOSTA: ', Q4);
   }
 
   public saveQ4(Q5: number) {
     this.edmonton.q4_sup_social = Q5;
-    console.log('RESPOSTA: ', Q5);
   }
   public saveQ5a(Q6: number) {
     this.edmonton.q5_medicamento_A = Q6;
-    console.log('RESPOSTA: ', Q6);
   }
   public saveQ5b(Q3: number) {
     this.edmonton.q5_medicamento_B = Q3;
-    console.log('RESPOSTA: ', Q3);
   }
 
   public saveQ6(Q4: number) {
     this.edmonton.q6_nutricao = Q4;
-    console.log('RESPOSTA: ', Q4);
   }
 
   public saveQ7(Q5: number) {
     this.edmonton.q7_humor = Q5;
-    console.log('RESPOSTA: ', Q5);
   }
   public saveQ8(Q6: number) {
     this.edmonton.q8_continencia = Q6;
-    console.log('RESPOSTA: ', Q6);
   }
   public saveQ9(Q6: number) {
     this.edmonton.q9_desemp_func = Q6;
-    console.log('RESPOSTA: ', Q6);
   }
 
   public get_time(time: number) {
     this.edmonton.q9_desemp_func_tempo = time;
-    console.log('RESPOSTA TIME: ', time);
   }
 
   public get_photo(photo: PhotoFile) {
@@ -106,64 +94,65 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
     this.edmonton.q1_foto_relogio = "aqui vai uma url de uma foto";
   }
 
-  public saveTest() {
-
-    console.log(this.q3_array);
-    console.log(this.edmonton);
-    console.log("foto abaixo:");
-    console.log(this.edmonton.q1_foto_relogio);
-  
-    console.log("data inicio",this.edmonton.data_inicio);
+  public formValidate() {
     if(!this.edmonton.q1_cognicao) {
-      this.errorMessage = "Questão 1 não foi respondida";
+      this.errorMessage = "Questão 1 não foi respondida.";
+      return;
+    }
+    if(this.edmonton.q1_cognicao && !this.edmonton.q1_foto_relogio) {
+      this.errorMessage = "Questão 1 não possui foto.";
       return;
     }
     if(!this.edmonton.q2_estado_saude_A) {
-      this.errorMessage = "Questão 1 não foi informado o peso";
+      this.errorMessage = "Questão 2a não foi respondida.";
       return;
     }
     if(!this.edmonton.q2_estado_saude_B) {
-      this.errorMessage = "Questão 2 não foi respondida";
+      this.errorMessage = "Questão 2b não foi respondida.";
       return;
     }
     if(!this.edmonton.q4_sup_social) {
-      this.errorMessage = "Questão 4 não foi respondida";
+      this.errorMessage = "Questão 4 não foi respondida.";
       return;
     }
     if(!this.edmonton.q5_medicamento_A) {
-      this.errorMessage = "Questão 5a não foi respondida";
+      this.errorMessage = "Questão 5a não foi respondida.";
       return;
     }
     if(!this.edmonton.q5_medicamento_B) {
-      this.errorMessage = "Questão 5b não foi respondida";
+      this.errorMessage = "Questão 5b não foi respondida.";
       return;
     }
     if(!this.edmonton.q6_nutricao) {
-      this.errorMessage = "Questão 6 não foi respondida";
+      this.errorMessage = "Questão 6 não foi respondida.";
       return;
     }
     if(!this.edmonton.q7_humor) {
-      this.errorMessage = "Questão 7 não foi respondida";
+      this.errorMessage = "Questão 7 não foi respondida.";
       return;
     }
     if(!this.edmonton.q8_continencia) {
-      this.errorMessage = "Questão 8 não foi respondida";
+      this.errorMessage = "Questão 8 não foi respondida.";
       return;
     }
     if(!this.edmonton.q9_desemp_func) {
-      this.errorMessage = "Questão 9 não foi respondida";
+      this.errorMessage = "Questão 9 não foi respondida.";
       return;
     }
     if(this.edmonton.q9_desemp_func === 1 && !this.edmonton.q9_desemp_func_tempo) {
       this.errorMessage = "Questão 9 não foi informado o peso exato";
       return;
     }
+  }
+  public saveTest() {
+
+    this.formValidate();
+    
     this.edmonton.paciente = this.patientId;
-    console.log(this.edmonton)
+
     this.sharedService.startBlockUI();
     this.testService.edmonton(this.edmonton)
     .subscribe(edmonton => {
-      console.log(edmonton);
       this.router.navigate(['/final-edmonton', edmonton.id]);
       this.sharedService.stopBlockUI();
     }, err => {

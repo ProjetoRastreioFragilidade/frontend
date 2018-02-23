@@ -53,14 +53,10 @@ export class RegisterPatientComponent implements OnInit {
   }
 
   public submit(postoId: number) {
-    console.log(postoId);
     this.errorMessage = '';
     this.successCreated = false;
     this.patient.data_nascimento = this.getInputDate();
     this.patient.posto = postoId;
-    console.log(this.patient.data_nascimento)
-    console.log(moment(this.patient.data_nascimento, "DDMMYYYY"))
-    console.log(this.patient.data_nascimento)
     //return;
     if (!this.patient.nome) {
       this.errorMessage = 'Nome inválido';
