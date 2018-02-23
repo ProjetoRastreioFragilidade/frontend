@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Edmonton, PhotoFile } from '@models';
 import { TestService, SharedService } from '@services';
 import { Router, ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-edmonton-analyze',
@@ -33,6 +34,8 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.patientId = +params['id'];
     });
+
+    this.edmonton.data_inicio = moment().format('YYYY-MM-DD HH:mm');
   }
 
   ngOnDestroy() {
@@ -109,8 +112,8 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
     console.log(this.edmonton);
     console.log("foto abaixo:");
     console.log(this.edmonton.q1_foto_relogio);
-    
-
+  
+    console.log("data inicio",this.edmonton.data_inicio);
     if(!this.edmonton.q1_cognicao) {
       this.errorMessage = "Questão 1 não foi respondida";
       return;
@@ -128,31 +131,31 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
       return;
     }
     if(!this.edmonton.q5_medicamento_A) {
-      this.errorMessage = "Questão 5 não foi respondida";
+      this.errorMessage = "Questão 5a não foi respondida";
       return;
     }
     if(!this.edmonton.q5_medicamento_B) {
-      this.errorMessage = "Questão 6 não foi respondida";
+      this.errorMessage = "Questão 5b não foi respondida";
       return;
     }
     if(!this.edmonton.q6_nutricao) {
-      this.errorMessage = "Questão 5 não foi respondida";
+      this.errorMessage = "Questão 6 não foi respondida";
       return;
     }
     if(!this.edmonton.q7_humor) {
-      this.errorMessage = "Questão 6 não foi respondida";
+      this.errorMessage = "Questão 7 não foi respondida";
       return;
     }
     if(!this.edmonton.q8_continencia) {
-      this.errorMessage = "Questão 5 não foi respondida";
+      this.errorMessage = "Questão 8 não foi respondida";
       return;
     }
     if(!this.edmonton.q9_desemp_func) {
-      this.errorMessage = "Questão 6 não foi respondida";
+      this.errorMessage = "Questão 9 não foi respondida";
       return;
     }
     if(this.edmonton.q9_desemp_func === 1 && !this.edmonton.q9_desemp_func_tempo) {
-      this.errorMessage = "Questão 1 não foi informado o peso";
+      this.errorMessage = "Questão 9 não foi informado o peso exato";
       return;
     }
     this.edmonton.paciente = this.patientId;

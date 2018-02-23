@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subjective } from '@models';
 import { TestService, SharedService } from '@services';
 import { Router, ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 
 
 @Component({
@@ -30,6 +31,8 @@ export class SubjectiveAnalyzeComponent implements OnInit, OnDestroy {
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.patientId = +params['id'];
     });
+
+    this.subjective.data_inicio = moment().format('YYYY-MM-DD HH:mm');
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
