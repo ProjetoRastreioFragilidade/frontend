@@ -9,6 +9,3 @@ export interface Patient {
     cep?: string;
     posto?: number;
 }
-
-// TODO -> como que eu sei o posto que vai ser salvo?????
-// TODO -> arrumar no back 'bairo'

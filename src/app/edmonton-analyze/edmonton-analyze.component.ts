@@ -60,7 +60,7 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
     console.log('RESPOSTA: ', Q3);
   }
 
-  public saveQ3(Q4: number) {
+  public saveQ3(Q4: number[]) {
     this.edmonton.q3_ind_func = Q4;
     console.log('RESPOSTA: ', Q4);
   }

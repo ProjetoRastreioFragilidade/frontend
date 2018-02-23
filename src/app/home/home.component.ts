@@ -4,7 +4,6 @@ import { AuthenticationService, PatientService, TestService, SharedService } fro
 import { Patient, Test } from '@models';
 import * as moment from 'moment';
 
-// TODO -> arrumar data 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

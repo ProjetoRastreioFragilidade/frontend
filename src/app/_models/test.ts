@@ -34,7 +34,7 @@ export interface Edmonton {
     q1_foto_relogio?: any; //TODO pegar e salvar imagem de um relogio
     q2_estado_saude_A?: number;
     q2_estado_saude_B?: number;
-    q3_ind_func?: number;
+    q3_ind_func?: number[];
     q4_sup_social?: number;
     q5_medicamento_A?: number;
     q5_medicamento_B?: number;
@@ -42,7 +42,7 @@ export interface Edmonton {
     q7_humor?: number;
     q8_continencia?: number;
     q9_desemp_func?: number;
-    q9_desemp_func_tempo?: number; //TODO como salvar time field
+    q9_desemp_func_tempo?: number;
     paciente?: number;
     usuario?: number;
     usuario_edit?: string;

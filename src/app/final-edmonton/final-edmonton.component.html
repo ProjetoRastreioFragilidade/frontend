@@ -38,7 +38,7 @@
         </p>
         <!-- TODO foto do relógio -->
         <p>
-          <strong>Q2)</strong> Nos últimos 12 meses, quantas vezes você foi internado(a)?
+          <strong>Q2a)</strong> Nos últimos 12 meses, quantas vezes você foi internado(a)?
           <br>Resposta:
           <ng-container *ngIf="test.q2_estado_saude_A === 1">
             <strong>0</strong>
@@ -69,8 +69,14 @@
               <strong>Ruim</strong>
           </ng-container>
         </p>
+        <!-- falta a questão 3 aqui -->
         <p>
-          <!-- falta a questão 3 aqui -->
+          <strong>Q3)</strong>Quantas das seguintes atividades o Sr(a) precisa de ajuda?
+          <br>Resposta: <strong>{{test.q3_ind_func?.length}}</strong>
+          <br>
+          <strong><ng-container *ngFor="let activity of test.q3_ind_func">{{activities[activity - 1]}}<br></ng-container></strong>
+        </p>
+        <p>
           <strong>Q4)</strong>Quando você precisa de ajuda, você pode contar com a ajuda de alguém que atenda as suas necessidades?
           <br>Resposta:
           <ng-container *ngIf="test.q4_sup_social === 1">
@@ -142,16 +148,17 @@
             <ng-container *ngIf="test.q9_desemp_func === 2">
               <strong>11-20 seg</strong>
             </ng-container>
-            <ng-container *ngIf="test.q9_desemp_func === 2">
+            <ng-container *ngIf="test.q9_desemp_func === 3">
                 <strong>>20 seg</strong>
             </ng-container>
+            <strong>(tempo exato: {{test.q9_desemp_func_tempo}})</strong>
           </p>
           <!-- por tempo exato q9_desemp_func_tempo -->
         <font size="5">
             <b>&nbsp;&nbsp;&nbsp;<u>Fatores a serem investigados</u></b><br>
-            <i *ngFor="let fator of fatores">
-            &nbsp;&nbsp;&nbsp;{{fator}}<br>
-            </i>
+            <ol>
+              <li *ngFor="let fator of fatores"><i>&nbsp;&nbsp;&nbsp;{{fator}}</i></li>
+            </ol>
         </font>
       </div>
       <!--<div style="float:left;width:15%">&nbsp</div>-->

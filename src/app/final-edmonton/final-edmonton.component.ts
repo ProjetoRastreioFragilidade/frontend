@@ -21,6 +21,17 @@ export class FinalEdmontonComponent implements OnInit {
 
   public patient: Patient = {};
   public user: User = {};
+  public activities = [
+    "Preparar refeição (cozinha)",
+    "Usar o telefone",
+    "Transporte (se locomover)",
+    "Lavar a roupa",
+    "Cuidar da casa (limpar/arrumar)",
+    "Cuidar do dinheiro",
+    "Fazer compras",
+    "Tomar Remédios"
+  ];
+  
   constructor(
     private activatedRoute: ActivatedRoute,
     private testService: TestService,
