@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService, PatientService, TestService, SharedService } from '@services';
 import { Patient, Test } from '@models';
+import * as moment from 'moment';
 
 // TODO -> arrumar data 
 @Component({
@@ -52,7 +53,7 @@ export class HomeComponent implements OnInit {
   
   public seeResults(testId: number, testTipo: string) {
     if (testTipo === 'e') {
-      this.router.navigate(['/final', testId]); 
+      this.router.navigate(['/final-edmonton', testId]); 
     } else {
       this.router.navigate(['/final', testId]); 
     }
@@ -79,10 +80,14 @@ export class HomeComponent implements OnInit {
         console.log(patient);
         this.testService.findByPatientId(this.patient.id).subscribe((tests: Test[]) => {
           this.tests = tests;
-          if (tests.length === 0) {
+          if (this.tests.length === 0) {
             this.isEmpty = true;
           }
           localStorage.setItem('nro_sus', this.susNumber);
+          this.tests.forEach(test => {
+            test.data_fim = moment(test.data_fim).format('DD/MM/YYYY - HH:mm');
+            test.data_inicio = moment(test.data_inicio).format('DD/MM/YYYY - HH:mm');
+          })
           this.sharedService.stopBlockUI();
         });
         }, err => {

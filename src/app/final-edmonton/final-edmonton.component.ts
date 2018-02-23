@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TestService, PatientService, UserService, SharedService } from '@services';
-import { Subjective, Patient, User } from '@models';
+import { Edmonton, Patient, User } from '@models';
 
 @Component({
   selector: 'app-final-edmonton',
@@ -15,7 +15,7 @@ export class FinalEdmontonComponent implements OnInit {
   public errorMessage: string;
 
   public testId: number;
-  public test: Subjective = {};
+  public test: Edmonton = {};
 
   public fatores: string
 
@@ -33,7 +33,7 @@ export class FinalEdmontonComponent implements OnInit {
   ngOnInit() {
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.testId = +params['id'];
-  });
+    });
 
     this.sharedService.startBlockUI();
     this.testService.findEdmontonById(this.testId).subscribe(edmonton => {

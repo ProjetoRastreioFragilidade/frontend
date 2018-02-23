@@ -31,7 +31,7 @@
           <th>Início</th>
           <th>Fim</th>
         </tr>
-        <tr class="subjetiva" *ngFor="let test of tests">
+        <tr [ngClass]="{edmonton: test.tipo === 'e' ? true : false, subjetiva: test.tipo === 's' ? true : false}" *ngFor="let test of tests">
               <td (click)="seeResults(test.id, test.tipo)" >{{patient.nome}}</td>
               <td *ngIf="test.tipo === 'e';else subjective" (click)="seeResults(test.id, test.tipo)">Edmonton</td>
               <ng-template #subjective>

@@ -98,13 +98,18 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
     console.log('RESPOSTA TIME: ', time);
   }
 
+  public get_photo(photo: PhotoFile) {
+    //this.edmonton.q1_foto_relogio = photo.value;
+    this.edmonton.q1_foto_relogio = "aqui vai uma url de uma foto";
+  }
+
   public saveTest() {
 
     console.log(this.q3_array);
     console.log(this.edmonton);
-    console.log(this.photo_file);
+    console.log("foto abaixo:");
+    console.log(this.edmonton.q1_foto_relogio);
     
-    this.edmonton.q1_foto_relogio = this.photo_file.value;
 
     if(!this.edmonton.q1_cognicao) {
       this.errorMessage = "Questão 1 não foi respondida";

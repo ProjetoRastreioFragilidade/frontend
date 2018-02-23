@@ -15,7 +15,7 @@ export class QuestionEdmonton1Component implements OnInit {
   @Output() next: EventEmitter<number> = new EventEmitter<number>();
   @Output() file_emitter: EventEmitter<PhotoFile> = new EventEmitter<PhotoFile>();
 
-  public file: PhotoFile = {};
+  public file_to_return: PhotoFile = {};
 
   constructor() { }
 
@@ -39,19 +39,29 @@ export class QuestionEdmonton1Component implements OnInit {
   }
   public getFile(event) {
     //let reader = new FileReader();
+    let reader = new FileReader();
     if(event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
-      this.file.filename = "Teste";
-      this.file.filetype = ".png"
-      this.file.value = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.file_to_return.filename = file.name;
+        this.file_to_return.filetype = file.type;
+        this.file_to_return.value = reader.result.split(',')[1];
+        //console.log("reader result: " + reader.result);
+      }
+
+      let formData = new FormData();
+      //formData.append('name', 'batata.png');
+      formData.append('image', event.target.files[0]);
+      this.file_to_return.value = formData;
+      this.file_emitter.emit(this.file_to_return);
       /*reader.readAsDataURL(file);
       reader.onload = () => {
           this.file.filename =  file.name,
           this.file.filetype =  file.type,
           this.file.value =  reader.result.split(',')[1]
       };*/
+
     }
-    console.log("FILE ::" + event.target.files[0]);
-    this.file_emitter.emit(this.file);
   }
 }

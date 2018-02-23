@@ -24,8 +24,14 @@ export interface Subjective {
 }
 
 export interface Edmonton {
+    id?: number;
+    data_inicio?: string;
+    data_fim?: string;
+    fragilidade?: string;
+    fatores?: string;
+
     q1_cognicao?: number;
-    q1_foto_relogio?: string; //TODO pegar e salvar imagem de um relogio
+    q1_foto_relogio?: any; //TODO pegar e salvar imagem de um relogio
     q2_estado_saude_A?: number;
     q2_estado_saude_B?: number;
     q3_ind_func?: number;
@@ -38,6 +44,8 @@ export interface Edmonton {
     q9_desemp_func?: number;
     q9_desemp_func_tempo?: number; //TODO como salvar time field
     paciente?: number;
+    usuario?: number;
+    usuario_edit?: string;
 }
 
 export interface PhotoFile {
