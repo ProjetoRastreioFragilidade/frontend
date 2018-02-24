@@ -52,6 +52,13 @@ export class TimerComponent implements OnInit {
 			this.timer0button = 'Iniciar';
       this.sec = 0;
       this.min = 0;
+    } else {
+      this.timer0Id = this.st.subscribe('1sec', () => this.timer0callback());
+      this.st.unsubscribe(this.timer0Id);
+      this.timer0Id = undefined;
+			this.timer0button = 'Iniciar';
+      this.sec = 0;
+      this.min = 0;
     }
   }
 
