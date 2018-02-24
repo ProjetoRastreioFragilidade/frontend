@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Edmonton, PhotoFile } from '@models';
-import { TestService, SharedService } from '@services';
+import { Edmonton } from '@models';
+import { TestService, SharedService, UploadService } from '@services';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 
@@ -21,13 +21,12 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
 
   public q3_array: number[] = [];
 
-  public photo_file: PhotoFile = {};
-
   constructor(
     private testService: TestService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private uploadService: UploadService
   ) { }
 
   ngOnInit() {
@@ -89,9 +88,9 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
     this.edmonton.q9_desemp_func_tempo = time;
   }
 
-  public get_photo(photo: PhotoFile) {
+  public get_photo(photoUrl: string) {
     //this.edmonton.q1_foto_relogio = photo.value;
-    this.edmonton.q1_foto_relogio = "aqui vai uma url de uma foto";
+    this.edmonton.q1_foto_relogio = photoUrl;
   }
 
   public formValidate() {
@@ -145,9 +144,8 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
     }
   }
   public saveTest() {
-
     this.formValidate();
-    
+    console.log(this.edmonton);
     this.edmonton.paciente = this.patientId;
 
     this.sharedService.startBlockUI();

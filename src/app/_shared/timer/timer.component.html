@@ -1,0 +1,5 @@
+<div class="body-timer">
+  <h2 class="timer">{{min < 10 ? '0'+ min : min}}:{{sec < 10 ? '0'+ sec : sec}}</h2>
+  <button class="button-timer btn btn-outline-success"(click)="subscribeTimer0()">{{timer0button}}</button>
+  <button class="button-timer btn btn-outline-danger"(click)="reset()">Zerar</button>
+</div>

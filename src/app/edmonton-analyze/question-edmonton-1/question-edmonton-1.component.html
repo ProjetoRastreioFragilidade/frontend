@@ -3,13 +3,13 @@
     <hr>
     <div align="center" style="padding-bottom: 14px">
         <form action="questao1.php" method="post" id="img_form" enctype="multipart/form-data">
-            <div id="legenda_relogio">Clique na imagem abaixo para fotografar o relógio</div>
-            <div>
-                <!--img src="/assets/clock.png" width="120px" id="upload_image" onclick="upload_img()"-->
-                <input type="file" accept="image/*" capture="camera" #file (change)="getFile($event)" />
-                <!--input type="file" id="avatar" (change)="onFileChange($event)" #fileInput-->
-                <!--img src="/assets/clock.png" width="120px" id="upload_image" (change)="onFileChange($event)" #fileInput-->
-            </div>
+            <!--div id="legenda_relogio">Clique na imagem abaixo para fotografar o relógio</div-->
+            <input type="file" accept="image/*" capture="camera" #file (change)="getFile($event)"/>
+            <br>
+            <img src="/assets/clock.png" height="150" width="150" *ngIf="!image; else uploadedImage">
+            <ng-template #uploadedImage>
+                <img [(src)]="image" height="150" width="150">
+            </ng-template>
             <div id="legenda_questao">
                 Por favor, imagine que este circulo é um relógio. Eu gostaria que você colocasse os números nas posições corretas e que depois
                 incluisse os ponteiros de forma a indicar onze horas e dez minutos.
@@ -79,7 +79,9 @@
                 <ul>
                     <li> Algum número está posicionado na porção interior do círculo.</li>
                     <li> Há mais ou menos de três números em qualquer um dos quadrantes.</li>
-                    <li> Reprovado com erros significantes.</li>
+                </ul>
+                <strong>C. Reprovado com erros significantes.</strong>
+                <ul>
                     <li> Colocação dos ponteiros de hora e minuto fora do curso.</li>
                     <li> Uso inapropriado dos ponteiros do relógio, de forma que o paciente tenta usar um display digital ou circula
                         os números ao invés de usar ponteiros.</li>
@@ -89,8 +91,7 @@
                         relógio (disposição dos números e ponteiros).</li>
 
                 </ul>
-                <p> Uma reprova com erros significativos sugere déficit cognitivo. Aprovado Reprovado com erros mínimos Reprovado
-                    com erros significantes</p>
+                <strong>  Uma reprova com erros significativos sugere déficit cognitivo.</strong>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

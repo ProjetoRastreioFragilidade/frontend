@@ -47,9 +47,3 @@ export interface Edmonton {
     usuario?: number;
     usuario_edit?: string;
 }
-
-export interface PhotoFile {
-    filename?: string;
-    filetype?: string;
-    value?: any;
-}

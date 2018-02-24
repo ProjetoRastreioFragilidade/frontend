@@ -43,6 +43,9 @@ import { FinalEdmontonComponent } from './final-edmonton/final-edmonton.componen
 
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
 import { BlockUIModule } from 'ng-block-ui';
+import { SimpleTimer } from 'ng2-simple-timer';
+
+import { TimerComponent } from './_shared/timer/timer.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +76,7 @@ import { BlockUIModule } from 'ng-block-ui';
     QuestionEdmonton8Component,
     QuestionEdmonton9Component,
     FinalEdmontonComponent,
+    TimerComponent,
   ],
   imports: [
     BlockUIModule,
@@ -91,6 +95,7 @@ import { BlockUIModule } from 'ng-block-ui';
       multi: true
     },
     AuthenticationService,
+    SimpleTimer
   ],
   bootstrap: [AppComponent]
 })

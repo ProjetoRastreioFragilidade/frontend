@@ -110,7 +110,7 @@
                     {{errorMessage}}
                 </div>
             </div>
-        <app-question-edmonton-1 *ngIf="question === 1" (q1)="saveQ1($event)" (next)="goTo($event)" [Q1]="this.edmonton.q1_cognicao" (file_emitter)="get_photo($event)"></app-question-edmonton-1>
+        <app-question-edmonton-1 *ngIf="question === 1" (q1)="saveQ1($event)" (next)="goTo($event)" [Q1]="this.edmonton.q1_cognicao" [image]="this.edmonton.q1_foto_relogio" (file_emitter)="get_photo($event)"></app-question-edmonton-1>
         <app-question-edmonton-2a *ngIf="question === 2" (q2a)="saveQ2a($event)" (next)="goTo($event)" [Q2a]="this.edmonton.q2_estado_saude_A"></app-question-edmonton-2a>
         <app-question-edmonton-2b *ngIf="question === 3" (q2b)="saveQ2b($event)" (next)="goTo($event)" [Q2b]="this.edmonton.q2_estado_saude_B"></app-question-edmonton-2b>
         <app-question-edmonton-3 *ngIf="question === 4" (q3)="saveQ3($event)" (next)="goTo($event)" [Q3]="q3_array"></app-question-edmonton-3>
