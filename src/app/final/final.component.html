@@ -121,9 +121,9 @@
       </p>
       <font size="5">
           <b>&nbsp;&nbsp;&nbsp;<u>Fatores a serem investigados</u></b><br>
-          <i *ngFor="let fator of fatores">
-          &nbsp;&nbsp;&nbsp;{{fator}}<br>
-          </i>
+          <ol>
+            <li *ngFor="let fator of fatores"><i>&nbsp;&nbsp;&nbsp;{{fator}}</i></li>
+          </ol>
       </font>
     </div>
     <!--<div style="float:left;width:15%">&nbsp</div>-->

@@ -2,8 +2,7 @@
     <div class="one-col-grid">
         <nav class="one-col-grid">
             <div class="nav-bar">
-                <!--label class="six-col-grid" id="nav-q1" style="color: rgb(255, 255, 255); background-color: rgb(24, 65, 96);">Q1<br> <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span></label-->
-                <label class="six-col-grid active" id="nav-q1" (click)="goTo(1)">Q1
+                <label class="six-col-grid active" id="nav-q1" (click)="goTo(1)" [ngClass]="{ n: question === 1 ? true : false }">Q1
                     <br>
                     <ng-container *ngIf="!this.subjective.q1_perdeu_peso; else answeredQ1">
                         <i class="fa fa-times"></i>
@@ -12,7 +11,7 @@
                         <i class="fa fa-check"></i>
                     </ng-template>
                 </label>
-                <label class="six-col-grid active" id="nav-q2" (click)="goTo(2)">Q2
+                <label class="six-col-grid active" id="nav-q2" (click)="goTo(2)" [ngClass]="{ n: question === 2 ? true : false }">Q2
                     <br>
                     <ng-container *ngIf="!this.subjective.q2_ativ_fisica; else answeredQ2">
                         <i class="fa fa-times"></i>
@@ -21,7 +20,7 @@
                         <i class="fa fa-check"></i>
                     </ng-template>
                 </label>
-                <label class="six-col-grid active" id="nav-q3" (click)="goTo(3)">Q3
+                <label class="six-col-grid active" id="nav-q3" (click)="goTo(3)" [ngClass]="{ n: question === 3 ? true : false }">Q3
                     <br>
                     <ng-container *ngIf="!this.subjective.q3_red_forca; else answeredQ3">
                         <i class="fa fa-times"></i>
@@ -30,7 +29,7 @@
                         <i class="fa fa-check"></i>
                     </ng-template>
                 </label>
-                <label class="six-col-grid active" id="nav-q4" (click)="goTo(4)">Q4
+                <label class="six-col-grid active" id="nav-q4" (click)="goTo(4)" [ngClass]="{ n: question === 4 ? true : false }">Q4
                     <br>
                     <ng-container *ngIf="!this.subjective.q4_red_caminhada; else answeredQ4">
                         <i class="fa fa-times"></i>
@@ -39,7 +38,7 @@
                         <i class="fa fa-check"></i>
                     </ng-template>
                 </label>
-                <label class="six-col-grid active" id="nav-q5" (click)="goTo(5)">Q5
+                <label class="six-col-grid active" id="nav-q5" (click)="goTo(5)" [ngClass]="{ n: question === 5 ? true : false }">Q5
                     <br>
                     <ng-container *ngIf="!this.subjective.q5_fadiga; else answeredQ5">
                         <i class="fa fa-times"></i>
@@ -48,7 +47,7 @@
                         <i class="fa fa-check"></i>
                     </ng-template>
                 </label>
-                <label class="six-col-grid active" id="nav-q6" (click)="goTo(6)">Q6
+                <label class="six-col-grid active" id="nav-q6" (click)="goTo(6)" [ngClass]="{ n: question === 6 ? true : false }">Q6
                     <br>
                     <ng-container *ngIf="!this.subjective.q6_desanimo; else answeredQ6">
                         <i class="fa fa-times"></i>

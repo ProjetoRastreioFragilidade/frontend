@@ -1,6 +1,7 @@
 /* verde: #4CAF50*/
 
 .body {
+    overflow-x: hidden;
     margin: 0;
     text-align: center;
     background-color: #e8f1f7;
@@ -110,6 +111,11 @@ input[name=answer] {
     cursor: pointer;
     /*background-color: #4CAF50;*/
     /*background-color: #222 !important;*/
+    background-color: #205077 !important;
+    color: #fff !important;
+    font-weight: bold !important;
+}
+.n {
     background-color: #205077 !important;
     color: #fff !important;
     font-weight: bold !important;

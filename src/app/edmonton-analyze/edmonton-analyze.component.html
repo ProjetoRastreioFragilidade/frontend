@@ -3,7 +3,7 @@
         <nav class="one-col-grid">
             <div class="nav-bar">
                 <!--label class="eleven-col-grid" id="nav-q1" style="color: rgb(255, 255, 255); background-color: green;">Q1<br> <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span></label-->
-                <label class="eleven-col-grid active" id="nav-q1" (click)="goTo(1)">Q1
+                <label class="eleven-col-grid active" id="nav-q1" (click)="goTo(1)" [ngClass]="{ n: question === 1 ? true : false }">Q1
                     <br>
                     <ng-container *ngIf="!this.edmonton.q1_cognicao; else answeredQ1">
                         <i class="fa fa-times"></i>
@@ -12,7 +12,7 @@
                         <i class="fa fa-check"></i>
                     </ng-template>
                 </label>
-                <label class="eleven-col-grid active" id="nav-q2a" (click)="goTo(2)">Q2a
+                <label class="eleven-col-grid active" id="nav-q2a" (click)="goTo(2)" [ngClass]="{ n: question === 2 ? true : false }">Q2a
                     <br>
                     <ng-container *ngIf="!this.edmonton.q2_estado_saude_A; else answeredQ1">
                         <i class="fa fa-times"></i>
@@ -21,7 +21,7 @@
                         <i class="fa fa-check"></i>
                     </ng-template>
                 </label>
-                <label class="eleven-col-grid active" id="nav-q2b" (click)="goTo(3)">Q2b
+                <label class="eleven-col-grid active" id="nav-q2b" (click)="goTo(3)" [ngClass]="{ n: question === 3 ? true : false }">Q2b
                     <br>
                     <ng-container *ngIf="!this.edmonton.q2_estado_saude_B; else answeredQ1">
                         <i class="fa fa-times"></i>
@@ -30,7 +30,7 @@
                         <i class="fa fa-check"></i>
                     </ng-template>
                 </label>
-                <label class="eleven-col-grid active" id="nav-q3" (click)="goTo(4)">Q3
+                <label class="eleven-col-grid active" id="nav-q3" (click)="goTo(4)" [ngClass]="{ n: question === 4 ? true : false }">Q3
                     <br>
                     <ng-container *ngIf="!this.edmonton.q3_ind_func; else answeredQ1">
                         <i class="fa fa-times"></i>
@@ -39,7 +39,7 @@
                         <i class="fa fa-check"></i>
                     </ng-template>
                 </label>
-                <label class="eleven-col-grid active" id="nav-q4" (click)="goTo(5)">Q4
+                <label class="eleven-col-grid active" id="nav-q4" (click)="goTo(5)" [ngClass]="{ n: question === 5 ? true : false }">Q4
                     <br>
                     <ng-container *ngIf="!this.edmonton.q4_sup_social; else answeredQ1">
                         <i class="fa fa-times"></i>
@@ -48,7 +48,7 @@
                         <i class="fa fa-check"></i>
                     </ng-template>
                 </label>
-                <label class="eleven-col-grid active" id="nav-q5a" (click)="goTo(6)">Q5a
+                <label class="eleven-col-grid active" id="nav-q5a" (click)="goTo(6)" [ngClass]="{ n: question === 6 ? true : false }">Q5a
                     <br>
                     <ng-container *ngIf="!this.edmonton.q5_medicamento_A; else answeredQ1">
                         <i class="fa fa-times"></i>
@@ -57,7 +57,7 @@
                         <i class="fa fa-check"></i>
                     </ng-template>
                 </label>
-                <label class="eleven-col-grid active" id="nav-q5b" (click)="goTo(7)">Q5b
+                <label class="eleven-col-grid active" id="nav-q5b" (click)="goTo(7)" [ngClass]="{ n: question === 7 ? true : false }">Q5b
                         <br>
                         <ng-container *ngIf="!this.edmonton.q5_medicamento_B; else answeredQ1">
                             <i class="fa fa-times"></i>
@@ -66,7 +66,7 @@
                             <i class="fa fa-check"></i>
                         </ng-template>
                     </label>
-                <label class="eleven-col-grid active" id="nav-q6" (click)="goTo(8)">Q6
+                <label class="eleven-col-grid active" id="nav-q6" (click)="goTo(8)" [ngClass]="{ n: question === 8 ? true : false }">Q6
                     <br>
                     <ng-container *ngIf="!this.edmonton.q6_nutricao; else answeredQ1">
                         <i class="fa fa-times"></i>
@@ -75,7 +75,7 @@
                         <i class="fa fa-check"></i>
                     </ng-template>
                 </label>
-                <label class="eleven-col-grid active" id="nav-q7" (click)="goTo(9)">Q7
+                <label class="eleven-col-grid active" id="nav-q7" (click)="goTo(9)" [ngClass]="{ n: question === 9 ? true : false }">Q7
                     <br>
                     <ng-container *ngIf="!this.edmonton.q7_humor; else answeredQ1">
                         <i class="fa fa-times"></i>
@@ -84,7 +84,7 @@
                         <i class="fa fa-check"></i>
                     </ng-template>
                 </label>
-                <label class="eleven-col-grid active" id="nav-q8" (click)="goTo(10)">Q8
+                <label class="eleven-col-grid active" id="nav-q8" (click)="goTo(10)" [ngClass]="{ n: question === 10 ? true : false }">Q8
                     <br>
                     <ng-container *ngIf="!this.edmonton.q8_continencia; else answeredQ1">
                         <i class="fa fa-times"></i>
@@ -93,7 +93,7 @@
                         <i class="fa fa-check"></i>
                     </ng-template>
                 </label>
-                <label class="eleven-col-grid active" id="nav-q9" (click)="goTo(11)">Q9
+                <label class="eleven-col-grid active" id="nav-q9" (click)="goTo(11)" [ngClass]="{ n: question === 11 ? true : false }">Q9
                     <br>
                     <ng-container *ngIf="!this.edmonton.q9_desemp_func; else answeredQ1">
                         <i class="fa fa-times"></i>
