@@ -7,6 +7,7 @@ import { Component, OnInit, Output, EventEmitter, OnDestroy, Input} from '@angul
 })
 export class Question1Component implements OnInit, OnDestroy {
 
+  public mask = [/[1-9]/, '.', /\d/];
   public question_kg = false;
 
   @Input() Q1;
@@ -45,6 +46,6 @@ export class Question1Component implements OnInit, OnDestroy {
     this.q1.emit(4);
   }
   ngOnDestroy() {
-    this.q1_kg_emitter.emit(this.KG);
+    this.q1_kg_emitter.emit(+this.KG);
   }
 }
