@@ -19,7 +19,6 @@ import { EdmontonAnalyzeComponent } from './edmonton-analyze/edmonton-analyze.co
 import { SubjectiveAnalyzeComponent } from './subjective-analyze/subjective-analyze.component';
 import { FinalComponent } from './final/final.component';
 
-import { NgxMaskModule } from 'ngx-mask';
 import { Question1Component } from './subjective-analyze/question-1/question-1.component';
 import { Question2Component } from './subjective-analyze/question-2/question-2.component';
 import { Question3Component } from './subjective-analyze/question-3/question-3.component';
@@ -44,6 +43,7 @@ import { FinalEdmontonComponent } from './final-edmonton/final-edmonton.componen
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
 import { BlockUIModule } from 'ng-block-ui';
 import { SimpleTimer } from 'ng2-simple-timer';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { TimerComponent } from './_shared/timer/timer.component';
 
@@ -85,8 +85,8 @@ import { TimerComponent } from './_shared/timer/timer.component';
     HttpModule,
     HttpClientModule,
     routing,
-    NgxMaskModule.forRoot(),
-    Angular2FontawesomeModule
+    Angular2FontawesomeModule,
+    TextMaskModule
   ],
   providers: [...providers,
     {

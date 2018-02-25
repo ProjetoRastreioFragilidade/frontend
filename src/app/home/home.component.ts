@@ -10,7 +10,9 @@ import * as moment from 'moment';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  // public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  public mask = [/[1-9]/, /\d/, /\d/, '.', /[1-9]/, /\d/, /\d/, /\d/, '.', /[1-9]/, /\d/, /\d/, /\d/, '.',  /[1-9]/, /\d/, /\d/, /\d/ ];
+  
   public susNumber: string;
   
   public tests: Test[];
@@ -64,7 +66,9 @@ export class HomeComponent implements OnInit {
   }
   
   public searchPatient() {
-    
+    //console.log("numero com mascara: " + this.susNumber)
+    this.susNumber = this.susNumber.replace(/\D+/g, '');
+    //console.log("numero sem mascara: " + this.susNumber)
     this.tests = [];
     this.isEmpty = false;
     this.errorMessage = '';
@@ -76,6 +80,7 @@ export class HomeComponent implements OnInit {
       this.sharedService.startBlockUI();
       this.patientService.findBySUSNumber(this.susNumber).subscribe((patient: Patient) => {
         this.patient = patient;
+        this.patient.nro_sus = this.maskString();
         this.testService.findByPatientId(this.patient.id).subscribe((tests: Test[]) => {
           this.tests = tests;
           if (this.tests.length === 0) {
@@ -99,5 +104,17 @@ export class HomeComponent implements OnInit {
         }
       );
     }
+  }
+  public maskString(): string {
+    let newString = '';
+    for(let i = 0; i < 15; i++) {
+      if(i === 3 || i === 7 || i === 11) {
+        newString = newString.concat('.');
+        newString = newString.concat(this.patient.nro_sus[i]);
+      } else {
+        newString = newString.concat(this.patient.nro_sus[i]);
+      }
+    }
+    return newString;
   }
 }

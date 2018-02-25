@@ -10,6 +10,10 @@ import * as moment from 'moment';
   styleUrls: ['./register-patient.component.scss']
 })
 export class RegisterPatientComponent implements OnInit {
+  public maskSUS = [/[1-9]/, /\d/, /\d/, '.', /[1-9]/, /\d/, /\d/, /\d/, '.', /[1-9]/, /\d/, /\d/, /\d/, '.',  /[1-9]/, /\d/, /\d/, /\d/ ];
+  public maskDate = [/[1-9]/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
+  public maskCEP = [/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+  public maskNro = [/[1-9]/, /\d/, /\d/, /\d/];
 
   public patient: Patient = {
     nome: '',
@@ -55,6 +59,11 @@ export class RegisterPatientComponent implements OnInit {
   public submit(postoId: number) {
     this.errorMessage = '';
     this.successCreated = false;
+
+    this.patient.cep = this.patient.cep.replace(/\D+/g, '');
+    this.patient.end_numero = +(''+this.patient.end_numero).replace(/\D+/g, '');
+    this.patient.nro_sus = this.patient.nro_sus.replace(/\D+/g, '');
+
     this.patient.data_nascimento = this.getInputDate();
     this.patient.posto = postoId;
     //return;

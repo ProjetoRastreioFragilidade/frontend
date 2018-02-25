@@ -9,8 +9,8 @@
         <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
             {{errorMessage}}
         </div>
-      <input type="text" placeholder="Digite o número SUS do paciente" name="pct_sus" id="sus" class="busca-pct" maxlength="18" 
-        mask="000.0000.0000.0000"
+      <input type="text" placeholder="Digite o número SUS do paciente" name="pct_sus" id="sus" class="busca-pct"
+        [textMask]="{mask: mask}"
         [(ngModel)]="susNumber">
       <button type="button" class="src-btn" (click)="searchPatient()"><i class="fa fa-search"></i><div class="hide-text-medium">Procurar paciente</div> </button>
     </div>

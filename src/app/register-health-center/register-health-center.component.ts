@@ -9,7 +9,11 @@ import { PostoService, SharedService } from '@services';
   styleUrls: ['./register-health-center.component.scss']
 })
 export class RegisterHealthCenterComponent implements OnInit {
-
+  // public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  public maskTel = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  public maskCEP = [/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+  public maskNro = [/[1-9]/, /\d/, /\d/, /\d/];
+  
   public posto: Posto = {
     nome: '',
     end_rua: '',
@@ -39,6 +43,9 @@ export class RegisterHealthCenterComponent implements OnInit {
   public submit() {
     this.errorMessage = '';
     this.successCreated = false;
+    this.posto.cep = this.posto.cep.replace(/\D+/g, '');
+    this.posto.end_numero = +(''+this.posto.end_numero).replace(/\D+/g, '');
+    this.posto.telefone = this.posto.telefone.replace(/\D+/g, '');
 
     if (!this.posto.nome) {
       this.errorMessage = 'Nome inválido';
