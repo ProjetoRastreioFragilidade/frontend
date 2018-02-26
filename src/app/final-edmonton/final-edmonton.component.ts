@@ -4,8 +4,8 @@ import { TestService, PatientService, UserService, SharedService } from '@servic
 import { Edmonton, Patient, User } from '@models';
 
 //import { PdfmakeService } from 'ng-pdf-make/pdfmake/pdfmake.service';
-import pdfMake from 'pdfmake/build/pdfmake.js';
-import pdfFonts from 'pdfmake/build/vfs_fonts.js';
+import * as pdfMake from 'pdfmake/build/pdfmake.js';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -109,7 +109,7 @@ export class FinalEdmontonComponent implements OnInit {
     }
     
     this.addText(' ');
-    this.addText('Q1)Por favor, imagine que este circulo é um relógio. Eu gostaria que você colocasse os números nas posições corretas e que depois incluisse os ponteiros de forma a indicar onze horas e dez minutos.');
+    this.addText('Q1) or favor, imagine que este circulo é um relógio. Eu gostaria que você colocasse os números nas posições corretas e que depois incluisse os ponteiros de forma a indicar onze horas e dez minutos.');
     if(this.test.q1_cognicao === 1) {
       this.addText('Resposta: ' + 'Aprovado', 'resp');
     } else if(this.test.q1_cognicao === 2) {
@@ -129,7 +129,7 @@ export class FinalEdmontonComponent implements OnInit {
     }
 
     this.addText(' ');
-    this.addText('<strong>Q2b) De modo geral, como você descreveria sua saúde?');
+    this.addText('Q2b) De modo geral, como você descreveria sua saúde?');
     if(this.test.q2_estado_saude_B === 1) {
       this.addText('Resposta: ' + 'Excelente', 'resp');
     } else if(this.test.q2_estado_saude_B === 2) {
@@ -142,15 +142,16 @@ export class FinalEdmontonComponent implements OnInit {
       this.addText('Resposta: ' + 'Ruim', 'resp');
     }
     this.addText(' ');
-    this.addText('Q3)Quantas das seguintes atividades o Sr(a) precisa de ajuda?');
-    let list: string[];
+    this.addText('Q3) Quantas das seguintes atividades o Sr(a) precisa de ajuda?');
+    let list: string[] = [];
     for(let indice of this.test.q3_ind_func) {
       list.push(this.activities[indice - 1]);
     }
+    this.addText('Resposta: ', 'resp');
     this.addOrderedList(list, false);
 
     this.addText(' ');
-    this.addText('Q4)Quando você precisa de ajuda, você pode contar com a ajuda de alguém que atenda as suas necessidades?');
+    this.addText('Q4) uando você precisa de ajuda, você pode contar com a ajuda de alguém que atenda as suas necessidades?');
     if(this.test.q4_sup_social === 1) {
       this.addText('Resposta: ' + 'Sempre', 'resp');
     } else if(this.test.q4_sup_social === 2) {
@@ -219,7 +220,7 @@ export class FinalEdmontonComponent implements OnInit {
   }
   public addOrderedList(list: string[], numbered: boolean) {
     if(numbered) {
-      let i = 0;
+      let i = 1;
       list.forEach(element => {
         this.addText(i + '. ' + element);
         i++;

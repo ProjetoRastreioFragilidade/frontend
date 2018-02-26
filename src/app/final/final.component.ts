@@ -3,8 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TestService, PatientService, UserService, SharedService } from '@services';
 import { Subjective, Patient, User } from '@models';
 
-import pdfMake from 'pdfmake/build/pdfmake.js';
-import pdfFonts from 'pdfmake/build/vfs_fonts.js';
+//import { PdfmakeService } from 'ng-pdf-make/pdfmake/pdfmake.service';
+import * as pdfMake from 'pdfmake/build/pdfmake.js';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -81,8 +82,22 @@ export class FinalComponent implements OnInit, OnDestroy {
   }
 
   public createPDF() {
-    //pdfMake.configureStyles({ header: { fontSize: 18, bold: true }, resp: {bold: true} });
-    
+    this.docDefinition = {
+      content: [],
+      styles: {
+        header: {
+          fontSize: 22,
+          bold: true
+        },
+        subheader: {
+          fontSize: 18,
+          bold: true
+        },
+        resp: {
+          bold:true
+        }
+      }
+    };
     this.addText('Avaliação de ' + this.patient.nome, 'header');
     if(this.user.nome) {
       this.addText('Agente: ' + this.user.nome);
