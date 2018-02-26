@@ -3,9 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TestService, PatientService, UserService, SharedService } from '@services';
 import { Subjective, Patient, User } from '@models';
 
-//import { PdfmakeService } from 'ng-pdf-make/pdfmake/pdfmake.service';
-import * as pdfMake from 'pdfmake/build/pdfmake.js';
-import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
+import pdfMake from 'pdfmake/build/pdfmake.js';
+import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
