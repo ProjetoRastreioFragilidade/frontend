@@ -109,7 +109,7 @@ export class FinalEdmontonComponent implements OnInit {
     }
     
     this.addText(' ');
-    this.addText('Q1)</strong>Por favor, imagine que este circulo é um relógio. Eu gostaria que você colocasse os números nas posições corretas e que depois incluisse os ponteiros de forma a indicar onze horas e dez minutos.');
+    this.addText('Q1)Por favor, imagine que este circulo é um relógio. Eu gostaria que você colocasse os números nas posições corretas e que depois incluisse os ponteiros de forma a indicar onze horas e dez minutos.');
     if(this.test.q1_cognicao === 1) {
       this.addText('Resposta: ' + 'Aprovado', 'resp');
     } else if(this.test.q1_cognicao === 2) {
@@ -119,7 +119,7 @@ export class FinalEdmontonComponent implements OnInit {
     }
 
     this.addText(' ');
-    this.addText('Q2a)</strong> Nos últimos 12 meses, quantas vezes você foi internado(a)?');
+    this.addText('Q2a) Nos últimos 12 meses, quantas vezes você foi internado(a)?');
     if(this.test.q2_estado_saude_A === 1) {
       this.addText('Resposta: ' + '0', 'resp');
     } else if(this.test.q2_estado_saude_A === 2) {
@@ -129,7 +129,7 @@ export class FinalEdmontonComponent implements OnInit {
     }
 
     this.addText(' ');
-    this.addText('<strong>Q2b)</strong> De modo geral, como você descreveria sua saúde?');
+    this.addText('<strong>Q2b) De modo geral, como você descreveria sua saúde?');
     if(this.test.q2_estado_saude_B === 1) {
       this.addText('Resposta: ' + 'Excelente', 'resp');
     } else if(this.test.q2_estado_saude_B === 2) {
@@ -142,7 +142,7 @@ export class FinalEdmontonComponent implements OnInit {
       this.addText('Resposta: ' + 'Ruim', 'resp');
     }
     this.addText(' ');
-    this.addText('Q3)</strong>Quantas das seguintes atividades o Sr(a) precisa de ajuda?');
+    this.addText('Q3)Quantas das seguintes atividades o Sr(a) precisa de ajuda?');
     let list: string[];
     for(let indice of this.test.q3_ind_func) {
       list.push(this.activities[indice - 1]);
@@ -150,7 +150,7 @@ export class FinalEdmontonComponent implements OnInit {
     this.addOrderedList(list, false);
 
     this.addText(' ');
-    this.addText('Q4)</strong>Quando você precisa de ajuda, você pode contar com a ajuda de alguém que atenda as suas necessidades?');
+    this.addText('Q4)Quando você precisa de ajuda, você pode contar com a ajuda de alguém que atenda as suas necessidades?');
     if(this.test.q4_sup_social === 1) {
       this.addText('Resposta: ' + 'Sempre', 'resp');
     } else if(this.test.q4_sup_social === 2) {
@@ -159,42 +159,42 @@ export class FinalEdmontonComponent implements OnInit {
       this.addText('Resposta: ' + 'Nunca', 'resp');
     }
     this.addText(' ');
-    this.addText('Q5a)</strong> Normalmente, você usa cinco ou mais remédios diferentes e receitados (pelo médico)?');
+    this.addText('Q5a) Normalmente, você usa cinco ou mais remédios diferentes e receitados (pelo médico)?');
     if(this.test.q5_medicamento_A === 1) {
       this.addText('Resposta: ' + 'Sim', 'resp');
     } else if(this.test.q5_medicamento_A === 2) {
       this.addText('Resposta: ' + 'Não', 'resp');
     } 
     this.addText(' ');
-    this.addText('Q5b)</strong> Algumas vezes você esquece de tomar seus remédios?');
+    this.addText('Q5b) Algumas vezes você esquece de tomar seus remédios?');
     if(this.test.q5_medicamento_B === 1) {
       this.addText('Resposta: ' + 'Sim', 'resp');
     } else if(this.test.q5_medicamento_B === 2) {
       this.addText('Resposta: ' + 'Não', 'resp');
     } 
     this.addText(' ');
-    this.addText('Q6)</strong> Recentemente, você tem perdido peso de forma que suas roupas estão mais folgadas?');
+    this.addText('Q6) Recentemente, você tem perdido peso de forma que suas roupas estão mais folgadas?');
     if(this.test.q6_nutricao === 1) {
       this.addText('Resposta: ' + 'Sim', 'resp');
     } else if(this.test.q6_nutricao === 2) {
       this.addText('Resposta: ' + 'Não', 'resp');
     } 
     this.addText(' ');
-    this.addText('Q7)</strong> Você se sente triste ou deprimido(a) com frequência?');
+    this.addText('Q7) Você se sente triste ou deprimido(a) com frequência?');
     if(this.test.q7_humor === 1) {
       this.addText('Resposta: ' + 'Sim', 'resp');
     } else if(this.test.q7_humor === 2) {
       this.addText('Resposta: ' + 'Não', 'resp');
     } 
     this.addText(' ');
-    this.addText('Q8)</strong> Você tem problema de perder o controle da urina sem querer? (segurar urina?)');
+    this.addText('Q8) Você tem problema de perder o controle da urina sem querer? (segurar urina?)');
     if(this.test.q8_continencia === 1) {
       this.addText('Resposta: ' + 'Sim', 'resp');
     } else if(this.test.q8_continencia === 2) {
       this.addText('Resposta: ' + 'Não', 'resp');
     } 
     this.addText(' ');
-    this.addText('Q9)</strong> Gostaria que o(a) Sr(a) sentasse nessa cadeira com suas costas e braços relaxados. Agora levante, ande três metros e retorno a sentar.');
+    this.addText('Q9) Gostaria que o(a) Sr(a) sentasse nessa cadeira com suas costas e braços relaxados. Agora levante, ande três metros e retorno a sentar.');
     if(this.test.q9_desemp_func === 1) {
       this.addText('Resposta: ' + '0-10 seg', 'resp');
     } else if(this.test.q9_desemp_func === 2) {
