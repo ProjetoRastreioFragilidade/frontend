@@ -44,10 +44,22 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawe
 import { BlockUIModule } from 'ng-block-ui';
 import { SimpleTimer } from 'ng2-simple-timer';
 import { TextMaskModule } from 'angular2-text-mask';
-
 import { TimerComponent } from './_shared/timer/timer.component';
+// import { PdfmakeService } from 'ng-pdf-make';
+// import { PdfmakeModule } from 'ng-pdf-make';
 
 @NgModule({
+  imports: [
+    BlockUIModule,
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    HttpClientModule,
+    routing,
+    Angular2FontawesomeModule,
+    TextMaskModule,
+    // PdfmakeModule
+  ],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -78,16 +90,6 @@ import { TimerComponent } from './_shared/timer/timer.component';
     FinalEdmontonComponent,
     TimerComponent,
   ],
-  imports: [
-    BlockUIModule,
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    HttpClientModule,
-    routing,
-    Angular2FontawesomeModule,
-    TextMaskModule
-  ],
   providers: [...providers,
     {
       provide: HTTP_INTERCEPTORS,
@@ -95,7 +97,8 @@ import { TimerComponent } from './_shared/timer/timer.component';
       multi: true
     },
     AuthenticationService,
-    SimpleTimer
+    SimpleTimer,
+    // PdfmakeService
   ],
   bootstrap: [AppComponent]
 })

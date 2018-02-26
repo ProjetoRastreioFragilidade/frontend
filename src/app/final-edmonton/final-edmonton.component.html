@@ -45,7 +45,7 @@
             <strong>0</strong>
           </ng-container>
           <ng-container *ngIf="test.q2_estado_saude_A === 2">
-            <strong>1 ou 3</strong>
+            <strong>1 a 3</strong>
           </ng-container>
           <ng-container *ngIf="test.q2_estado_saude_A === 3">
             <strong>3+</strong>
@@ -70,7 +70,6 @@
               <strong>Ruim</strong>
           </ng-container>
         </p>
-        <!-- falta a questão 3 aqui -->
         <p>
           <strong>Q3)</strong>Quantas das seguintes atividades o Sr(a) precisa de ajuda?
           <br>Resposta: <strong>{{test.q3_ind_func?.length}}</strong>
@@ -91,7 +90,7 @@
           </ng-container>
         </p>
         <p>
-          <strong>Q5)</strong> Normalmente, você usa cinco ou mais remédios diferentes e receitados (pelo médico)?
+          <strong>Q5a)</strong> Normalmente, você usa cinco ou mais remédios diferentes e receitados (pelo médico)?
           <br>Resposta:
           <ng-container *ngIf="test.q5_medicamento_A === 1">
             <strong>Sim</strong>
