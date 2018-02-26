@@ -20,7 +20,7 @@
   <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
     {{errorMessage}}
   </div>
-  <input type="text" autocapitalize="none" name="username" class="myInputTxt" placeholder="Login" id="user" [(ngModel)]="username">
+  <input type="text" name="username" class="myInputTxt" placeholder="Login" id="user" [(ngModel)]="username">
   <input type="password" name="password" class="myInputTxt" placeholder="Senha" id="password" [(ngModel)]="password" >
   <div align="center" class="one-col-grid flow-btn">
     <button type="submit" class="btn btn-primary btn-large" style="margin: 10px" (click)="login()">Entrar</button>

@@ -21,8 +21,6 @@
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/pdfmake/build/pdfmake.js", 
-        "../node_modules/pdfmake/build/vfs_fonts.js",
         "../node_modules/popper.js/dist/umd/popper.min.js",
         "../node_modules/hammerjs/hammer.js",
         "../node_modules/moment/min/moment.min.js",
