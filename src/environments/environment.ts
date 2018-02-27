@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://ppsus.com.br:8000/'
+  baseUrl: 'http://ppsus.icmc.usp.br:17008/'
 };
