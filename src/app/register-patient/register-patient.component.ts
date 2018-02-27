@@ -10,10 +10,10 @@ import * as moment from 'moment';
   styleUrls: ['./register-patient.component.scss']
 })
 export class RegisterPatientComponent implements OnInit {
-  public maskSUS = [/[1-9]/, /\d/, /\d/, '.', /[1-9]/, /\d/, /\d/, /\d/, '.', /[1-9]/, /\d/, /\d/, /\d/, '.',  /[1-9]/, /\d/, /\d/, /\d/ ];
-  public maskDate = [/[1-9]/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
-  public maskCEP = [/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
-  public maskNro = [/[1-9]/, /\d/, /\d/, /\d/];
+  public maskSUS = [/[0-9]/, /\d/, /\d/, '.', /[0-9]/, /\d/, /\d/, /\d/, '.', /[0-9]/, /\d/, /\d/, /\d/, '.',  /[0-9]/, /\d/, /\d/, /\d/ ];
+  public maskDate = [/[0-9]/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
+  public maskCEP = [/[0-9]/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+  public maskNro = [/[0-9]/, /\d/, /\d/, /\d/];
 
   public patient: Patient = {
     nome: '',

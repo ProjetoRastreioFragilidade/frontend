@@ -11,7 +11,7 @@ import * as moment from 'moment';
 })
 export class HomeComponent implements OnInit {
   // public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  public mask = [/[1-9]/, /\d/, /\d/, '.', /[1-9]/, /\d/, /\d/, /\d/, '.', /[1-9]/, /\d/, /\d/, /\d/, '.',  /[1-9]/, /\d/, /\d/, /\d/ ];
+  public mask = [/[0-9]/, /\d/, /\d/, '.', /[0-9]/, /\d/, /\d/, /\d/, '.', /[0-9]/, /\d/, /\d/, /\d/, '.',  /[0-9]/, /\d/, /\d/, /\d/ ];
   
   public susNumber: string;
   

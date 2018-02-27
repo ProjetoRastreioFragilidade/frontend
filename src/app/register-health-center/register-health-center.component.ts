@@ -10,9 +10,9 @@ import { PostoService, SharedService } from '@services';
 })
 export class RegisterHealthCenterComponent implements OnInit {
   // public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  public maskTel = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  public maskCEP = [/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
-  public maskNro = [/[1-9]/, /\d/, /\d/, /\d/];
+  public maskTel = ['(', /[0-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  public maskCEP = [/[0-9]/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+  public maskNro = [/[0-9]/, /\d/, /\d/, /\d/];
   
   public posto: Posto = {
     nome: '',

@@ -7,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter, OnDestroy, Input} from '@angul
 })
 export class Question1Component implements OnInit, OnDestroy {
 
-  public mask = [/[1-9]/, '.', /\d/];
+  public mask = [/[0-9]/, /\d/, '.', /\d/, ' Kg'];
   public question_kg = false;
 
   @Input() Q1;
