@@ -194,7 +194,7 @@ export class FinalComponent implements OnInit, OnDestroy {
     }
   }
   public addOrderedList(list: string[]) {
-      let i = 0;
+      let i = 1;
       list.forEach(element => {
         this.addText(i + '. ' + element);
         i++;
