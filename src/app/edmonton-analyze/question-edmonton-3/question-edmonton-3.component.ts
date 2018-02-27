@@ -91,6 +91,7 @@ export class QuestionEdmonton3Component implements OnInit {
     if (index > -1) {
       array.splice(index, 1);
     }
+    console.log(this.Q3);
   }
 
   public find(num: number): boolean {

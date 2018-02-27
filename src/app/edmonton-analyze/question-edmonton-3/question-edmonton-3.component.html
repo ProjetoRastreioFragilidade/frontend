@@ -3,53 +3,44 @@
     <h2 align="center">Questão 3</h2>
     <hr>
     <div align="center" style="padding-bottom: 14px">Quantas das seguintes atividades o Sr(a) precisa de ajuda?</div>
-    <select id="select_3" style="display: none" multiple="">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-    </select>
-    <label class="two-col-grid-especial opt-question1" id="label-1" [ngClass]="{ selected: find(1) ? true : false }" (click)="cook()" align="center">
+
+    <label class="two-col-grid-especial opt-question1" id="label-1" [ngClass]="{ selected1: find(1) ? true : false }" (click)="cook()" align="center">
       <strong>Preparar refeição (Cozinhar)</strong>
     </label>
     <label class="two-col-grid-especial-complete" align="center">
       &nbsp;
     </label>
-    <label class="two-col-grid-especial opt-question1" id="label-2" [ngClass]="{ selected: find(2) ? true : false }" (click)="phone()" align="center">
+    <label class="two-col-grid-especial opt-question1" id="label-2" [ngClass]="{ selected2: find(2) ? true : false }" (click)="phone()" align="center">
       <strong>Usar o telefone</strong>
     </label>
 
-    <label class="two-col-grid-especial opt-question1" id="label-3" [ngClass]="{ selected: find(3) ? true : false }" (click)="move()" align="center">
+    <label class="two-col-grid-especial opt-question1" id="label-3" [ngClass]="{ selected3: find(3) ? true : false }" (click)="move()" align="center">
       <strong>Transporte (se locomover)</strong>
     </label>
     <label class="two-col-grid-especial-complete" align="center">
       &nbsp;
     </label>
-    <label class="two-col-grid-especial opt-question1" id="label-4" [ngClass]="{ selected: find(4) ? true : false }" (click)="cleanClothes()" align="center">
+    <label class="two-col-grid-especial opt-question1" id="label-4" [ngClass]="{ selected4: find(4) ? true : false }" (click)="cleanClothes()" align="center">
       <strong>Lavar a roupa</strong>
     </label>
 
-    <label class="two-col-grid-especial opt-question1" id="label-5" [ngClass]="{ selected: find(5) ? true : false }" (click)="cleanHouse()" align="center">
+    <label class="two-col-grid-especial opt-question1" id="label-5" [ngClass]="{ selected5: find(5) ? true : false }" (click)="cleanHouse()" align="center">
       <strong>Cuidar da casa (limpar / arrumar)</strong>
     </label>
     <label class="two-col-grid-especial-complete" align="center">
       &nbsp;
     </label>
-    <label class="two-col-grid-especial opt-question1" id="label-6" [ngClass]="{ selected: find(6) ? true : false }" (click)="manageMoney()" align="center">
+    <label class="two-col-grid-especial opt-question1" id="label-6" [ngClass]="{ selected6: find(6) ? true : false }" (click)="manageMoney()" align="center">
       <strong>Cuidar do dinheiro</strong>
     </label>
 
-    <label class="two-col-grid-especial opt-question1" id="label-7" [ngClass]="{ selected: find(7) ? true : false }" (click)="shopping()" align="center">
+    <label class="two-col-grid-especial opt-question1" id="label-7" [ngClass]="{ selected7: find(7) ? true : false }" (click)="shopping()" align="center">
       <strong>Fazer compras</strong>
     </label>
     <label class="two-col-grid-especial-complete" align="center">
       &nbsp;
     </label>
-    <label class="two-col-grid-especial opt-question1" id="label-8" [ngClass]="{ selected: find(8) ? true : false }" (click)="remedy()" align="center">
+    <label class="two-col-grid-especial opt-question1" id="label-8" [ngClass]="{ selected8: find(8) ? true : false }" (click)="remedy()" align="center">
       <strong>Tomar remédios</strong>
     </label>
     <div align="center" class="one-col-grid flow-btn">
