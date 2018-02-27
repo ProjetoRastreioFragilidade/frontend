@@ -93,7 +93,7 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
     this.edmonton.q1_foto_relogio = photoUrl;
   }
 
-  public formValidate() {
+  public saveTest() {
     if(!this.edmonton.q1_cognicao) {
       this.errorMessage = "Questão 1 não foi respondida.";
       return;
@@ -142,9 +142,6 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
       this.errorMessage = "Questão 9 não foi informado o peso exato";
       return;
     }
-  }
-  public saveTest() {
-    this.formValidate();
     console.log(this.edmonton);
     this.edmonton.paciente = this.patientId;
 
