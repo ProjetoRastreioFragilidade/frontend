@@ -113,7 +113,7 @@ export class FinalEdmontonComponent implements OnInit {
     if(this.test.q1_cognicao === 1) {
       this.addText('Resposta: ' + 'Aprovado', 'resp');
     } else if(this.test.q1_cognicao === 2) {
-      this.addText('Resposta: ' + 'Reprovado com error mínimos', 'resp');
+      this.addText('Resposta: ' + 'Reprovado com erros mínimos', 'resp');
     } else if(this.test.q1_cognicao === 3) {
       this.addText('Resposta: ' + 'Reprovado com erros significantes', 'resp');
     }
