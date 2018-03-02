@@ -1,26 +1,48 @@
-<div class="login">
+<div class="body">
   <div class="one-col-grid">
     <h1>Cadastrar Paciente</h1>
     <hr>
   </div>
-  
+  <div class="alert alert-success" role="alert" *ngIf="successCreated">
+        Paciente {{nomePatient}} Cadastrado com Sucesso!
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+        {{errorMessage}}
+  </div>
   <section class="one-col-grid" style="margin-top: 15px;">
-      <div class="one-col-grid">
-          <input type="text" name="nome" class="myInputTxt" placeholder="Nome" id="nome" required="">
-      </div>
-      <div class="one-col-grid">
-          <input type="text" name="sobrenome" class="myInputTxt" placeholder="Sobrenome" id="sobrenome" required="">
-      </div>
-      <div class="one-col-grid">
-          <input mask="000.0000.0000.0000" type="text" name="sus" id="sus" class="myInputTxt" placeholder="Número SUS" required="" maxlength="18">
-      </div>
-      <div class="one-col-grid">
-          <input mask="00/00/0000" name="nascimento" id="nascimento" class="myInputTxt" placeholder="Data de nascimento" required="">
-      </div>
-      <div align="center" class="one-col-grid flow-btn">
-          <input type="button" class="btn btn-warning btn-large" style="margin: 10px" value="Voltar" (click)="back()">
-          <input type="submit" class="btn btn-primary btn-large" style="margin: 10px" value="Cadastrar">
-          <!-- <button type="button" class="btn btn-primary btn-large" onclick="goInsertPatientPage()">Entrar</button> -->
-      </div>
+    <div class="one-col-grid">
+        <input type="text" name="nome" class="myInputTxt" placeholder="Nome" id="nome" required="" [(ngModel)]="patient.nome">
+    </div>
+    <div class="one-col-grid">
+        <input [textMask]="{mask: maskSUS}"  type="text" name="sus" id="sus" class="myInputTxt" placeholder="Número SUS" required=""  [(ngModel)]="patient.nro_sus">
+    </div>
+    <div class="one-col-grid">
+            <input [textMask]="{mask: maskDate}"   name="nascimento" id="nascimento" class="myInputTxt" placeholder="Data de nascimento" required="" [(ngModel)]="inputDate">
+    </div>
+    <div class="one-col-grid">
+        <input type="text" name="end" id="end" class="myInputTxt" placeholder="Endereço" required="" [(ngModel)]="patient.end_rua">
+    </div>
+    <div class="one-col-grid">
+        <input type="text" name="bairro" id="bairro" class="myInputTxt" placeholder="Bairro" required="" [(ngModel)]="patient.end_bairro">
+    </div>
+    <div class="one-col-grid">
+        <input [textMask]="{mask: maskNro}"  type="text" name="numb" id="numb" class="myInputTxt" placeholder="Número" required=""   id="nome" required="" [(ngModel)]="patient.end_numero">
+    </div>
+    <div class="one-col-grid">
+        <input [textMask]="{mask: maskCEP}" type="text" name="cep" id="cep" class="myInputTxt" placeholder="CEP" required=""  [(ngModel)]="patient.cep">
+    </div>
+    <div class="one-col-grid">
+        <select class="custom-select myInputTxt" #selectedCategory>
+            <ng-container *ngIf="!patient?.posto">
+                <option>Escolha um Posto</option>
+            </ng-container>
+            <option [value]="posto.id" *ngFor="let posto of postos">{{posto.nome}}</option>
+        </select>
+    </div>
+
+    <div align="center" class="one-col-grid flow-btn">
+        <input type="button" class="btn btn-warning btn-large" style="margin: 10px" value="Voltar" (click)="back()">
+        <input type="submit" class="btn btn-primary btn-large" style="margin: 10px" value="Cadastrar" (click)="submit(selectedCategory.value)">
+    </div>
   </section>
 </div>

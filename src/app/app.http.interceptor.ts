@@ -22,7 +22,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        this.authUser = localStorage.getItem('currentUser');
+        this.authUser = JSON.parse(localStorage.getItem('currentUser'));
         if (this.authUser) {
             request = request.clone({
                 setHeaders: {

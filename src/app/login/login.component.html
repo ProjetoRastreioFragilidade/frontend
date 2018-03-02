@@ -12,10 +12,13 @@
 </form-->
 
 
-<div class="login">
+<div class="body">
   <div class="one-col-grid">
     <h1>PPSUS</h1>
     <hr>
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    {{errorMessage}}
   </div>
   <input type="text" name="username" class="myInputTxt" placeholder="Login" id="user" [(ngModel)]="username">
   <input type="password" name="password" class="myInputTxt" placeholder="Senha" id="password" [(ngModel)]="password" >

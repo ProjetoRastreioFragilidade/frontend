@@ -3,31 +3,25 @@
     <h2 align="center">Questão 8</h2>
     <hr>
     <div align="center" style="padding-bottom: 14px">Você tem problema de perder o controle da urina sem querer? (segurar urina?)</div>
-    <label class="one-col-grid opt-question" id="label-Sim" onclick="radioClick('Sim', 2)" align="center">
+    <label class="one-col-grid opt-question" id="label-Sim" (click)="yes()" [ngClass]="{ selected: Q8 === 1 ? true : false }" align="center">
       <input type="radio" name="answer" id="radio-Sim" value="Sim"> Sim
     </label>
-    <label class="one-col-grid opt-question" id="label-Nao" onclick="radioClick('Nao', 2)" align="center">
+    <label class="one-col-grid opt-question" id="label-Nao" (click)="no()" align="center">
       <input type="radio" name="answer" id="radio-Nao" value="Não"> Não
     </label>
     <div align="center" class="one-col-grid flow-btn">
       <div class="three-col-grid">
-        <button type="button" class="btn btn-primary btn-large" onclick="previousQuestion(this, '8', 2)" value="7">
-          <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Anterior</button>
+          <button type="button" class="btn btn-primary btn-large" (click)="nextQuestion(9)" [ngClass]="{ selected: Q8 === 2 ? true : false }" value="1"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> <i class="fa fa-caret-left"></i> Anterior</button>
       </div>
       <div class="three-col-grid">
-        <p id="agent-name">PPSUS - Edmonton
-          <br>
-          <strong>Agente: lucinete gomes</strong>
-        </p>
-        <strong>
-          <a href="../paciente.php" style="font-size:30px;">Sair</a>
-        </strong>
+          <p id="agent-name">PPSUS - Edmonton<br></p><strong>
+          <a routerLink="/" style="font-size:30px;">Sair</a></strong>
       </div>
       <div class="three-col-grid">
-        <button type="button" class="btn btn-primary btn-large" onclick="nextQuestion(this, '8', 2)" value="9">Próxima
-          <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
-        </button>
-      </div>
+          <button type="button" class="btn btn-primary btn-large" (click)="nextQuestion(11)" value="2">Próxima
+            <i class="fa fa-caret-right"></i>
+          </button>
+        </div>
     </div>
   </form>
 </div>

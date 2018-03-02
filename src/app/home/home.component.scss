@@ -1,9 +1,24 @@
 /* verde: #4CAF50*/
-
-.login {
+@media (max-width: 1200px) { 
+    .hide-text-medium {
+        display: none;
+    }
+ }
+ @media (max-width: 600px) { 
+    .hide-text-min {
+        display: none;
+    }
+ }
+.body {
+    overflow-x: hidden;
     margin: 0;
     text-align: center;
     background-color: #eaeaea;
+    position: absolute; 
+    top: 0; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
 }
 
 * {

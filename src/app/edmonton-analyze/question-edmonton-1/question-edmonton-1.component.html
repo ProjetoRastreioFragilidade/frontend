@@ -3,41 +3,99 @@
     <hr>
     <div align="center" style="padding-bottom: 14px">
         <form action="questao1.php" method="post" id="img_form" enctype="multipart/form-data">
-        <div id="legenda_relogio">Clique na imagem abaixo para fotografar o relógio</div>
-        <div>
-            <img src="../images/upload.png" width="120px" id="upload_image" onclick="upload_img()">
-        </div>
-        <div id="legenda_questao">
-            Por favor, imagine que este circulo é um relógio. Eu gostaria que você colocasse os números nas posições corretas e que depois incluisse os ponteiros de forma a indicar onze horas e dez minutos.
-        </div>
-        <input type="file" id="img_relogio" style="display:none" name="img_relogio" onchange="document.getElementById('img_form').submit()"> 
-        <input type="submit" id="relogio_submit" style="display:none" name="relogio_submit">
+            <!--div id="legenda_relogio">Clique na imagem abaixo para fotografar o relógio</div-->
+            <input type="file" accept="image/*" capture="camera" #file (change)="getFile($event)"/>
+            <br>
+            <img src="/assets/clock.png" height="150" width="150" *ngIf="!image; else uploadedImage">
+            <ng-template #uploadedImage>
+                <img [(src)]="image" height="150" width="150">
+            </ng-template>
+            <div id="legenda_questao">
+                Por favor, imagine que este circulo é um relógio. Eu gostaria que você colocasse os números nas posições corretas e que depois
+                incluisse os ponteiros de forma a indicar onze horas e dez minutos.
+            </div>
+            <!--input type="file" id="img_relogio" style="display:none" name="img_relogio" onchange="document.getElementById('img_form').submit()"> 
+        <input type="submit" id="relogio_submit" style="display:none" name="relogio_submit"-->
         </form>
     </div>
     <div id="layer1">
         &nbsp;
     </div>
-    <label class="one-col-grid opt-question" id="label-Aprovado" onclick="radioClick('Aprovado', 2)" align="center">
+    <label class="one-col-grid opt-question" id="label-Aprovado" (click)="approved()" [ngClass]="{ selected: Q1 === 1 ? true : false }"
+        align="center">
         <input type="radio" name="answer" id="radio-Aprovado" value="Aprovado"> Aprovado
     </label>
-    <label class="one-col-grid opt-question" id="label-Reprovado_com_erros_minimos" onclick="radioClick('Reprovado_com_erros_minimos', 2)" align="center">
+    <label class="one-col-grid opt-question" id="label-Reprovado_com_erros_minimos" (click)="minErrors()" [ngClass]="{ selected: Q1 === 2 ? true : false }"
+        align="center">
         <input type="radio" name="answer" id="radio-Reprovado_com_erros_minimos" value="Reprovado com erros mínimos"> Reprovado com erros mínimos
     </label>
-    <label class="one-col-grid opt-question" id="label-Reprovado_com_erros_significantes" onclick="radioClick('Reprovado_com_erros_significantes', 2)" align="center">
+    <label class="one-col-grid opt-question" id="label-Reprovado_com_erros_significantes" (click)="maxErrors()" [ngClass]="{ selected: Q1 === 3 ? true : false }"
+        align="center">
         <input type="radio" name="answer" id="radio-Reprovado_com_erros_significantes" value="Reprovado com erros significantes"> Reprovado com erros significantes
     </label>
     <div class="one-col-grid">
-        <div id="more-info" onclick="open_info()">Mais informações?</div> <!-- to do -->
+        <div id="more-info" data-toggle="modal" data-target="#exampleModal">Mais informações?</div>
+        <!-- to do -->
     </div>
     <div align="center" class="one-col-grid flow-btn">
         <div class="three-col-grid">&nbsp;
         </div>
         <div class="three-col-grid">
-            <p id="agent-name">PPSUS - Edmonton<br><strong>Agente: lucinete gomes</strong></p><strong>
-            <a href="../paciente.php" style="font-size:30px;">Sair</a></strong>
+            <p id="agent-name">PPSUS - Edmonton
+                <br>
+                <strong>
+                    <a routerLink="/" style="font-size:30px;">Sair</a>
+                </strong>
         </div>
         <div class="three-col-grid">
-            <button type="button" class="btn btn-primary btn-large" onclick="nextQuestionEdmonton(this, '1', 2)" value="2a">Próxima <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-primary btn-large" (click)="nextQuestion(2)" value="2">Próxima
+                <i class="fa fa-caret-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Método de Pontuação TDR da EFE</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>O TDR da EFE foi pontuado da seguinte maneira:</p>
+                <strong>A. Aprovado.</strong>
+                <p>
+                    Todos os ponteiros e números estão presentes nas devidas posições. Não há adições ou duplicidades.</p>
+                <strong>B. Reprovado com erros mínimos.</strong>
+                <p>
+                    Todos os ponteiros e números estão presentes. Os ponteiros estão corretamente posicionados. No entanto, os ponteiros têm
+                    o mesmo comprimento e/ou pequenos erros de espaçamento. Um “erro de espaçamento” existe se após sobrepor
+                    a transparência alvo e fazer a rotação para a melhor pontuação, ocorre qualquer um dos itens abaixo:
+                </p>
+                <ul>
+                    <li> Algum número está posicionado na porção interior do círculo.</li>
+                    <li> Há mais ou menos de três números em qualquer um dos quadrantes.</li>
+                </ul>
+                <strong>C. Reprovado com erros significantes.</strong>
+                <ul>
+                    <li> Colocação dos ponteiros de hora e minuto fora do curso.</li>
+                    <li> Uso inapropriado dos ponteiros do relógio, de forma que o paciente tenta usar um display digital ou circula
+                        os números ao invés de usar ponteiros.</li>
+                    <li> Os números estão amontoados em um extremo do relógio (ex. qualquer quadrante contém menos de dois números)
+                        ou os números estão em ordem contrária.</li>
+                    <li> Ocorrem outras distorções quanto à sequencia ou mesmo uma possível distorção da integridade da face do
+                        relógio (disposição dos números e ponteiros).</li>
+
+                </ul>
+                <strong>  Uma reprova com erros significativos sugere déficit cognitivo.</strong>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
         </div>
     </div>
 </div>

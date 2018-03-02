@@ -1,27 +1,35 @@
-<div class="login">
+<div class="body">
+        {{posto.end_numero}}
+        {{posto.cep}}
+        {{posto.telefone}}
     <div class="one-col-grid">
       <h1>Cadastrar Posto</h1>
       <hr>
     </div>
-    
+    <div class="alert alert-success" role="alert" *ngIf="successCreated">
+            Posto {{nomePosto}} Cadastrado com Sucesso!
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+            {{errorMessage}}
+    </div>
     <section class="one-col-grid" style="margin-top: 15px;">
         <div class="one-col-grid">
-            <input type="text" name="nome" class="myInputTxt" placeholder="Nome" id="nome" required="">
+            <input type="text" name="nome" id="nome" class="myInputTxt" placeholder="Nome"  required="" [(ngModel)]="posto.nome">
         </div>
         <div class="one-col-grid">
-            <input mask="0000" type="text" name="numb" id="numb" class="myInputTxt" placeholder="Número" required="" maxlength="4">
+            <input type="text" name="end" id="end" class="myInputTxt" placeholder="Endereço" required="" [(ngModel)]="posto.end_rua">
         </div>
         <div class="one-col-grid">
-            <input type="text" name="end" id="end" class="myInputTxt" placeholder="Endereço" required="">
+            <input type="text" name="bairro" id="bairro" class="myInputTxt" placeholder="Bairro" required="" [(ngModel)]="posto.end_bairro">
         </div>
         <div class="one-col-grid">
-            <input type="text" name="bairro" id="bairro" class="myInputTxt" placeholder="Bairro" required="">
+            <input [textMask]="{mask: maskNro}" type="text" name="numb" id="numb" class="myInputTxt" placeholder="Número" required=""   id="nome" required="" [(ngModel)]="posto.end_numero">
         </div>
         <div class="one-col-grid">
-            <input mask="00000-000" type="text" name="cep" id="cep" class="myInputTxt" placeholder="CEP" required="" maxlength="9">
+            <input [textMask]="{mask: maskCEP}" type="text" name="cep" id="cep" class="myInputTxt" placeholder="CEP" required=""  [(ngModel)]="posto.cep">
         </div>
         <div class="one-col-grid">
-            <input mask="(00)00000-0000" type="text" name="sus" id="sus" class="myInputTxt" placeholder="Telefone" required="" maxlength="14">
+            <input [textMask]="{mask: maskTel}" type="text" name="tel" id="tel" class="myInputTxt" placeholder="Telefone" required="" [(ngModel)]="posto.telefone">
         </div>
         <div align="center" class="one-col-grid flow-btn">
             <input type="button" class="btn btn-warning btn-large" style="margin: 10px" value="Voltar" (click)="back()">
