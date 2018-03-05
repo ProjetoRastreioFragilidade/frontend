@@ -4,6 +4,11 @@ body {
     margin: 0;
     text-align: center;
     background-color: #eff7f4;
+    position: absolute; 
+    top: 0; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
 }
 
 * {
@@ -121,6 +126,12 @@ body {
     /*background-color: #333;*/
     background-color: #1f7554;
     cursor: pointer !important;
+}
+
+.n {
+    background-color: #1f7554 !important;
+    color: #fff !important;
+    font-weight: bold !important;
 }
 
 input[name=answer] {

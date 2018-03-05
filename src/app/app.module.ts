@@ -19,7 +19,6 @@ import { EdmontonAnalyzeComponent } from './edmonton-analyze/edmonton-analyze.co
 import { SubjectiveAnalyzeComponent } from './subjective-analyze/subjective-analyze.component';
 import { FinalComponent } from './final/final.component';
 
-import { NgxMaskModule } from 'ngx-mask';
 import { Question1Component } from './subjective-analyze/question-1/question-1.component';
 import { Question2Component } from './subjective-analyze/question-2/question-2.component';
 import { Question3Component } from './subjective-analyze/question-3/question-3.component';
@@ -39,8 +38,28 @@ import { QuestionEdmonton6Component } from './edmonton-analyze/question-edmonton
 import { QuestionEdmonton7Component } from './edmonton-analyze/question-edmonton-7/question-edmonton-7.component';
 import { QuestionEdmonton8Component } from './edmonton-analyze/question-edmonton-8/question-edmonton-8.component';
 import { QuestionEdmonton9Component } from './edmonton-analyze/question-edmonton-9/question-edmonton-9.component';
+import { FinalEdmontonComponent } from './final-edmonton/final-edmonton.component';
+
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
+import { BlockUIModule } from 'ng-block-ui';
+import { SimpleTimer } from 'ng2-simple-timer';
+import { TextMaskModule } from 'angular2-text-mask';
+import { TimerComponent } from './_shared/timer/timer.component';
+// import { PdfmakeService } from 'ng-pdf-make';
+// import { PdfmakeModule } from 'ng-pdf-make';
 
 @NgModule({
+  imports: [
+    BlockUIModule,
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    HttpClientModule,
+    routing,
+    Angular2FontawesomeModule,
+    TextMaskModule,
+    // PdfmakeModule
+  ],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -68,14 +87,8 @@ import { QuestionEdmonton9Component } from './edmonton-analyze/question-edmonton
     QuestionEdmonton7Component,
     QuestionEdmonton8Component,
     QuestionEdmonton9Component,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    HttpClientModule,
-    routing,
-    NgxMaskModule.forRoot()
+    FinalEdmontonComponent,
+    TimerComponent,
   ],
   providers: [...providers,
     {
@@ -84,6 +97,8 @@ import { QuestionEdmonton9Component } from './edmonton-analyze/question-edmonton
       multi: true
     },
     AuthenticationService,
+    SimpleTimer,
+    // PdfmakeService
   ],
   bootstrap: [AppComponent]
 })

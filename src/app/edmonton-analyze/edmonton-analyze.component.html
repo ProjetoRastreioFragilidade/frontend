@@ -1,36 +1,127 @@
-<body onload="verifyForm('1', 2); verifyImg('21')">        <span class="patient-name" id="patient-name"><font color="black">Paciente:</font> TESTE TESTE</span>
-  <div class="one-col-grid">
-      <nav class="one-col-grid">
-          <div class="nav-bar">
-              <!--label class="eleven-col-grid" id="nav-q1" style="color: rgb(255, 255, 255); background-color: green;">Q1<br> <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span></label-->
-              <label class="eleven-col-grid active" id="nav-q2a" (click)="goTo(1)">Q1<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="eleven-col-grid active" id="nav-q2a" (click)="goTo(2)">Q2a<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="eleven-col-grid active" id="nav-q2b" (click)="goTo(3)">Q2b<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="eleven-col-grid active" id="nav-q3" (click)="goTo(4)">Q3<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="eleven-col-grid active" id="nav-q4" (click)="goTo(5)">Q4<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="eleven-col-grid active" id="nav-q5a" (click)="goTo(6)">Q5a<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="eleven-col-grid active" id="nav-q5b" (click)="goTo(7)">Q5b<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="eleven-col-grid active" id="nav-q6" (click)="goTo(8)">Q6<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="eleven-col-grid active" id="nav-q7" (click)="goTo(9)">Q7<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="eleven-col-grid active" id="nav-q8" (click)="goTo(10)">Q8<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-              <label class="eleven-col-grid active" id="nav-q9" (click)="goTo(11)">Q9<br> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></label>
-          </div>
-      </nav>
-      
-      <app-question-edmonton-1 *ngIf="question === 1"></app-question-edmonton-1>
-      <app-question-edmonton-2a *ngIf="question === 2"></app-question-edmonton-2a>
-      <app-question-edmonton-2b *ngIf="question === 3"></app-question-edmonton-2b>
-      <app-question-edmonton-3 *ngIf="question === 4"></app-question-edmonton-3>
-      <app-question-edmonton-4 *ngIf="question === 5"></app-question-edmonton-4>
-      <app-question-edmonton-5a *ngIf="question === 6"></app-question-edmonton-5a>
-      <app-question-edmonton-5b *ngIf="question === 7"></app-question-edmonton-5b>
-      <app-question-edmonton-6 *ngIf="question === 8"></app-question-edmonton-6>
-      <app-question-edmonton-7 *ngIf="question === 9"></app-question-edmonton-7>
-      <app-question-edmonton-8 *ngIf="question === 10"></app-question-edmonton-8>
-      <app-question-edmonton-9 *ngIf="question === 11"></app-question-edmonton-9>
-      <!--<footer style="position: fixed; bottom: 0px; width: 100%;">
-          <p id="agent-name"></p>
-      </footer>-->
-  </div>
+<div class="body">
+    <div class="one-col-grid">
+        <nav class="one-col-grid">
+            <div class="nav-bar">
+                <!--label class="eleven-col-grid" id="nav-q1" style="color: rgb(255, 255, 255); background-color: green;">Q1<br> <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span></label-->
+                <label class="eleven-col-grid active" id="nav-q1" (click)="goTo(1)" [ngClass]="{ n: question === 1 ? true : false }">Q1
+                    <br>
+                    <ng-container *ngIf="!this.edmonton.q1_cognicao; else answeredQ1">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ1>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+                <label class="eleven-col-grid active" id="nav-q2a" (click)="goTo(2)" [ngClass]="{ n: question === 2 ? true : false }">Q2a
+                    <br>
+                    <ng-container *ngIf="!this.edmonton.q2_estado_saude_A; else answeredQ1">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ1>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+                <label class="eleven-col-grid active" id="nav-q2b" (click)="goTo(3)" [ngClass]="{ n: question === 3 ? true : false }">Q2b
+                    <br>
+                    <ng-container *ngIf="!this.edmonton.q2_estado_saude_B; else answeredQ1">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ1>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+                <label class="eleven-col-grid active" id="nav-q3" (click)="goTo(4)" [ngClass]="{ n: question === 4 ? true : false }">Q3
+                    <br>
+                    <ng-container *ngIf="!this.edmonton.q3_ind_func; else answeredQ1">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ1>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+                <label class="eleven-col-grid active" id="nav-q4" (click)="goTo(5)" [ngClass]="{ n: question === 5 ? true : false }">Q4
+                    <br>
+                    <ng-container *ngIf="!this.edmonton.q4_sup_social; else answeredQ1">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ1>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+                <label class="eleven-col-grid active" id="nav-q5a" (click)="goTo(6)" [ngClass]="{ n: question === 6 ? true : false }">Q5a
+                    <br>
+                    <ng-container *ngIf="!this.edmonton.q5_medicamento_A; else answeredQ1">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ1>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+                <label class="eleven-col-grid active" id="nav-q5b" (click)="goTo(7)" [ngClass]="{ n: question === 7 ? true : false }">Q5b
+                        <br>
+                        <ng-container *ngIf="!this.edmonton.q5_medicamento_B; else answeredQ1">
+                            <i class="fa fa-times"></i>
+                        </ng-container>
+                        <ng-template #answeredQ1>
+                            <i class="fa fa-check"></i>
+                        </ng-template>
+                    </label>
+                <label class="eleven-col-grid active" id="nav-q6" (click)="goTo(8)" [ngClass]="{ n: question === 8 ? true : false }">Q6
+                    <br>
+                    <ng-container *ngIf="!this.edmonton.q6_nutricao; else answeredQ1">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ1>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+                <label class="eleven-col-grid active" id="nav-q7" (click)="goTo(9)" [ngClass]="{ n: question === 9 ? true : false }">Q7
+                    <br>
+                    <ng-container *ngIf="!this.edmonton.q7_humor; else answeredQ1">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ1>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+                <label class="eleven-col-grid active" id="nav-q8" (click)="goTo(10)" [ngClass]="{ n: question === 10 ? true : false }">Q8
+                    <br>
+                    <ng-container *ngIf="!this.edmonton.q8_continencia; else answeredQ1">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ1>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
+                <label class="eleven-col-grid active" id="nav-q9" (click)="goTo(11)" [ngClass]="{ n: question === 11 ? true : false }">Q9
+                    <br>
+                    <ng-container *ngIf="!this.edmonton.q9_desemp_func; else answeredQ1">
+                        <i class="fa fa-times"></i>
+                    </ng-container>
+                    <ng-template #answeredQ1>
+                        <i class="fa fa-check"></i>
+                    </ng-template>
+                </label>
 
-</body>
+            </div>
+        </nav>
+        <div class="one-col-grid src-div">
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage" style="text-align:center">
+                {{errorMessage}}
+            </div>
+        </div>
+        <app-question-edmonton-1 *ngIf="question === 1" (q1)="saveQ1($event)" (next)="goTo($event)" [Q1]="this.edmonton.q1_cognicao" [image]="this.edmonton.q1_foto_relogio" (file_emitter)="get_photo($event)"></app-question-edmonton-1>
+        <app-question-edmonton-2a *ngIf="question === 2" (q2a)="saveQ2a($event)" (next)="goTo($event)" [Q2a]="this.edmonton.q2_estado_saude_A"></app-question-edmonton-2a>
+        <app-question-edmonton-2b *ngIf="question === 3" (q2b)="saveQ2b($event)" (next)="goTo($event)" [Q2b]="this.edmonton.q2_estado_saude_B"></app-question-edmonton-2b>
+        <app-question-edmonton-3 *ngIf="question === 4" (q3)="saveQ3($event)" (next)="goTo($event)" [Q3]="q3_array"></app-question-edmonton-3>
+        <app-question-edmonton-4 *ngIf="question === 5" (q4)="saveQ4($event)" (next)="goTo($event)" [Q4]="this.edmonton.q4_sup_social"></app-question-edmonton-4>
+        <app-question-edmonton-5a *ngIf="question === 6" (q5a)="saveQ5a($event)" (next)="goTo($event)" [Q5a]="this.edmonton.q5_medicamento_A"></app-question-edmonton-5a>
+        <app-question-edmonton-5b *ngIf="question === 7" (q5b)="saveQ5b($event)" (next)="goTo($event)" [Q5b]="this.edmonton.q5_medicamento_B"></app-question-edmonton-5b>
+        <app-question-edmonton-6 *ngIf="question === 8" (q6)="saveQ6($event)" (next)="goTo($event)" [Q6]="this.edmonton.q6_nutricao"></app-question-edmonton-6>
+        <app-question-edmonton-7 *ngIf="question === 9" (q7)="saveQ7($event)" (next)="goTo($event)" [Q7]="this.edmonton.q7_humor"></app-question-edmonton-7>
+        <app-question-edmonton-8 *ngIf="question === 10" (q8)="saveQ8($event)" (next)="goTo($event)" [Q8]="this.edmonton.q8_continencia"></app-question-edmonton-8>
+        <app-question-edmonton-9 *ngIf="question === 11" (q9)="saveQ9($event)" (next)="goTo($event)" [Q9]="this.edmonton.q9_desemp_func"
+            [time]="this.edmonton.q9_desemp_func_tempo" (save)="saveTest()" (time_emitter)="get_time($event)"></app-question-edmonton-9>
+
+    </div>
+</div>

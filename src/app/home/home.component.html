@@ -1,21 +1,29 @@
 
-<div class="login">
+<div class="body">
   <div class="one-col-grid reg-div">
     <div style="margin-bottom:15px">
-        <button type="button" class="btn btn-primary btn-large" (click)="createPatient()">Cadastrar Paciente</button>
-        <button type="button" class="btn btn-primary btn-large" (click)="createHealthCenter()">Cadastrar Posto</button>
+        <button type="button" class="btn btn-primary btn-large" (click)="createPatient()"><ng-container class="hide-text-min">Cadastrar Paciente</ng-container> <i class="fa fa-user"></i></button>
+        <button type="button" class="btn btn-primary btn-large" (click)="createHealthCenter()"><ng-container class="hide-text-min">Cadastrar Posto</ng-container> <i class="fa fa-medkit"></i></button>
     </div>
     <div class="one-col-grid src-div">
-      <input type="text" placeholder="Digite o número SUS do paciente" name="pct_sus" id="sus" class="busca-pct" maxlength="18" 
-        mask="000.0000.0000.0000"
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+            {{errorMessage}}
+        </div>
+      <input type="text"  placeholder="Digite o número SUS do paciente" name="pct_sus" id="sus" class="busca-pct"
+        [textMask]="{mask: mask}"
         [(ngModel)]="susNumber">
-        
-      <input type="submit" class="src-btn" value="Procurar paciente" (click)="searchPatient()">
+      <button type="button" class="src-btn" (click)="searchPatient()"><i class="fa fa-search"></i><div class="hide-text-medium">Procurar paciente</div> </button>
     </div>
   </div>
-  <div class="one-col-grid">
+  <div class="one-col-grid" *ngIf="patient">
+    <h1>{{patient.nome}} - {{patient.nro_sus}}</h1>
+    <p>Endereço:
+      <strong>{{patient.end_rua}} {{patient.end_numero ? ', ' + patient.end_numero : ''}} {{patient.end_bairro ? ', ' + patient.end_bairro : ''}}</strong>
+    </p>
+    <br>
+</div>
+  <div class="one-col-grid" *ngIf="tests.length !== 0">
     <table style="width:100%">
-      <caption>teste teste - 123 4567 8901 2345</caption>
       <tbody>
         <tr>
           <th>Paciente</th>
@@ -23,18 +31,26 @@
           <th>Início</th>
           <th>Fim</th>
         </tr>
-        <tr class="subjetiva">
-          <td>teste teste</td>
-          <td>Subjetiva</td>
-          <td>2018-02-07 15:11:58</td>
-          <td>2018-02-07 15:12:16</td>
+        <tr [ngClass]="{edmonton: test.tipo === 'e' ? true : false, subjetiva: test.tipo === 's' ? true : false}" *ngFor="let test of tests">
+              <td (click)="seeResults(test.id, test.tipo)" >{{patient.nome}}</td>
+              <td *ngIf="test.tipo === 'e';else subjective" (click)="seeResults(test.id, test.tipo)">Edmonton</td>
+              <ng-template #subjective>
+                  <td (click)="seeResults(test.id, test.tipo)">Subjetiva</td>
+              </ng-template>
+              <td (click)="seeResults(test.id, test.tipo)">{{test.data_inicio}}</td>
+              <td (click)="seeResults(test.id, test.tipo)">{{test.data_fim}}</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="one-col-grid" style="margin-top:15px; margin-bottom:15px">
-    <input type="submit" name="form2" class="btn btn-success btn-large btn-edmonton" (click)="newEdmonton()" value="Novo Edmonton">
-    <input type="submit" name="form1" class="btn btn-primary btn-large" style="margin-left:10px" (click)="newSubjective()" value="Nova Subjetiva">
+  <div class="one-col-grid" *ngIf="isEmpty">
+      <div class="alert alert-danger" role="alert">
+          Não há nenhuma avaliação para esse paciente.
+      </div>
+  </div>
+  <div class="one-col-grid" style="margin-top:15px; margin-bottom:15px" *ngIf="patient">
+      <input type="submit" name="form2" class="btn btn-success btn-large btn-edmonton" (click)="newEdmonton()" value="Novo Edmonton">
+      <input type="submit" name="form1" class="btn btn-primary btn-large" style="margin-left:10px" (click)="newSubjective()" value="Nova Subjetiva">
   </div>
   <input type="submit" class="btn-large btn-danger" name="logoff" value="LOGOUT" (click)="logout()">
 </div>

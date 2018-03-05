@@ -40,10 +40,9 @@ export class AppHttpInterceptor implements HttpInterceptor {
                 if (err instanceof HttpErrorResponse) {
                     switch (err.status) {
                         case 401: {
-                            // localStorage.clear();
-                            // this.router.navigate(['login']);
-                            // location.reload();
-                            // TODO -> descomentar esse código
+                            localStorage.clear();
+                            this.router.navigate(['login']);
+                            location.reload();
                             break;
                         }
                         default: {

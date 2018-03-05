@@ -1,76 +1,125 @@
-    <div class="one-col-grid main">
-      <form>
-        <h2 align="center">Questão 3</h2>
-        <hr>
-        <div align="center" style="padding-bottom: 14px">Quantas das seguintes atividades o Sr(a) precisa de ajuda?</div>
-        <select id="select_3" style="display: none" multiple="">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-        </select>
-        <label class="two-col-grid-especial opt-question1" id="label-1" onclick="selectionClick('1')" align="center">
-          <strong>Preparar refeição (Cozinhar)</strong>
-        </label>
-        <label class="two-col-grid-especial-complete" align="center">
-          &nbsp;
-        </label>
-        <label class="two-col-grid-especial opt-question1" id="label-2" onclick="selectionClick('2')" align="center">
-          <strong>Usar o telefone</strong>
-        </label>
+<div class="one-col-grid main">
+  <form>
+    <h2 align="center">Questão 3</h2>
+    <hr>
+    <div align="center" style="padding-bottom: 14px">Quantas das seguintes atividades o Sr(a) precisa de ajuda?</div>
 
-        <label class="two-col-grid-especial opt-question1" id="label-3" onclick="selectionClick('3')" align="center">
-          <strong>Transporte (se locomover)</strong>
-        </label>
-        <label class="two-col-grid-especial-complete" align="center">
-          &nbsp;
-        </label>
-        <label class="two-col-grid-especial opt-question1" id="label-4" onclick="selectionClick('4')" align="center">
-          <strong>Lavar a roupa</strong>
-        </label>
+    <ng-container *ngIf="!find(1); else button1">
+      <label class="two-col-grid-especial opt-question1" id="label-1" (click)="cook()" align="center">
+        <strong>Preparar refeição (Cozinhar)</strong>
+      </label>
+    </ng-container>
+    <ng-template #button1>
+      <label class="two-col-grid-especial opt-question1 selected1" id="label-1" (click)="cook()" align="center">
+        <strong>Preparar refeição (Cozinhar)</strong>
+      </label>
+    </ng-template>
+    
+    <label class="two-col-grid-especial-complete" align="center">
+      &nbsp;
+    </label>
 
-        <label class="two-col-grid-especial opt-question1" id="label-5" onclick="selectionClick('5')" align="center">
-          <strong>Cuidar da casa (limpar / arrumar)</strong>
-        </label>
-        <label class="two-col-grid-especial-complete" align="center">
-          &nbsp;
-        </label>
-        <label class="two-col-grid-especial opt-question1" id="label-6" onclick="selectionClick('6')" align="center">
-          <strong>Cuidar do dinheiro</strong>
-        </label>
+    <ng-container *ngIf="!find(2); else button2">
+      <label class="two-col-grid-especial opt-question1" id="label-2" (click)="phone()" align="center">
+        <strong>Usar o telefone</strong>
+      </label>
+    </ng-container>
+    <ng-template #button2>
+      <label class="two-col-grid-especial opt-question1 selected2" id="label-2" (click)="phone()" align="center">
+        <strong>Usar o telefone</strong>
+      </label>
+    </ng-template>
 
-        <label class="two-col-grid-especial opt-question1" id="label-7" onclick="selectionClick('7')" align="center">
-          <strong>Fazer compras</strong>
-        </label>
-        <label class="two-col-grid-especial-complete" align="center">
-          &nbsp;
-        </label>
-        <label class="two-col-grid-especial opt-question1" id="label-8" onclick="selectionClick('8')" align="center">
-          <strong>Tomar remédios</strong>
-        </label>
-        <div align="center" class="one-col-grid flow-btn">
-          <div class="three-col-grid">
-            <button type="button" class="btn btn-primary btn-large" onclick="previousQuestion(this, '3', 2)" value="2b">
-              <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Anterior</button>
-          </div>
-          <div class="three-col-grid">
-            <p id="agent-name">PPSUS - Edmonton
-              <br>
-              <strong>Agente: lucinete gomes</strong>
-            </p>
-            <strong>
-              <a href="../paciente.php" style="font-size:30px;">Sair</a>
-            </strong>
-          </div>
-          <div class="three-col-grid">
-            <button type="button" class="btn btn-primary btn-large" onclick="nextQuestion(this, '3', 2)" value="4">Próxima
-              <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
-            </button>
-          </div>
-        </div>
-      </form>
+    <ng-container *ngIf="!find(3); else button3">
+      <label class="two-col-grid-especial opt-question1" id="label-3" (click)="move()" align="center">
+        <strong>Transporte (se locomover)</strong>
+      </label>
+    </ng-container>
+    <ng-template #button3>
+      <label class="two-col-grid-especial opt-question1 selected3" id="label-3" (click)="move()" align="center">
+        <strong>Transporte (se locomover)</strong>
+      </label>
+    </ng-template>
+    <label class="two-col-grid-especial-complete" align="center">
+      &nbsp;
+    </label>
+    <ng-container *ngIf="!find(4); else button4">
+      <label class="two-col-grid-especial opt-question1" id="label-4" (click)="cleanClothes()" align="center">
+        <strong>Lavar a roupa</strong>
+      </label>
+    </ng-container>
+    <ng-template #button4>
+      <label class="two-col-grid-especial opt-question1 selected4" id="label-4" (click)="cleanClothes()" align="center">
+        <strong>Lavar a roupa</strong>
+      </label>
+    </ng-template>
+    <ng-container *ngIf="!find(5); else button5">
+      <label class="two-col-grid-especial opt-question1" id="label-5" (click)="cleanHouse()" align="center">
+        <strong>Cuidar da casa (limpar / arrumar)</strong>
+      </label>
+    </ng-container>
+    <ng-template #button5>
+      <label class="two-col-grid-especial opt-question1 selected5" id="label-5" (click)="cleanHouse()" align="center">
+        <strong>Cuidar da casa (limpar / arrumar)</strong>
+      </label>
+    </ng-template>
+    <label class="two-col-grid-especial-complete" align="center">
+      &nbsp;
+    </label>
+    <ng-container *ngIf="!find(6); else button6">
+      <label class="two-col-grid-especial opt-question1" id="label-6" (click)="manageMoney()" align="center">
+        <strong>Cuidar do dinheiro</strong>
+      </label>
+    </ng-container>
+    <ng-template #button6>
+      <label class="two-col-grid-especial opt-question1 selected6" id="label-6" (click)="manageMoney()" align="center">
+        <strong>Cuidar do dinheiro</strong>
+      </label>
+    </ng-template>
+    <ng-container *ngIf="!find(7); else button7">
+      <label class="two-col-grid-especial opt-question1" id="label-7" (click)="shopping()" align="center">
+        <strong>Fazer compras</strong>
+      </label>
+    </ng-container>
+    <ng-template #button7>
+      <label class="two-col-grid-especial opt-question1 selected7" id="label-7" (click)="shopping()" align="center">
+        <strong>Fazer compras</strong>
+      </label>
+    </ng-template>
+    <label class="two-col-grid-especial-complete" align="center">
+      &nbsp;
+    </label>
+    <ng-container *ngIf="!find(8); else button8">
+      <label class="two-col-grid-especial opt-question1" id="label-8" (click)="remedy()" align="center">
+        <strong>Tomar remédios</strong>
+      </label>
+    </ng-container>
+    <ng-template #button8>
+      <label class="two-col-grid-especial opt-question1 selected8" id="label-8" (click)="remedy()" align="center">
+        <strong>Tomar remédios</strong>
+      </label>
+    </ng-template>
+
+
+    <div align="center" class="one-col-grid flow-btn">
+      <div class="three-col-grid">
+        <button type="button" class="btn btn-primary btn-large" (click)="nextQuestion(3)" value="1">
+          <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+          <i class="fa fa-caret-left"></i> Anterior</button>
+      </div>
+      <div class="three-col-grid">
+        <p id="agent-name">PPSUS - Edmonton
+          <br>
+        </p>
+        <strong>
+          <a routerLink="/" style="font-size:30px;">Sair</a>
+        </strong>
+      </div>
+      <div class="three-col-grid">
+        <button type="button" class="btn btn-primary btn-large" (click)="nextQuestion(5)" value="2">Próxima
+          <i class="fa fa-caret-right"></i>
+        </button>
+      </div>
     </div>
+  </form>
+</div>

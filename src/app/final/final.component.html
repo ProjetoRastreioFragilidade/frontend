@@ -1,3 +1,137 @@
-<p>
-  final works!
-</p>
+<div class="body">
+  <section class="one-col-grid">
+    <div id="answers-div" style="float:left;width:100%; text-align:left; font-size:1.3em; padding-left:20px">
+      <p></p>
+      <h1 align="center">Avaliação Subjetiva - PPSUS</h1>
+      <p></p>
+      <hr>
+      <p>Agente:
+        <strong>{{user.nome ? user.nome : user.username}}</strong>
+      </p>
+      <p>Paciente:
+        <strong>{{patient.nome}}</strong>
+      </p>
+      <p>Condição:
+        <ng-container *ngIf="test.fragilidade === 'F'">
+            <strong>Frágil</strong>
+          </ng-container>
+          <ng-container *ngIf="test.fragilidade === 'N'">
+            <strong>Não Frágil</strong>
+          </ng-container>
+          <ng-container *ngIf="test.fragilidade === 'P'">
+            <strong>Pré Frágil</strong>
+          </ng-container>
+      </p>
+      <br>
+      <p>
+        <strong>Q1)</strong> Nos últimos 12 meses (último ano) O(a) Sr(a) acha que perdeu peso sem fazer nenhuma dieta?
+        <br>Resposta:
+        <ng-container *ngIf="test.q1_perdeu_peso === 1">
+          <strong>Sim, {{test.q1_perdeu_peso_kg}} Kg</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q1_perdeu_peso === 2">
+          <strong>Não</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q1_perdeu_peso === 3">
+          <strong>Não Sabe</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q1_perdeu_peso === 4">
+          <strong>Não Respondeu</strong>
+        </ng-container>
+      </p>
+      <p>
+        <strong>Q2)</strong> O(a) Sr(a) acha que faz menos atividades físicas do que há 12 meses atrás (há um ano)?
+        <br>Resposta:
+        <ng-container *ngIf="test.q2_ativ_fisica === 1">
+          <strong>Sim</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q2_ativ_fisica === 2">
+          <strong>Não</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q2_ativ_fisica === 3">
+          <strong>Não Sabe</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q2_ativ_fisica === 4">
+          <strong>Não Respondeu</strong>
+        </ng-container>
+      </p>
+      <p>
+        <strong>Q3)</strong> Nos últimos 12 meses (último ano), o(a) Sr(a) acha que sua força diminuiu?
+        <br>Resposta:
+        <ng-container *ngIf="test.q3_red_forca === 1">
+          <strong>Sim</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q3_red_forca === 2">
+          <strong>Não</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q3_red_forca === 3">
+          <strong>Não Sabe</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q3_red_forca === 4">
+          <strong>Não Respondeu</strong>
+        </ng-container>
+      </p>
+      <p>
+        <strong>Q4)</strong> O(a) Sr(a) acha que hoje está caminhando mais devagar do que caminhava há 12 meses atrás (um ano)?
+        <br>Resposta:
+        <ng-container *ngIf="test.q4_red_caminhada === 1">
+          <strong>Sim</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q4_red_caminhada === 2">
+          <strong>Não</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q4_red_caminhada === 3">
+          <strong>Não Sabe</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q4_red_caminhada === 4">
+          <strong>Não Respondeu</strong>
+        </ng-container>
+      </p>
+      <p>
+        <strong>Q5)</strong> O(a) Sr(a) sentiu que teve que fazer algum esforço para dar conta de suas tarefas do dia-a-dia?
+        <br>Resposta:
+        <ng-container *ngIf="test.q5_fadiga === 1">
+          <strong>Nunca ou raramente</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q5_fadiga === 2">
+          <strong>Às vezes</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q5_fadiga === 3">
+          <strong>Frequentemente</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q5_fadiga === 4">
+          <strong>Sempre</strong>
+        </ng-container>
+      </p>
+      <p>
+        <strong>Q6)</strong> O(a) Sr(a) sentiu que não conseguiria levar adiante as suas tarefas?
+        <br>Resposta:
+        <ng-container *ngIf="test.q6_desanimo === 1">
+          <strong>Nunca ou raramente</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q6_desanimo === 2">
+          <strong>Às vezes</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q6_desanimo === 3">
+          <strong>Frequentemente</strong>
+        </ng-container>
+        <ng-container *ngIf="test.q6_desanimo === 4">
+          <strong>Sempre</strong>
+        </ng-container>
+      </p>
+      <font size="5">
+          <b>&nbsp;&nbsp;&nbsp;<u>Fatores a serem investigados</u></b><br>
+          <ol>
+            <li *ngFor="let fator of fatores"><i>&nbsp;&nbsp;&nbsp;{{fator}}</i></li>
+          </ol>
+      </font>
+    </div>
+    <!--<div style="float:left;width:15%">&nbsp</div>-->
+    <div align="center" class="one-col-grid flow-btn">
+      <button type="button" class="btn btn-primary btn-large" style="margin: 10px;" (click)="back()">Voltar</button>
+      <button type="button" class="btn btn-primary btn-large" style="margin: 10px;" (click)="createPDF()">Salvar PDF</button>
+      <div>
+      </div>
+    </div>
+  </section>
+</div>

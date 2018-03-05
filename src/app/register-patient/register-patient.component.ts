@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PatientService } from '@services';
-import { Patient } from '@models';
+import { PatientService, PostoService, SharedService } from '@services';
+import { Patient, Posto } from '@models';
 import * as moment from 'moment';
 
 @Component({
@@ -10,6 +10,10 @@ import * as moment from 'moment';
   styleUrls: ['./register-patient.component.scss']
 })
 export class RegisterPatientComponent implements OnInit {
+  public maskSUS = [/[0-9]/, /\d/, /\d/, '.', /[0-9]/, /\d/, /\d/, /\d/, '.', /[0-9]/, /\d/, /\d/, /\d/, '.',  /[0-9]/, /\d/, /\d/, /\d/ ];
+  public maskDate = [/[0-9]/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
+  public maskCEP = [/[0-9]/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+  public maskNro = [/[0-9]/, /\d/, /\d/, /\d/];
 
   public patient: Patient = {
     nome: '',
@@ -19,7 +23,7 @@ export class RegisterPatientComponent implements OnInit {
     end_rua: '',
     end_numero: null,
     cep: '',
-    posto: 1
+    posto: null
   };
 
   public successCreated = false;
@@ -27,25 +31,42 @@ export class RegisterPatientComponent implements OnInit {
   public errorMessage = '';
 
   public inputDate: string;
+
+  public postos: Posto[] = [];
   
   constructor(
     private router: Router,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private postoService: PostoService,
+    private sharedService: SharedService
   ) { }
 
   ngOnInit() {
+    this.sharedService.startBlockUI();
+    this.postoService.listPosto().subscribe(postos => {
+      this.postos = postos;
+      this.sharedService.stopBlockUI();
+    }, err => {
+      this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
+      this.sharedService.stopBlockUI();
+    });
   }
 
   public back() {
     this.router.navigate(['/']); 
   }
 
-  public submit() {
+  public submit(postoId: number) {
     this.errorMessage = '';
     this.successCreated = false;
-    console.log(moment(this.patient.data_nascimento, "DDMMYYYY"))
-    this.patient.data_nascimento = this.getInputDate();
 
+    this.patient.cep = this.patient.cep.replace(/\D+/g, '');
+    this.patient.end_numero = +(''+this.patient.end_numero).replace(/\D+/g, '');
+    this.patient.nro_sus = this.patient.nro_sus.replace(/\D+/g, '');
+
+    this.patient.data_nascimento = this.getInputDate();
+    this.patient.posto = postoId;
+    //return;
     if (!this.patient.nome) {
       this.errorMessage = 'Nome inválido';
       return;
@@ -62,7 +83,11 @@ export class RegisterPatientComponent implements OnInit {
       this.errorMessage = 'CEP inválido';
       return;
     }
-  
+    if (!this.patient.posto) {
+      this.errorMessage = 'É necessário selecionar um Posto';
+      return;
+    }
+    this.sharedService.startBlockUI();
     this.patientService.createPatient(this.patient).subscribe(res => {
       console.log(res);     
       this.successCreated = true;
@@ -75,10 +100,20 @@ export class RegisterPatientComponent implements OnInit {
         end_rua: '',
         end_numero: null,
         cep: '',
-        posto: 1
+        posto: null
       };
+      this.inputDate = '';
+      this.sharedService.stopBlockUI();
     }, err => {
-      this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
+      console.log(err);
+      if(Object.keys(err.error)[0] === 'data_nascimento') {
+        this.errorMessage = 'Data de nascimento inválida.';
+      } else if(Object.keys(err.error)[0] === 'nro_sus') {
+        this.errorMessage = 'Já existe um paciente cadastrado com esse número SUS.';
+      } else {
+        this.errorMessage = err.error[Object.keys(err.error)[0]][0];
+      }
+      this.sharedService.stopBlockUI();
     })
   }
 

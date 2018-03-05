@@ -1,4 +1,4 @@
-<div class="login">
+<div class="body">
   <div class="one-col-grid">
     <h1>Cadastrar Paciente</h1>
     <hr>
@@ -14,10 +14,10 @@
         <input type="text" name="nome" class="myInputTxt" placeholder="Nome" id="nome" required="" [(ngModel)]="patient.nome">
     </div>
     <div class="one-col-grid">
-        <input mask="000.0000.0000.0000" type="text" name="sus" id="sus" class="myInputTxt" placeholder="Número SUS" required="" maxlength="18" [(ngModel)]="patient.nro_sus">
+        <input [textMask]="{mask: maskSUS}"  type="text" name="sus" id="sus" class="myInputTxt" placeholder="Número SUS" required=""  [(ngModel)]="patient.nro_sus">
     </div>
     <div class="one-col-grid">
-            <input mask="00/00/0000" dropSpecialCharacters="false" name="nascimento" id="nascimento" class="myInputTxt" placeholder="Data de nascimento" required="" [(ngModel)]="inputDate">
+            <input [textMask]="{mask: maskDate}"   name="nascimento" id="nascimento" class="myInputTxt" placeholder="Data de nascimento" required="" [(ngModel)]="inputDate">
     </div>
     <div class="one-col-grid">
         <input type="text" name="end" id="end" class="myInputTxt" placeholder="Endereço" required="" [(ngModel)]="patient.end_rua">
@@ -26,15 +26,23 @@
         <input type="text" name="bairro" id="bairro" class="myInputTxt" placeholder="Bairro" required="" [(ngModel)]="patient.end_bairro">
     </div>
     <div class="one-col-grid">
-        <input mask="0000" type="text" name="numb" id="numb" class="myInputTxt" placeholder="Número" required="" maxlength="4"  id="nome" required="" [(ngModel)]="patient.end_numero">
+        <input [textMask]="{mask: maskNro}"  type="text" name="numb" id="numb" class="myInputTxt" placeholder="Número" required=""   id="nome" required="" [(ngModel)]="patient.end_numero">
     </div>
     <div class="one-col-grid">
-        <input mask="00000-000" type="text" name="cep" id="cep" class="myInputTxt" placeholder="CEP" required="" maxlength="9" [(ngModel)]="patient.cep">
+        <input [textMask]="{mask: maskCEP}" type="text" name="cep" id="cep" class="myInputTxt" placeholder="CEP" required=""  [(ngModel)]="patient.cep">
+    </div>
+    <div class="one-col-grid">
+        <select class="custom-select myInputTxt" #selectedCategory>
+            <ng-container *ngIf="!patient?.posto">
+                <option>Escolha um Posto</option>
+            </ng-container>
+            <option [value]="posto.id" *ngFor="let posto of postos">{{posto.nome}}</option>
+        </select>
     </div>
 
     <div align="center" class="one-col-grid flow-btn">
         <input type="button" class="btn btn-warning btn-large" style="margin: 10px" value="Voltar" (click)="back()">
-        <input type="submit" class="btn btn-primary btn-large" style="margin: 10px" value="Cadastrar" (click)="submit()">
+        <input type="submit" class="btn btn-primary btn-large" style="margin: 10px" value="Cadastrar" (click)="submit(selectedCategory.value)">
     </div>
   </section>
 </div>

@@ -4,28 +4,32 @@
       <h2 align="center">Questão 3</h2>
       <hr>
       <div align="center" style="padding-bottom: 14px">Nos últimos 12 meses (último ano), o(a) Sr(a) acha que sua força diminuiu?</div>
-      <label class="one-col-grid opt-question" id="label-Sim" onclick="radioClick('Sim', 1)" align="center">
-          <input type="radio" name="answer" id="radio-Sim" value="Sim"> Sim 
+      <label class="one-col-grid opt-question" id="label-Sim" (click)="yes()" [ngClass]="{ selected: Q3 === 1 ? true : false }"
+      align="center">
+      <input type="radio" name="answer" id="radio-Sim" value="Sim"> Sim
       </label>
-      <label class="one-col-grid opt-question" id="label-Nao" onclick="radioClick('Nao', 1)" align="center">
-          <input type="radio" name="answer" id="radio-Nao" value="Não"> Não
+      <label class="one-col-grid opt-question" id="label-Nao" (click)="no()" [ngClass]="{ selected: Q3 === 2 ? true : false }"
+      align="center">
+      <input type="radio" name="answer" id="radio-Nao" value="Não"> Não
       </label>
-      <label class="one-col-grid opt-question" id="label-Nao_sabe" onclick="radioClick('Nao_sabe', 1)" align="center">
-          <input type="radio" name="answer" id="radio-Nao_sabe" value="Não sabe"> Não sabe
+      <label class="one-col-grid opt-question" id="label-Nao_sabe" (click)="notKnow()" [ngClass]="{ selected: Q3 === 3 ? true : false }"
+      align="center">
+      <input type="radio" name="answer" id="radio-Nao_sabe" value="Não sabe"> Não sabe
       </label>
-      <label class="one-col-grid opt-question" id="label-Nao_respondeu" onclick="radioClick('Nao_respondeu', 1)" align="center">
-          <input type="radio" name="answer" id="radio-Nao_respondeu" value="Não respondeu"> Não respondeu
+      <label class="one-col-grid opt-question" id="label-Nao_respondeu" (click)="notAnswer()" [ngClass]="{ selected: Q3 === 4 ? true : false }"
+      align="center">
+      <input type="radio" name="answer" id="radio-Nao_respondeu" value="Não respondeu"> Não respondeu
       </label>
       <div align="center" class="one-col-grid flow-btn">
           <div class="three-col-grid">
-              <button type="button" class="btn btn-primary btn-large" onclick="previousQuestion(this, '3', 1)" value="2"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Anterior</button>
+              <button type="button" class="btn btn-primary btn-large" (click)="nextQuestion(2)" value="2"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> <i class="fa fa-caret-left"></i> Anterior</button>
           </div>
           <div class="three-col-grid">
-              <p id="agent-name">PPSUS - Avaliação Subjetiva<br><strong>Agente: lucinete gomes</strong></p><strong>
-              <a href="../paciente.php" style="font-size:30px;">Sair</a></strong>
+              <p id="agent-name">PPSUS - Avaliação Subjetiva</p><strong>
+              <a routerLink="/" style="font-size:30px;">Sair</a></strong>
           </div>
           <div class="three-col-grid">
-              <button type="button" class="btn btn-primary btn-large" onclick="nextQuestion(this, '3', 1)" value="4">Próxima <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button>
+              <button type="button" class="btn btn-primary btn-large" (click)="nextQuestion(4)" value="4">Próxima <i class="fa fa-caret-right"></i><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button>
           </div>
       </div>
   </form>

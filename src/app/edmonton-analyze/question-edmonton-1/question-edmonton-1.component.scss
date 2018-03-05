@@ -1,5 +1,8 @@
 /* verde: #4CAF50*/
-
+.image-field {
+    .image-input {
+    }
+}
 body {
     margin: 0;
     text-align: center;
@@ -8,6 +11,11 @@ body {
 
 * {
     box-sizing: border-box;
+}
+.selected {
+    background-color: #1f7554 !important;
+    color: #fff !important;
+    font-weight: bold !important;
 }
 
 .unselectable {

@@ -1,6 +1,7 @@
 /* verde: #4CAF50*/
 
 .body {
+    overflow-x: hidden;
     margin: 0;
     text-align: center;
     background-color: #e8f1f7;
@@ -8,6 +9,12 @@
 
 * {
     box-sizing: border-box;
+}
+
+.selected {
+    background-color: #205077 !important;
+    color: #fff !important;
+    font-weight: bold !important;
 }
 
 .unselectable {

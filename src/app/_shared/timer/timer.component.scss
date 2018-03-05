@@ -1,0 +1,12 @@
+.body-timer {
+    display: flex;
+    flex-direction: column;
+
+    .button-timer {
+        margin-top: 10px;
+        font-size: 25px
+    }
+    .timer {
+        text-align: center;
+    }
+}
