@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import {SimpleTimer} from 'ng2-simple-timer';
 
 @Component({
@@ -12,12 +12,19 @@ export class TimerComponent implements OnInit {
 	public timer0Id: string;
 	public timer0button = 'Iniciar';
   public min = 0;
+  
+  @Input() finalTime = 0;
 
+  @Output() timeEmitter: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(private st: SimpleTimer) { }
 
   ngOnInit() {
     this.st.newTimer('1sec',1);
+    if(this.finalTime != 0 && this.finalTime) {
+      this.sec = this.finalTime % 60;
+      this.min = (this.finalTime - this.sec) / 60;
+    }
   }
 
   delAllTimer() {
@@ -30,11 +37,13 @@ export class TimerComponent implements OnInit {
       this.st.unsubscribe(this.timer0Id);
       
 			this.timer0Id = undefined;
-			this.timer0button = 'Iniciar';
+      this.timer0button = 'Iniciar';
+      this.finalTime = this.min*60 + this.sec;
+      this.timeEmitter.emit(this.finalTime);
 		} else {
-			// Subscribe if timer Id is undefined
+      // Subscribe if timer Id is undefined
 			this.timer0Id = this.st.subscribe('1sec', () => this.timer0callback());
-			this.timer0button = 'Parar';
+      this.timer0button = 'Parar';
     }
   }
 

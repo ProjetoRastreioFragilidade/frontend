@@ -50,4 +50,10 @@ export class QuestionEdmonton9Component implements OnInit {
     this.time_emitter.emit(this.time);
   }
 
+  public getTimeofTimer(time: number) {
+    this.time = time;
+    this.time_emitter.emit(this.time);
+
+  }
+
 }
