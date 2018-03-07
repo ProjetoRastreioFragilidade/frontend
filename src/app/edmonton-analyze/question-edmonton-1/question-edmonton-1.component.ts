@@ -48,7 +48,7 @@ export class QuestionEdmonton1Component implements OnInit {
 
       this.sharedService.startBlockUI();
       this.uploadService.upload(formData).subscribe(image => {
-        this.image = image.image;
+        this.image = "http://ppsus.icmc.usp.br" + image.image_url;
         this.file_emitter.emit(this.image);
         this.sharedService.stopBlockUI();
       }, err => {
