@@ -42,7 +42,7 @@ export class TimerComponent implements OnInit {
       
 			this.timer0Id = undefined;
       this.timer0button = 'Iniciar';
-      this.finalTime = this.min*60 + this.sec + (+(this.mili/100).toFixed(2));
+      this.finalTime = this.min * 60 + this.sec + (+(this.mili/100).toFixed(2));
       this.timeEmitter.emit(this.finalTime);
 		} else {
       // Subscribe if timer Id is undefined
@@ -53,7 +53,7 @@ export class TimerComponent implements OnInit {
 
   public timer0callback() {
     this.mili++;
-    if(this.mili === 100) {
+    if (this.mili === 100) {
       this.mili = 0;
       this.sec++;
     }

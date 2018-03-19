@@ -8,4 +8,5 @@ export interface Patient {
     end_numero?: number;
     cep?: string;
     posto?: number;
+    sexo?: number;
 }
