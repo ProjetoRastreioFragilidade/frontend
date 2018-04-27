@@ -9,7 +9,7 @@ export class QuestionEdmonton3Component implements OnInit {
 
   @Input() Q3: number[] = [];
 
-  @Output() q3: EventEmitter<number[]>= new EventEmitter<number[]>();
+  @Output() q3: EventEmitter<number[]> = new EventEmitter<number[]>();
   @Output() next: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
@@ -30,7 +30,7 @@ export class QuestionEdmonton3Component implements OnInit {
     this.q3.emit(this.Q3);
   }
   public phone() {
-    if(this.find(2)) {
+    if (this.find(2)) {
       this.remove(2, this.Q3);
     } else {
       this.Q3.push(2);
@@ -38,7 +38,7 @@ export class QuestionEdmonton3Component implements OnInit {
     this.q3.emit(this.Q3);
   }
   public move() {
-    if(this.find(3)) {
+    if (this.find(3)) {
       this.remove(3, this.Q3);
     } else {
       this.Q3.push(3);
@@ -46,7 +46,7 @@ export class QuestionEdmonton3Component implements OnInit {
     this.q3.emit(this.Q3);
   }
   public cleanClothes() {
-    if(this.find(4)) {
+    if (this.find(4)) {
       this.remove(4, this.Q3);
     } else {
       this.Q3.push(4);
@@ -54,7 +54,7 @@ export class QuestionEdmonton3Component implements OnInit {
     this.q3.emit(this.Q3);
   }
   public cleanHouse() {
-    if(this.find(5)) {
+    if (this.find(5)) {
       this.remove(5, this.Q3);
     } else {
       this.Q3.push(5);
@@ -62,7 +62,7 @@ export class QuestionEdmonton3Component implements OnInit {
     this.q3.emit(this.Q3);
   }
   public manageMoney() {
-    if(this.find(6)) {
+    if (this.find(6)) {
       this.remove(6, this.Q3);
     } else {
       this.Q3.push(6);
@@ -70,7 +70,7 @@ export class QuestionEdmonton3Component implements OnInit {
     this.q3.emit(this.Q3);
   }
   public shopping() {
-    if(this.find(7)) {
+    if (this.find(7)) {
       this.remove(7, this.Q3);
     } else {
       this.Q3.push(7);
@@ -78,7 +78,7 @@ export class QuestionEdmonton3Component implements OnInit {
     this.q3.emit(this.Q3);
   }
   public remedy() {
-    if(this.find(8)) {
+    if (this.find(8)) {
       this.remove(8, this.Q3);
     } else {
       this.Q3.push(8);
@@ -91,7 +91,6 @@ export class QuestionEdmonton3Component implements OnInit {
     if (index > -1) {
       array.splice(index, 1);
     }
-    console.log(this.Q3);
   }
 
   public find(num: number): boolean {

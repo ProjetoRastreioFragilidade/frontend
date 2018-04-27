@@ -13,7 +13,7 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
 
   public question = 1;
   public patientId: number;
-  
+
   public edmonton: Edmonton = {};
   public errorMessage = '';
 
@@ -33,7 +33,7 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.patientId = +params['id'];
     });
-
+    this.edmonton.q3_ind_func = [];
     this.edmonton.data_inicio = moment().format('YYYY-MM-DD HH:mm');
   }
 
@@ -94,31 +94,31 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
   }
 
   public saveTest() {
-    if(!this.edmonton.q1_cognicao) {
+    if (!this.edmonton.q1_cognicao) {
       this.errorMessage = "Questão 1 não foi respondida.";
       return;
     }
-    if(this.edmonton.q1_cognicao && !this.edmonton.q1_foto_relogio) {
+    if (this.edmonton.q1_cognicao && !this.edmonton.q1_foto_relogio) {
       this.errorMessage = "Questão 1 não possui foto.";
       return;
     }
-    if(!this.edmonton.q2_estado_saude_A) {
+    if (!this.edmonton.q2_estado_saude_A) {
       this.errorMessage = "Questão 2a não foi respondida.";
       return;
     }
-    if(!this.edmonton.q2_estado_saude_B) {
+    if (!this.edmonton.q2_estado_saude_B) {
       this.errorMessage = "Questão 2b não foi respondida.";
       return;
     }
-    if(!this.edmonton.q4_sup_social) {
+    if (!this.edmonton.q4_sup_social) {
       this.errorMessage = "Questão 4 não foi respondida.";
       return;
     }
-    if(!this.edmonton.q5_medicamento_A) {
+    if (!this.edmonton.q5_medicamento_A) {
       this.errorMessage = "Questão 5a não foi respondida.";
       return;
     }
-    if(!this.edmonton.q5_medicamento_B) {
+    if (!this.edmonton.q5_medicamento_B) {
       this.errorMessage = "Questão 5b não foi respondida.";
       return;
     }
@@ -126,19 +126,19 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
       this.errorMessage = "Questão 6 não foi respondida.";
       return;
     }
-    if(!this.edmonton.q7_humor) {
+    if (!this.edmonton.q7_humor) {
       this.errorMessage = "Questão 7 não foi respondida.";
       return;
     }
-    if(!this.edmonton.q8_continencia) {
+    if (!this.edmonton.q8_continencia) {
       this.errorMessage = "Questão 8 não foi respondida.";
       return;
     }
-    if(!this.edmonton.q9_desemp_func) {
+    if (!this.edmonton.q9_desemp_func) {
       this.errorMessage = "Questão 9 não foi respondida.";
       return;
     }
-    if(this.edmonton.q9_desemp_func === 1 && !this.edmonton.q9_desemp_func_tempo) {
+    if (this.edmonton.q9_desemp_func === 1 && !this.edmonton.q9_desemp_func_tempo) {
       this.errorMessage = "Questão 9 não foi informado o peso exato";
       return;
     }
@@ -155,6 +155,6 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
       this.errorMessage = err.msg;
       console.log(err);
       this.sharedService.stopBlockUI();
-    })
+    });
   }
 }
