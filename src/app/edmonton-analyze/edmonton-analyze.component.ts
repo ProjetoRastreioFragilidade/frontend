@@ -13,7 +13,7 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
 
   public question = 1;
   public patientId: number;
-  
+
   public edmonton: Edmonton = {};
   public errorMessage = '';
 
@@ -33,7 +33,7 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.patientId = +params['id'];
     });
-
+    this.edmonton.q3_ind_func = [];
     this.edmonton.data_inicio = moment().format('YYYY-MM-DD HH:mm');
   }
 
@@ -142,7 +142,6 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
       this.errorMessage = "Questão 9 não foi informado o peso exato";
       return;
     }
-    console.log(this.edmonton);
     this.edmonton.paciente = this.patientId;
 
     this.sharedService.startBlockUI();
@@ -155,6 +154,6 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
       this.errorMessage = err.msg;
       console.log(err);
       this.sharedService.stopBlockUI();
-    })
+    });
   }
 }
