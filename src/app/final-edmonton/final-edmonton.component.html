@@ -8,19 +8,15 @@
         <p>Agente:
           <strong>{{user.nome ? user.nome : user.username}}</strong>
         </p>
+        <br>
         <p>Paciente:
           <strong>{{patient.nome}}</strong>
         </p>
         <p>Condição:
-          <ng-container *ngIf="test.fragilidade === 'F'">
-              <strong>Frágil</strong>
-            </ng-container>
-            <ng-container *ngIf="test.fragilidade === 'N'">
-              <strong>Não Frágil</strong>
-            </ng-container>
-            <ng-container *ngIf="test.fragilidade === 'P'">
-              <strong>Pré Frágil</strong>
-            </ng-container>
+          <strong>{{fragilidade}}</strong>
+        </p>
+        <p>Pontuação:
+            <strong>{{test.score}}</strong>
         </p>
         <br>
         <p>

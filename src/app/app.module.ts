@@ -50,7 +50,7 @@ import { TimerComponent } from './_shared/timer/timer.component';
 
 @NgModule({
   imports: [
-    BlockUIModule,
+    BlockUIModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,
