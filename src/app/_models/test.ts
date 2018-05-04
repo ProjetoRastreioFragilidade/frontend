@@ -46,4 +46,5 @@ export interface Edmonton {
     paciente?: number;
     usuario?: number;
     usuario_edit?: string;
+    score?: number;
 }
