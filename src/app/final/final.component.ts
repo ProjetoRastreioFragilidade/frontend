@@ -44,6 +44,8 @@ export class FinalComponent implements OnInit, OnDestroy {
   public patient: Patient = {};
   public user: User = {};
 
+  public simulation: Boolean;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private testService: TestService,
@@ -55,30 +57,47 @@ export class FinalComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.sub = this.activatedRoute.params.subscribe(params => {
-      this.testId = +params['id'];
-  });
-
-    this.sharedService.startBlockUI();
-    this.testService.findSubjetivaById(this.testId).subscribe(subjective => {
-      this.test = subjective;
-      const replaced = this.test.fatores.replace(/'/g, '"');
-      this.fatores = JSON.parse(replaced);
-      this.patientService.findById(this.test.paciente).subscribe(patient => this.patient = patient);
-      this.userService.getUserById(this.test.usuario).subscribe(user => this.user = user);
-      this.sharedService.stopBlockUI();
-    }, err => {
-      // TODO Ver se é assim que ele vai retornar o erro
-      this.errorMessage = err.msg;
-      console.log(err);
-      this.sharedService.stopBlockUI();
-    });
+    this.simulation = this.activatedRoute.snapshot.data['simulation'];
+    if (!this.simulation) {
+        this.sub = this.activatedRoute.params.subscribe(params => {
+          this.testId = +params['id'];
+        });
+        
+        this.sharedService.startBlockUI();
+      this.testService.findSubjetivaById(this.testId).subscribe(subjective => {
+        this.test = subjective;
+        const replaced = this.test.fatores.replace(/'/g, '"');
+        this.fatores = JSON.parse(replaced);
+        this.patientService.findById(this.test.paciente).subscribe(patient => this.patient = patient);
+        this.userService.getUserById(this.test.usuario).subscribe(user => this.user = user);
+        this.sharedService.stopBlockUI();
+      }, err => {
+        // TODO Ver se é assim que ele vai retornar o erro
+        this.errorMessage = err.msg;
+        console.log(err);
+        this.sharedService.stopBlockUI();
+      });
+    } else {
+      this.fatores = [
+        'Desempenho Cognitivo',
+        'Sintomas Depressivos',
+        'Atividades Avançadas de Vida Diária',
+        'Equilíbrio',
+        'Mobilidade'
+      ];
+    }
   }
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    if (!this.simulation) {
+      this.sub.unsubscribe();
+    }
   }
   public back() {
-    this.router.navigate(['/']); 
+    if (this.simulation) {
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/']); 
+    }
   }
 
   public createPDF() {

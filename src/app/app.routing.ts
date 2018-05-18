@@ -14,8 +14,8 @@ import { FinalEdmontonComponent } from 'app/final-edmonton/final-edmonton.compon
 
 const APP_ROUTES: Routes = [
     
-    { path: 'final/simulacao', component: FinalComponent},
-    { path: 'final/:id', component: FinalComponent, canActivate: [AuthGuard]},
+    { path: 'final/simulacao', component: FinalComponent, data: { simulation: true }},
+    { path: 'final/:id', component: FinalComponent, canActivate: [AuthGuard], data: { simulation: false }},
     { path: 'subjetiva/simulacao', component: SubjectiveAnalyzeComponent, data: { simulation: true }},
     { path: 'subjetiva/:id', component: SubjectiveAnalyzeComponent, canActivate: [AuthGuard], data: { simulation: false }},
 

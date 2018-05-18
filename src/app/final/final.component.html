@@ -5,12 +5,14 @@
       <h1 align="center">Avaliação Subjetiva - PPSUS</h1>
       <p></p>
       <hr>
-      <p>Agente:
-        <strong>{{user.nome ? user.nome : user.username}}</strong>
-      </p>
-      <p>Paciente:
-        <strong>{{patient.nome}}</strong>
-      </p>
+      <ng-container *ngIf="!simulation">
+        <p>Agente:
+          <strong>{{user.nome ? user.nome : user.username}}</strong>
+        </p>
+        <p>Paciente:
+          <strong>{{patient.nome}}</strong>
+        </p>
+      </ng-container>
       <p>Condição:
         <ng-container *ngIf="test.fragilidade === 'F'">
             <strong>Frágil</strong>
@@ -18,7 +20,7 @@
           <ng-container *ngIf="test.fragilidade === 'N'">
             <strong>Não Frágil</strong>
           </ng-container>
-          <ng-container *ngIf="test.fragilidade === 'P'">
+          <ng-container *ngIf="test.fragilidade === 'P' || simulation">
             <strong>Pré Frágil</strong>
           </ng-container>
       </p>
@@ -129,7 +131,7 @@
     <!--<div style="float:left;width:15%">&nbsp</div>-->
     <div align="center" class="one-col-grid flow-btn">
       <button type="button" class="btn btn-primary btn-large" style="margin: 10px;" (click)="back()">Voltar</button>
-      <button type="button" class="btn btn-primary btn-large" style="margin: 10px;" (click)="createPDF()">Salvar PDF</button>
+      <button type="button" class="btn btn-primary btn-large" style="margin: 10px;" (click)="createPDF()" *ngIf="!simulation">Salvar PDF</button>
       <div>
       </div>
     </div>
