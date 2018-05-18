@@ -43,8 +43,11 @@ export class LoginComponent implements OnInit {
     })
     
   }
-  public simulate() {
+  public simulateSub() {
     this.router.navigate(['/subjetiva/simulacao']);
+  }
+  public simulateEdm() {
+    this.router.navigate(['/edmonton/simulacao']);
   }
 
 }

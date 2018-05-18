@@ -5,15 +5,17 @@
         <h1 align="center">Avaliação Subjetiva - PPSUS</h1>
         <p></p>
         <hr>
-        <p>Agente:
-          <strong>{{user.nome ? user.nome : user.username}}</strong>
-        </p>
-        <br>
-        <p>Paciente:
-          <strong>{{patient.nome}}</strong>
-        </p>
+        <ng-container *ngIf="!simulation">
+          <p>Agente:
+            <strong>{{user.nome ? user.nome : user.username}}</strong>
+          </p>
+          <br>
+          <p>Paciente:
+            <strong>{{patient.nome}}</strong>
+          </p>
+        </ng-container>
         <p>Condição:
-          <strong>{{fragilidade}}</strong>
+          <strong>{{fragilidade ? fragilidade : 'Pré Frágil'}}</strong>
         </p>
         <p>Pontuação:
             <strong>{{test.score}}</strong>
@@ -160,7 +162,7 @@
       <!--<div style="float:left;width:15%">&nbsp</div>-->
       <div align="center" class="one-col-grid flow-btn">
         <button type="button" class="btn btn-primary btn-large" style="margin: 10px;" (click)="back()">Voltar</button>
-        <button type="button" class="btn btn-primary btn-large" style="margin: 10px;" (click)="createPDF()">Salvar PDF</button>
+        <button type="button" class="btn btn-primary btn-large" style="margin: 10px;" (click)="createPDF()" *ngIf="!simulation">Salvar PDF</button>
         <div>
         </div>
       </div>
