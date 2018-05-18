@@ -43,5 +43,8 @@ export class LoginComponent implements OnInit {
     })
     
   }
+  public simulate() {
+    this.router.navigate(['/subjetiva/simulacao']);
+  }
 
 }
