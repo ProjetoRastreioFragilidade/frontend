@@ -12,37 +12,36 @@
     right: 0; 
 }
 
-.one-col-grid {
-    width: 100%;
+html {
+    height: 100%; 
 }
 
-.myInputTxt {
-    width:70%;
-    height:69px;
-    font-size: 1.7em;
-    padding-left: 15px;
-    border-radius: 12px;
-    border: 1px solid #aaa;
-    margin-bottom: 12px;
+* {
+    box-sizing: border-box;
 }
-.btn-large {
-    padding: 16px 50px;
-    font-size: 1.3em;
-    text-align: center !important;
-    border-radius: 8px;
-}
+
+.one-col-grid {
+    width: 100%;
+    float: left;
+} 
 
 .two-col-grid {
     width: 50%;
     float: left;
 } 
 
-
 .three-col-grid {
     width: 33.33333% !important;
     float: left;
     text-align: middle;
-    border: 2px solid black;
+    /* border: 2px solid black; */
+} 
+
+.three-col-grid_two {
+    width: 66.66666% !important;
+    float: left;
+    text-align: middle;
+    /* border: 2px solid black; */
 } 
 
 .six-col-grid {
@@ -51,6 +50,12 @@
 } 
 
 
+.btn-large {
+    padding: 16px 50px;
+    font-size: 1.3em;
+    text-align: center !important;
+    border-radius: 8px;
+}
 
 .btn-sair {
     margin-top:15px;
@@ -69,6 +74,20 @@
     margin-bottom: 20px;
 }
 
+.myInputTxt {
+    width:70%;
+    height:69px;
+    font-size: 1.7em;
+    padding-left: 15px;
+    border-radius: 12px;
+    border: 1px solid #aaa;
+    margin-bottom: 12px;
+}
+
+.desc-confirma-cadastro {
+    font-size: 1.7em;
+    padding-top: 30px;
+}
 
 .busca-pct {
     width:70%;
@@ -162,3 +181,102 @@ caption {
 .pct_nome {
     font-size: 1.6em;
 }
+
+.logo {
+    width: 80%;
+}
+
+.logo-top {
+    width: 50%;
+}
+
+.txt-inicio {
+    margin: 10px;
+}
+
+.logo-div {
+    border: 4px solid black;
+}
+
+/* .div-logo-top {
+    border: 4px solid red;
+} */
+
+#logo-icmc {
+    margin-top: 20px;
+}
+
+
+#logo-fapesp {
+    margin-top: 26px;
+}
+
+@media screen and (min-width: 1650px) {
+    #logo-icmc {
+        margin-top: 40px;
+    }
+
+    #logo-fapesp {
+        margin-top: 50px;
+    }
+} 
+
+@media screen and (min-width: 1250px) and (max-width: 1650px) {
+    #logo-icmc {
+        margin-top: 30px;
+    }
+
+    #logo-fapesp {
+        margin-top: 40px;
+    }
+} 
+
+@media screen and (max-width: 800px) {
+    .logo-top {
+        width: 70%;
+    }
+
+    #logo-icmc {
+        margin-top: 20px;
+    }
+
+    #logo-fapesp {
+        margin-top: 26px;
+    }
+} 
+
+@media screen and (max-width: 640px) {
+    .logo-top {
+        width: 70%;
+    }
+
+    #logo-icmc {
+        margin-top: 15px;
+    }
+
+    #logo-fapesp {
+        margin-top: 22px;
+    }
+} 
+
+@media screen and (max-width: 440px) {
+    .logo-top {
+        width: 70%;
+    }
+
+    #logo-icmc {
+        margin-top: 12px;
+    }
+
+    #logo-fapesp {
+        margin-top: 16px;
+    }
+} 
+
+
+/* @media screen and (max-height: 650px) {
+    .logo-div {
+        height: 33.33333%;
+        border: 4px solid black;
+    }
+} */
