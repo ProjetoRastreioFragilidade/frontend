@@ -4,12 +4,14 @@
     <div align="center" style="padding-bottom: 14px">
         <form action="questao1.php" method="post" id="img_form" enctype="multipart/form-data">
             <!--div id="legenda_relogio">Clique na imagem abaixo para fotografar o relógio</div-->
-            <input type="file" accept="image/*" capture="camera" #file (change)="getFile($event)"/>
-            <br>
-            <img src="/assets/clock.png" height="150" width="150" *ngIf="!image; else uploadedImage">
-            <ng-template #uploadedImage>
-                <img [(src)]="image" height="150" width="150">
-            </ng-template>
+            <ng-container *ngIf="!simulation">
+                <input type="file" accept="image/*" capture="camera" #file (change)="getFile($event)"/>
+                <br>
+                <img src="/assets/clock.png" height="150" width="150" *ngIf="!image; else uploadedImage">
+                <ng-template #uploadedImage>
+                    <img [(src)]="image" height="150" width="150">
+                </ng-template>
+            </ng-container>
             <div id="legenda_questao">
                 Por favor, imagine que este circulo é um relógio. Eu gostaria que você colocasse os números nas posições corretas e que depois
                 incluisse os ponteiros de forma a indicar onze horas e dez minutos.

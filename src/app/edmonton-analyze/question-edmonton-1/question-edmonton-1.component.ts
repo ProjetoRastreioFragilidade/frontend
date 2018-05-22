@@ -9,6 +9,9 @@ import { UploadService, SharedService } from '@services';
 export class QuestionEdmonton1Component implements OnInit {
 
 
+
+  @Input() simulation = false;
+  
   @Input() Q1;
   @Input() image = '';
 
