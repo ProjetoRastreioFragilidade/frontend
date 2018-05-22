@@ -19,7 +19,9 @@ const APP_ROUTES: Routes = [
     { path: 'subjetiva/simulacao', component: SubjectiveAnalyzeComponent, data: { simulation: true }},
     { path: 'subjetiva/:id', component: SubjectiveAnalyzeComponent, canActivate: [AuthGuard], data: { simulation: false }},
 
+    { path: 'final-edmonton/simulacao', component: FinalEdmontonComponent, data: { simulation: true }},
     { path: 'final-edmonton/:id', component: FinalEdmontonComponent, canActivate: [AuthGuard]},
+    { path: 'edmonton/simulacao', component: EdmontonAnalyzeComponent, data: { simulation: true }},
     { path: 'edmonton/:id', component: EdmontonAnalyzeComponent, canActivate: [AuthGuard]},
 
     { path: 'registra-posto', component: RegisterHealthCenterComponent, canActivate: [AuthGuard]},
