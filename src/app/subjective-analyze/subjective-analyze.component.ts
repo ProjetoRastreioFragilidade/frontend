@@ -118,8 +118,71 @@ export class SubjectiveAnalyzeComponent implements OnInit, OnDestroy {
           this.sharedService.stopBlockUI();
         })
       } else {
+          this.subjective.score = 0;
+          if (this.subjective.q1_perdeu_peso === 1 && this.subjective.q1_perdeu_peso_kg >= 4.5) {
+            this.subjective.score++;
+          }
+          if (this.subjective.q2_ativ_fisica === 1) {
+            this.subjective.score++;
+          }
+          if (this.subjective.q3_red_forca === 1) {
+            this.subjective.score++;
+          }
+          if (this.subjective.q4_red_caminhada === 1) {
+            this.subjective.score++;
+          }
+          if (this.subjective.q5_fadiga > 2) {
+            this.subjective.score++;
+          }
+          if (this.subjective.q6_desanimo > 2) {
+            this.subjective.score++;
+          }
+
+          if (this.subjective.score == 0) {
+            this.subjective.fragilidade = 'N';
+          } else if (this.subjective.score < 3) {
+            this.subjective.fragilidade = 'P';
+          } else if (this.subjective.score >= 3) {
+            this.subjective.fragilidade = 'F';
+          }
         this.sharedService.stopBlockUI();
-        this.router.navigate(['/final/simulacao']);
+        this.router.navigate(['/final/simulacao', this.subjective]);
       }
   }
 }
+
+
+/*def getFragilidadeSubjetiva(data):
+	vet_answ = utils.getVetAnswer('subjetiva', data)
+	score = sum(vet_answ)
+	
+	# questão 5 e 6 juntas podem pontuar no máximo 1
+	if vet_answ[4] == 1 and vet_answ[5] == 1:
+		score -= 1
+
+	if score == 0:
+		return 'N', vet_answ
+	elif score < 3:
+		return 'P', vet_answ
+	else:
+		return 'F', vet_answ
+
+def getFragilidadeEdmonton(data):
+	vet_answ = utils.getVetAnswer('edmonton', data)
+	score = sum(vet_answ)
+	
+	# Não apresenta fragilidade
+	if score <= 4:
+		return 'N', vet_answ
+	# Aparentemente vulnerável
+	elif score <= 6:
+		return 'V', vet_answ
+	# Fragilidade leve
+	elif score <= 8:
+		return 'L', vet_answ
+	# Fragilidade moderada
+	elif score <= 10:
+		return 'M', vet_answ
+	# Fragilidade severa
+	else:
+		return 'S', vet_answ*/

@@ -45,6 +45,11 @@ export class FinalComponent implements OnInit, OnDestroy {
   public user: User = {};
 
   public simulation: Boolean;
+  public isLoading = true;
+
+  public simulationTest =  {
+    q1 : '',
+  };
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -56,15 +61,17 @@ export class FinalComponent implements OnInit, OnDestroy {
     //private pdfmake: PdfmakeService
   ) { }
 
+
   ngOnInit() {
+    
     this.simulation = this.activatedRoute.snapshot.data['simulation'];
     if (!this.simulation) {
+        this.sharedService.startBlockUI();
         this.sub = this.activatedRoute.params.subscribe(params => {
           this.testId = +params['id'];
         });
         
-        this.sharedService.startBlockUI();
-      this.testService.findSubjetivaById(this.testId).subscribe(subjective => {
+        this.testService.findSubjetivaById(this.testId).subscribe(subjective => {
         this.test = subjective;
         const replaced = this.test.fatores.replace(/'/g, '"');
         this.fatores = JSON.parse(replaced);
@@ -78,6 +85,10 @@ export class FinalComponent implements OnInit, OnDestroy {
         this.sharedService.stopBlockUI();
       });
     } else {
+      this.sharedService.startBlockUI();
+      this.activatedRoute.params.subscribe(params => {
+        this.test = params;
+      // this.test = this.activatedRoute.snapshot.params;
       this.fatores = [
         'Desempenho Cognitivo',
         'Sintomas Depressivos',
@@ -85,6 +96,22 @@ export class FinalComponent implements OnInit, OnDestroy {
         'Equilíbrio',
         'Mobilidade'
       ];
+      console.log(this.test);
+      this.isLoading = false;
+      this.sharedService.stopBlockUI();
+      console.log(this.simulationTest);
+      if(+this.test.q1_perdeu_peso === 1) {
+        this.simulationTest.q1 = 'Sim, ' + this.test.q1_perdeu_peso_kg + ' Kg';
+        console.log('show');
+        
+      } else if (this.test.q1_perdeu_peso === 2) { 
+        this.simulationTest.q1 = 'Não';
+      } else if (this.test.q1_perdeu_peso === 3) {
+        this.simulationTest.q1 = 'Não Sabe';
+      } else if (this.test.q1_perdeu_peso === 4) {
+        this.simulationTest.q1 = 'Não Respondeu';
+      }
+      });
     }
   }
   ngOnDestroy() {

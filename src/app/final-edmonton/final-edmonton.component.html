@@ -152,7 +152,7 @@
             <strong>(tempo exato: {{test.q9_desemp_func_tempo}})</strong>
           </p>
           <!-- por tempo exato q9_desemp_func_tempo -->
-        <font size="5">
+        <font size="5" *ngIf="simulation">
             <b>&nbsp;&nbsp;&nbsp;<u>Fatores a serem investigados</u></b><br>
             <ol>
               <li *ngFor="let fator of fatores"><i>&nbsp;&nbsp;&nbsp;{{fator}}</i></li>
