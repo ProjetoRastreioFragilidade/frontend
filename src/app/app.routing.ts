@@ -13,12 +13,20 @@ import { HomeComponent } from 'app/home/home.component';
 import { FinalEdmontonComponent } from 'app/final-edmonton/final-edmonton.component';
 
 const APP_ROUTES: Routes = [
+    
+    { path: 'final/simulacao', component: FinalComponent, data: { simulation: true }},
+    { path: 'final/:id', component: FinalComponent, canActivate: [AuthGuard], data: { simulation: false }},
+    { path: 'subjetiva/simulacao', component: SubjectiveAnalyzeComponent, data: { simulation: true }},
+    { path: 'subjetiva/:id', component: SubjectiveAnalyzeComponent, canActivate: [AuthGuard], data: { simulation: false }},
+
+    { path: 'final-edmonton/simulacao', component: FinalEdmontonComponent, data: { simulation: true }},
     { path: 'final-edmonton/:id', component: FinalEdmontonComponent, canActivate: [AuthGuard]},
-    { path: 'final/:id', component: FinalComponent, canActivate: [AuthGuard]},
-    { path: 'subjetiva/:id', component: SubjectiveAnalyzeComponent, canActivate: [AuthGuard]},
+    { path: 'edmonton/simulacao', component: EdmontonAnalyzeComponent, data: { simulation: true }},
     { path: 'edmonton/:id', component: EdmontonAnalyzeComponent, canActivate: [AuthGuard]},
+
     { path: 'registra-posto', component: RegisterHealthCenterComponent, canActivate: [AuthGuard]},
     { path: 'registra-paciente', component: RegisterPatientComponent, canActivate: [AuthGuard]},
+    
     { path: 'login', component: LoginComponent },
     { path: '', component: HomeComponent, canActivate: [AuthGuard]},
 ];

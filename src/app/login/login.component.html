@@ -14,9 +14,42 @@
 
 <div class="body">
   <div class="one-col-grid">
-    <h1>PPSUS</h1>
-    <hr>
-  </div>
+    <div class="one-col-grid" style="background-color: #ddd; border-bottom:2px solid #BABABA;">
+            <div class="three-col-grid" align="center">
+                <img src="/assets/logo_fapesp.png" class="logo-top" id="logo-fapesp">
+            </div>
+            <div class="three-col-grid">
+                <img src="/assets/logo_icmc.png" class="logo-top" id="logo-icmc">
+            </div>
+            <div class="three-col-grid">
+                <img src="/assets/logo_geronto.png" class="logo-top">
+            </div>
+    </div>
+    <div class="one-col-grid">
+            <h1>Projeto de pesquisa PPSUS/FAPESP</h1>
+            <hr>
+        <div align="left" class="txt-inicio" style="margin-left: 15px; margin-right: 15px; text-align: justify;">
+                Projeto de pesquisa PPSUS/FAPESP: "Ferramenta de monitoramento de níveis de fragilidade em idosos atendidos na atenção básica de saúde: avaliação da sua efetividade e eficiência"<br>
+        </div>
+        <div align="left" class="txt-inicio" style="margin-left: 15px; margin-right: 15px; text-align: justify;">
+            Esse site hospeda um sistema para classificação da fragilidade em idosos, a ser utilizado por equipes de saúde no monitoramento dos níveis de fragilidade de idosos de forma a colaborar na tomada de decisões.
+        </div>
+        <div align="left" class="txt-inicio" style="margin-left: 15px; margin-right: 15px; text-align: justify;">
+                A ferramenta esta em fase de desenvolvimento e não deve ser usada fora
+                do contexto do projeto. Os pesquisadores não se responsabilizam pelo uso desse sistema fora do contexto do projeto.
+        </div>
+        <div class="one-col-grid" style="margin-bottom: 20px">
+                <strong>
+                        Departamento de Gerontologia - UFSCar<br>
+                        Instituto de Ciências Matemáticas e de Computação - USP
+                </strong>
+        </div>
+        <div class="one-col-grid" >
+
+        </div>
+    </div> 
+    
+</div>
   <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
     {{errorMessage}}
   </div>
@@ -26,3 +59,12 @@
     <button type="submit" class="btn btn-primary btn-large" style="margin: 10px" (click)="login()">Entrar</button>
   <div>
 </div>
+
+<div class="card w-75">
+  <div class="card-body">
+    <h5 class="card-title">Simulação</h5>
+    <p class="card-text">Caso não tenha acesso ao sistema é possível fazer uma simulação das avaliações disponíveis clicando nos botões abaixo:</p>
+      <button type="button" class="btn btn-primary btn-lg" (click)="simulateSub()">Simulação Subjetiva</button>
+      <button type="button" class="btn btn-success btn-lg" (click)="simulateEdm()">Simulação Edmonton</button>
+    </div>
+  </div>

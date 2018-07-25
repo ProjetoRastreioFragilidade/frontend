@@ -21,6 +21,7 @@ export interface Subjective {
     paciente?: number;
     usuario?: number;
     usuario_edit?: string;
+    score?: number;
 }
 
 export interface Edmonton {
@@ -46,4 +47,5 @@ export interface Edmonton {
     paciente?: number;
     usuario?: number;
     usuario_edit?: string;
+    score?: number;
 }

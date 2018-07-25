@@ -9,7 +9,7 @@
       </label>
       <ng-container *ngIf="Q1 === 1 || question_kg">
         <label class="one-col-grid" id="q1kg-label" style="padding-top: 14px;" align="center">
-          <input type="text" [textMask]="{mask: mask}" placeholder="Quantos Kg?" id="q1kg" name="q1kg" style="text-align:center" [(ngModel)]="KG" >
+          <input type="number" min="0" step="0.01"  placeholder="Quantos Kg?" id="q1kg" name="q1kg" style="text-align:center" [(ngModel)]="KG" >
         </label>
       </ng-container>
       <label class="one-col-grid opt-question" id="label-Nao" (click)="no()" [ngClass]="{ selected: Q1 === 2 ? true : false }"

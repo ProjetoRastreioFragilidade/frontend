@@ -23,7 +23,8 @@ export class RegisterPatientComponent implements OnInit {
     end_rua: '',
     end_numero: null,
     cep: '',
-    posto: null
+    posto: null,
+    sexo: null
   };
 
   public successCreated = false;
@@ -56,19 +57,24 @@ export class RegisterPatientComponent implements OnInit {
     this.router.navigate(['/']); 
   }
 
-  public submit(postoId: number) {
+  public submit(postoId: number, sexo: string) {
     this.errorMessage = '';
     this.successCreated = false;
 
     this.patient.cep = this.patient.cep.replace(/\D+/g, '');
-    this.patient.end_numero = +(''+this.patient.end_numero).replace(/\D+/g, '');
+    this.patient.end_numero = +('' + this.patient.end_numero).replace(/\D+/g, '');
     this.patient.nro_sus = this.patient.nro_sus.replace(/\D+/g, '');
 
     this.patient.data_nascimento = this.getInputDate();
     this.patient.posto = postoId;
-    //return;
+    this.patient.sexo = parseInt(sexo, 10);
+    // return;
     if (!this.patient.nome) {
       this.errorMessage = 'Nome inválido';
+      return;
+    }
+    if (this.patient.sexo !== 1 && this.patient.sexo !== 0) {
+      this.errorMessage = 'Sexo inválido';
       return;
     }
     if (!this.patient.nro_sus || this.patient.nro_sus.length < 15) {
@@ -89,7 +95,7 @@ export class RegisterPatientComponent implements OnInit {
     }
     this.sharedService.startBlockUI();
     this.patientService.createPatient(this.patient).subscribe(res => {
-      console.log(res);     
+      console.log(res);
       this.successCreated = true;
       this.nomePatient = this.patient.nome;
       this.patient = {

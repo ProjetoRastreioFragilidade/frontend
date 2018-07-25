@@ -21,6 +21,8 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
 
   public q3_array: number[] = [];
 
+  public simulation: boolean;
+
   constructor(
     private testService: TestService,
     private router: Router,
@@ -30,15 +32,20 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.sub = this.activatedRoute.params.subscribe(params => {
-      this.patientId = +params['id'];
-    });
-    this.edmonton.q3_ind_func = [];
-    this.edmonton.data_inicio = moment().format('YYYY-MM-DD HH:mm');
+    this.simulation = this.activatedRoute.snapshot.data['simulation'];
+    if (!this.simulation) {
+      this.sub = this.activatedRoute.params.subscribe(params => {
+        this.patientId = +params['id'];
+      });
+      this.edmonton.q3_ind_func = [];
+      this.edmonton.data_inicio = moment().format('YYYY-MM-DD HH:mm');
+    }
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    if (!this.simulation) {
+      this.sub.unsubscribe();
+    }
   }
 
   public goTo(question: number) {
@@ -98,9 +105,11 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
       this.errorMessage = "Questão 1 não foi respondida.";
       return;
     }
-    if (this.edmonton.q1_cognicao && !this.edmonton.q1_foto_relogio) {
-      this.errorMessage = "Questão 1 não possui foto.";
-      return;
+    if (!this.simulation) {
+      if(this.edmonton.q1_cognicao && !this.edmonton.q1_foto_relogio) {
+        this.errorMessage = "Questão 1 não possui foto.";
+        return;
+      }
     }
     if (!this.edmonton.q2_estado_saude_A) {
       this.errorMessage = "Questão 2a não foi respondida.";
@@ -142,19 +151,22 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
       this.errorMessage = "Questão 9 não foi informado o peso exato";
       return;
     }
-    console.log(this.edmonton);
     this.edmonton.paciente = this.patientId;
 
-    this.sharedService.startBlockUI();
-    this.testService.edmonton(this.edmonton)
-    .subscribe(edmonton => {
-      this.router.navigate(['/final-edmonton', edmonton.id]);
-      this.sharedService.stopBlockUI();
-    }, err => {
-      // TODO Ver se é assim que ele vai retornar o erro
-      this.errorMessage = err.msg;
-      console.log(err);
-      this.sharedService.stopBlockUI();
-    });
+    if (!this.simulation) {
+      this.sharedService.startBlockUI();
+      this.testService.edmonton(this.edmonton)
+      .subscribe(edmonton => {
+        this.router.navigate(['/final-edmonton', edmonton.id]);
+        this.sharedService.stopBlockUI();
+      }, err => {
+        // TODO Ver se é assim que ele vai retornar o erro
+        this.errorMessage = err.msg;
+        console.log(err);
+        this.sharedService.stopBlockUI();
+      });
+    } else {
+      this.router.navigate(['/final-edmonton/simulacao']);
+    }
   }
 }

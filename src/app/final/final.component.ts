@@ -44,6 +44,13 @@ export class FinalComponent implements OnInit, OnDestroy {
   public patient: Patient = {};
   public user: User = {};
 
+  public simulation: Boolean;
+  public isLoading = true;
+
+  public simulationTest =  {
+    q1 : '',
+  };
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private testService: TestService,
@@ -54,31 +61,70 @@ export class FinalComponent implements OnInit, OnDestroy {
     //private pdfmake: PdfmakeService
   ) { }
 
-  ngOnInit() {
-    this.sub = this.activatedRoute.params.subscribe(params => {
-      this.testId = +params['id'];
-  });
 
-    this.sharedService.startBlockUI();
-    this.testService.findSubjetivaById(this.testId).subscribe(subjective => {
-      this.test = subjective;
-      const replaced = this.test.fatores.replace(/'/g, '"');
-      this.fatores = JSON.parse(replaced);
-      this.patientService.findById(this.test.paciente).subscribe(patient => this.patient = patient);
-      this.userService.getUserById(this.test.usuario).subscribe(user => this.user = user);
+  ngOnInit() {
+    
+    this.simulation = this.activatedRoute.snapshot.data['simulation'];
+    if (!this.simulation) {
+        this.sharedService.startBlockUI();
+        this.sub = this.activatedRoute.params.subscribe(params => {
+          this.testId = +params['id'];
+        });
+        
+        this.testService.findSubjetivaById(this.testId).subscribe(subjective => {
+        this.test = subjective;
+        const replaced = this.test.fatores.replace(/'/g, '"');
+        this.fatores = JSON.parse(replaced);
+        this.patientService.findById(this.test.paciente).subscribe(patient => this.patient = patient);
+        this.userService.getUserById(this.test.usuario).subscribe(user => this.user = user);
+        this.sharedService.stopBlockUI();
+      }, err => {
+        // TODO Ver se é assim que ele vai retornar o erro
+        this.errorMessage = err.msg;
+        console.log(err);
+        this.sharedService.stopBlockUI();
+      });
+    } else {
+      this.sharedService.startBlockUI();
+      this.activatedRoute.params.subscribe(params => {
+        this.test = params;
+      // this.test = this.activatedRoute.snapshot.params;
+      this.fatores = [
+        'Desempenho Cognitivo',
+        'Sintomas Depressivos',
+        'Atividades Avançadas de Vida Diária',
+        'Equilíbrio',
+        'Mobilidade'
+      ];
+      console.log(this.test);
+      this.isLoading = false;
       this.sharedService.stopBlockUI();
-    }, err => {
-      // TODO Ver se é assim que ele vai retornar o erro
-      this.errorMessage = err.msg;
-      console.log(err);
-      this.sharedService.stopBlockUI();
-    });
+      console.log(this.simulationTest);
+      if(+this.test.q1_perdeu_peso === 1) {
+        this.simulationTest.q1 = 'Sim, ' + this.test.q1_perdeu_peso_kg + ' Kg';
+        console.log('show');
+        
+      } else if (this.test.q1_perdeu_peso === 2) { 
+        this.simulationTest.q1 = 'Não';
+      } else if (this.test.q1_perdeu_peso === 3) {
+        this.simulationTest.q1 = 'Não Sabe';
+      } else if (this.test.q1_perdeu_peso === 4) {
+        this.simulationTest.q1 = 'Não Respondeu';
+      }
+      });
+    }
   }
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    if (!this.simulation) {
+      this.sub.unsubscribe();
+    }
   }
   public back() {
-    this.router.navigate(['/']); 
+    if (this.simulation) {
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/']); 
+    }
   }
 
   public createPDF() {

@@ -14,6 +14,13 @@
         <input type="text" name="nome" class="myInputTxt" placeholder="Nome" id="nome" required="" [(ngModel)]="patient.nome">
     </div>
     <div class="one-col-grid">
+        <select class="custom-select myInputTxt" #selectedGender>
+            <option [value]="'3'" selected>Escolha um sexo</option>
+            <option [value]="0">Masculino</option>
+            <option [value]="1">Feminino</option>
+        </select>
+    </div>
+    <div class="one-col-grid">
         <input [textMask]="{mask: maskSUS}"  type="text" name="sus" id="sus" class="myInputTxt" placeholder="Número SUS" required=""  [(ngModel)]="patient.nro_sus">
     </div>
     <div class="one-col-grid">
@@ -34,7 +41,7 @@
     <div class="one-col-grid">
         <select class="custom-select myInputTxt" #selectedCategory>
             <ng-container *ngIf="!patient?.posto">
-                <option>Escolha um Posto</option>
+                <option selected disabled>Escolha um Posto</option>
             </ng-container>
             <option [value]="posto.id" *ngFor="let posto of postos">{{posto.nome}}</option>
         </select>
@@ -42,7 +49,7 @@
 
     <div align="center" class="one-col-grid flow-btn">
         <input type="button" class="btn btn-warning btn-large" style="margin: 10px" value="Voltar" (click)="back()">
-        <input type="submit" class="btn btn-primary btn-large" style="margin: 10px" value="Cadastrar" (click)="submit(selectedCategory.value)">
+        <input type="submit" class="btn btn-primary btn-large" style="margin: 10px" value="Cadastrar" (click)="submit(selectedCategory.value, selectedGender.value)">
     </div>
   </section>
 </div>
