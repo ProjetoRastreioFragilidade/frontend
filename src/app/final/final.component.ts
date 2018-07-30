@@ -96,14 +96,10 @@ export class FinalComponent implements OnInit, OnDestroy {
         'Equilíbrio',
         'Mobilidade'
       ];
-      console.log(this.test);
       this.isLoading = false;
       this.sharedService.stopBlockUI();
-      console.log(this.simulationTest);
       if(+this.test.q1_perdeu_peso === 1) {
         this.simulationTest.q1 = 'Sim, ' + this.test.q1_perdeu_peso_kg + ' Kg';
-        console.log('show');
-        
       } else if (this.test.q1_perdeu_peso === 2) { 
         this.simulationTest.q1 = 'Não';
       } else if (this.test.q1_perdeu_peso === 3) {

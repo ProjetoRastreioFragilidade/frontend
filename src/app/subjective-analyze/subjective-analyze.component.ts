@@ -28,8 +28,6 @@ export class SubjectiveAnalyzeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    console.log(this.activatedRoute.snapshot.data['simulation']);
-    
     if (!this.activatedRoute.snapshot.data['simulation']) {
       this.sub = this.activatedRoute.params.subscribe(params => {
         this.patientId = +params['id'];

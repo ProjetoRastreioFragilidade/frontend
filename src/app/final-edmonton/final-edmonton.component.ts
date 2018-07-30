@@ -57,6 +57,9 @@ export class FinalEdmontonComponent implements OnInit {
   public fragilidade;
 
   public simulation: boolean;
+
+  public splitedQ3: string[];
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private testService: TestService,
@@ -80,19 +83,6 @@ export class FinalEdmontonComponent implements OnInit {
         const replaced = this.test.fatores.replace(/'/g, '"');
         this.fatores = JSON.parse(replaced);
 
-        if (this.test.fragilidade === 'N') {
-          this.fragilidade = 'Não apresenta fragilidade';
-        } else if (this.test.fragilidade === 'V') {
-          this.fragilidade = 'Aparentemente vulnerável';
-        } else if (this.test.fragilidade === 'L') {
-          this.fragilidade = 'Fragilidade leve';
-        } else if (this.test.fragilidade === 'M') {
-          this.fragilidade = 'Fragilidade moderada';
-        } else if (this.test.fragilidade === 'S') {
-          this.fragilidade = 'Fragilidade severa';
-        } else {
-          this.fragilidade = 'Inconclusivo';
-        }
         this.patientService.findById(this.test.paciente).subscribe(patient => this.patient = patient);
         this.userService.getUserById(this.test.usuario).subscribe(user => this.user = user);
         this.sharedService.stopBlockUI();
@@ -102,6 +92,34 @@ export class FinalEdmontonComponent implements OnInit {
         console.log(err);
         this.sharedService.stopBlockUI();
       });
+    } else {
+      this.sharedService.startBlockUI();
+      this.activatedRoute.params.subscribe(params => {
+        this.test = params;
+        this.splitedQ3 = this.test.q3_ind_func.split(',')
+        
+      this.fatores = [
+        'Desempenho Cognitivo',
+        'Sintomas Depressivos',
+        'Atividades Avançadas de Vida Diária',
+        'Equilíbrio',
+        'Mobilidade'
+      ];
+      this.sharedService.stopBlockUI();
+      });
+    }
+    if (this.test.fragilidade === 'N') {
+      this.fragilidade = 'Não apresenta fragilidade';
+    } else if (this.test.fragilidade === 'V') {
+      this.fragilidade = 'Aparentemente vulnerável';
+    } else if (this.test.fragilidade === 'L') {
+      this.fragilidade = 'Fragilidade leve';
+    } else if (this.test.fragilidade === 'M') {
+      this.fragilidade = 'Fragilidade moderada';
+    } else if (this.test.fragilidade === 'S') {
+      this.fragilidade = 'Fragilidade severa';
+    } else {
+      this.fragilidade = 'Inconclusivo';
     }
   }
 
