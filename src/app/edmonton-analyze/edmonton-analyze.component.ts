@@ -166,7 +166,47 @@ export class EdmontonAnalyzeComponent implements OnInit, OnDestroy {
         this.sharedService.stopBlockUI();
       });
     } else {
-      this.router.navigate(['/final-edmonton/simulacao']);
+      this.edmonton.score += this.edmonton.q1_cognicao - 1;
+      this.edmonton.score += this.edmonton.q2_estado_saude_A - 1;
+      if (this.edmonton.q2_estado_saude_B >= 4) {
+        this.edmonton.score += this.edmonton.q2_estado_saude_B - 3;
+      }
+      if (this.edmonton.q3_ind_func.length >= 5) {
+        this.edmonton.score +=2;
+      } else if (this.edmonton.q3_ind_func.length >= 2) {
+        this.edmonton.score++;
+      }
+      this.edmonton.score = this.edmonton.q4_sup_social - 1;
+      if (this.edmonton.q5_medicamento_A == 1) {
+        this.edmonton.score++;
+      }
+      if (this.edmonton.q5_medicamento_B == 1) {
+        this.edmonton.score++;
+      }      
+      if (this.edmonton.q6_nutricao == 1) {
+        this.edmonton.score++;
+      }
+      if (this.edmonton.q7_humor == 1) {
+        this.edmonton.score++;
+      }
+      if (this.edmonton.q8_continencia == 1) {
+        this.edmonton.score++;
+      }
+      this.edmonton.score += this.edmonton.q9_desemp_func - 1;
+      if (this.edmonton.score <= 4) {
+        this.edmonton.fragilidade = 'N';
+      } else if (this.edmonton.score <= 6) {
+        this.edmonton.fragilidade = 'V';
+      } else if (this.edmonton.score <= 8) {
+        this.edmonton.fragilidade = 'L';
+      } else if (this.edmonton.score <= 10) {
+        this.edmonton.fragilidade = 'M';
+      } else if (this.edmonton.score > 10 ) {
+        this.edmonton.fragilidade = 'S';
+      } else {
+        this.edmonton.fragilidade = 'LUL';
+      }
+      this.router.navigate(['/final-edmonton/simulacao', this.edmonton]);
     }
   }
 }

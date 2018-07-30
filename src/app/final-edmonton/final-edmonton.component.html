@@ -24,140 +24,148 @@
         <p>
           <strong>Q1)</strong>Por favor, imagine que este circulo é um relógio. Eu gostaria que você colocasse os números nas posições corretas e que depois incluisse os ponteiros de forma a indicar onze horas e dez minutos.
           <br>Resposta:
-          <ng-container *ngIf="test.q1_cognicao === 1">
+          <ng-container *ngIf="test.q1_cognicao === 1 || test.q1_cognicao === '1'">
             <strong>Aprovado</strong>
           </ng-container>
-          <ng-container *ngIf="test.q1_cognicao === 2">
+          <ng-container *ngIf="test.q1_cognicao === 2 || test.q1_cognicao === '2'">
             <strong>Reprovado com error mínimos</strong>
           </ng-container>
-          <ng-container *ngIf="test.q1_cognicao === 3">
+          <ng-container *ngIf="test.q1_cognicao === 3 || test.q1_cognicao === '3'">
             <strong>Reprovado com erros significantes</strong>
           </ng-container>
         </p>
         <br>
-        <img [src]="test.q1_foto_relogio" height="300" width="400">
+        <img *ngIf="!simulation" [src]="test.q1_foto_relogio" height="300" width="400">
         <p>
           <strong>Q2a)</strong> Nos últimos 12 meses, quantas vezes você foi internado(a)?
           <br>Resposta:
-          <ng-container *ngIf="test.q2_estado_saude_A === 1">
+          <ng-container *ngIf="test.q2_estado_saude_A === 1 || test.q2_estado_saude_A === '1'">
             <strong>0</strong>
           </ng-container>
-          <ng-container *ngIf="test.q2_estado_saude_A === 2">
+          <ng-container *ngIf="test.q2_estado_saude_A === 2 || test.q2_estado_saude_A === '2'">
             <strong>1 a 3</strong>
           </ng-container>
-          <ng-container *ngIf="test.q2_estado_saude_A === 3">
+          <ng-container *ngIf="test.q2_estado_saude_A === 3 || test.q2_estado_saude_A === '3'">
             <strong>3+</strong>
           </ng-container>
         </p>
         <p>
           <strong>Q2b)</strong> De modo geral, como você descreveria sua saúde?
           <br>Resposta:
-          <ng-container *ngIf="test.q2_estado_saude_B === 1">
+          <ng-container *ngIf="test.q2_estado_saude_B === 1 || test.q2_estado_saude_B === '1'">
             <strong>Excelente</strong>
           </ng-container>
-          <ng-container *ngIf="test.q2_estado_saude_B === 2">
+          <ng-container *ngIf="test.q2_estado_saude_B === 2 || test.q2_estado_saude_B === '2'">
             <strong>Muito boa</strong>
           </ng-container>
-          <ng-container *ngIf="test.q2_estado_saude_B === 3">
+          <ng-container *ngIf="test.q2_estado_saude_B === 3 || test.q2_estado_saude_B === '3'">
             <strong>Boa</strong>
           </ng-container>
-          <ng-container *ngIf="test.q2_estado_saude_B === 4">
+          <ng-container *ngIf="test.q2_estado_saude_B === 4 || test.q2_estado_saude_B === '4'">
             <strong>Razoável</strong>
           </ng-container>
-          <ng-container *ngIf="test.q2_estado_saude_B === 5">
+          <ng-container *ngIf="test.q2_estado_saude_B === 5 || test.q2_estado_saude_B === '5'">
               <strong>Ruim</strong>
           </ng-container>
         </p>
-        <p>
+        <p *ngIf="!simulation;else showSplitedQ3">
           <strong>Q3)</strong>Quantas das seguintes atividades o Sr(a) precisa de ajuda?
           <br>Resposta: <strong>{{test.q3_ind_func?.length}}</strong>
           <br>
           <strong><ng-container *ngFor="let activity of test.q3_ind_func">{{activities[activity - 1]}}<br></ng-container></strong>
         </p>
+        <ng-template #showSplitedQ3>
+          <p>
+            <strong>Q3)</strong>Quantas das seguintes atividades o Sr(a) precisa de ajuda?
+            <br>Resposta: <strong>{{splitedQ3.length}}</strong>
+            <br>
+            <strong><ng-container *ngFor="let activity of splitedQ3">{{activities[(+activity) - 1]}}<br></ng-container></strong>
+          </p>
+        </ng-template>
         <p>
           <strong>Q4)</strong>Quando você precisa de ajuda, você pode contar com a ajuda de alguém que atenda as suas necessidades?
           <br>Resposta:
-          <ng-container *ngIf="test.q4_sup_social === 1">
+          <ng-container *ngIf="test.q4_sup_social === 1 || test.q4_sup_social === '1'">
             <strong>Sempre</strong>
           </ng-container>
-          <ng-container *ngIf="test.q4_sup_social === 2">
+          <ng-container *ngIf="test.q4_sup_social === 2 || test.q4_sup_social === '2'">
             <strong>As vezes</strong>
           </ng-container>
-          <ng-container *ngIf="test.q4_sup_social === 3">
+          <ng-container *ngIf="test.q4_sup_social === 3 || test.q4_sup_social === '3'">
             <strong>Nunca</strong>
           </ng-container>
         </p>
         <p>
           <strong>Q5a)</strong> Normalmente, você usa cinco ou mais remédios diferentes e receitados (pelo médico)?
           <br>Resposta:
-          <ng-container *ngIf="test.q5_medicamento_A === 1">
+          <ng-container *ngIf="test.q5_medicamento_A === 1 || test.q5_medicamento_A === '1'">
             <strong>Sim</strong>
           </ng-container>
-          <ng-container *ngIf="test.q5_medicamento_A === 2">
+          <ng-container *ngIf="test.q5_medicamento_A === 2 || test.q5_medicamento_A === '2'">
             <strong>Não</strong>
           </ng-container>
         </p>
         <p>
           <strong>Q5b)</strong> Algumas vezes você esquece de tomar seus remédios?
           <br>Resposta:
-          <ng-container *ngIf="test.q5_medicamento_B === 1">
+          <ng-container *ngIf="test.q5_medicamento_B === 1 || test.q5_medicamento_B === '1'">
             <strong>Sim</strong>
           </ng-container>
-          <ng-container *ngIf="test.q5_medicamento_B === 2">
+          <ng-container *ngIf="test.q5_medicamento_B === 2 || test.q5_medicamento_B === '2'">
             <strong>Não</strong>
           </ng-container>
         </p>
         <p>
           <strong>Q6)</strong> Recentemente, você tem perdido peso de forma que suas roupas estão mais folgadas?
           <br>Resposta:
-          <ng-container *ngIf="test.q6_nutricao === 1">
+          <ng-container *ngIf="test.q6_nutricao === 1 || test.q6_nutricao === '1'">
             <strong>Sim</strong>
           </ng-container>
-          <ng-container *ngIf="test.q6_nutricao === 2">
+          <ng-container *ngIf="test.q6_nutricao === 2 || test.q6_nutricao === '2'">
             <strong>Não</strong>
           </ng-container>
         </p>
         <p>
           <strong>Q7)</strong> Você se sente triste ou deprimido(a) com frequência?
           <br>Resposta:
-          <ng-container *ngIf="test.q7_humor === 1">
+          <ng-container *ngIf="test.q7_humor === 1 || test.q7_humor === '1'">
             <strong>Sim</strong>
           </ng-container>
-          <ng-container *ngIf="test.q7_humor === 2">
+          <ng-container *ngIf="test.q7_humor === 2 || test.q7_humor === '2'">
             <strong>Não</strong>
           </ng-container>
         </p>
         <p>
           <strong>Q8)</strong> Você tem problema de perder o controle da urina sem querer? (segurar urina?)
           <br>Resposta:
-          <ng-container *ngIf="test.q8_continencia === 1">
+          <ng-container *ngIf="test.q8_continencia === 1 || test.q8_continencia === '1'">
             <strong>Sim</strong>
           </ng-container>
-          <ng-container *ngIf="test.q8_continencia === 2">
+          <ng-container *ngIf="test.q8_continencia === 2 || test.q8_continencia === '2'">
             <strong>Não</strong>
           </ng-container>
           </p>
           <p>
             <strong>Q9)</strong> Gostaria que o(a) Sr(a) sentasse nessa cadeira com suas costas e braços relaxados. Agora levante, ande três metros e retorno a sentar.
             <br>Resposta:
-            <ng-container *ngIf="test.q9_desemp_func === 1">
+            <ng-container *ngIf="test.q9_desemp_func === 1 || test.q9_desemp_func === '1'">
               <strong>0-10 seg</strong>
             </ng-container>
-            <ng-container *ngIf="test.q9_desemp_func === 2">
+            <ng-container *ngIf="test.q9_desemp_func === 2 || test.q9_desemp_func === '2'">
               <strong>11-20 seg</strong>
             </ng-container>
-            <ng-container *ngIf="test.q9_desemp_func === 3">
+            <ng-container *ngIf="test.q9_desemp_func === 3 || test.q9_desemp_func === '3'">
                 <strong>>20 seg</strong>
             </ng-container>
             <strong>(tempo exato: {{test.q9_desemp_func_tempo}})</strong>
           </p>
           <!-- por tempo exato q9_desemp_func_tempo -->
-        <font size="5" *ngIf="simulation">
+        <!--font size="5" *ngIf="simulation">
             <b>&nbsp;&nbsp;&nbsp;<u>Fatores a serem investigados</u></b><br>
             <ol>
               <li *ngFor="let fator of fatores"><i>&nbsp;&nbsp;&nbsp;{{fator}}</i></li>
             </ol>
-        </font>
+        </font-->
       </div>
       <!--<div style="float:left;width:15%">&nbsp</div>-->
       <div align="center" class="one-col-grid flow-btn">

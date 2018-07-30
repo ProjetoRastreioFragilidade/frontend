@@ -66,9 +66,7 @@ export class HomeComponent implements OnInit {
   }
   
   public searchPatient() {
-    //console.log("numero com mascara: " + this.susNumber)
     this.susNumber = this.susNumber.replace(/\D+/g, '');
-    //console.log("numero sem mascara: " + this.susNumber)
     this.tests = [];
     this.isEmpty = false;
     this.errorMessage = '';

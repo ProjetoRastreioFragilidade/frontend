@@ -32,10 +32,10 @@ export interface Edmonton {
     fatores?: string;
 
     q1_cognicao?: number;
-    q1_foto_relogio?: any; //TODO pegar e salvar imagem de um relogio
+    q1_foto_relogio?: any;
     q2_estado_saude_A?: number;
     q2_estado_saude_B?: number;
-    q3_ind_func?: number[];
+    q3_ind_func?: any;
     q4_sup_social?: number;
     q5_medicamento_A?: number;
     q5_medicamento_B?: number;
