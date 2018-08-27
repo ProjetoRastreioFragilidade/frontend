@@ -6,3 +6,4 @@ export * from './test.service';
 export * from './shared.service';
 export * from './router.service';
 export * from './upload.service';
+export * from './report.service';

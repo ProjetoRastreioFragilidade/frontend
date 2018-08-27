@@ -45,6 +45,7 @@ import { BlockUIModule } from 'ng-block-ui';
 import { SimpleTimer } from 'ng2-simple-timer';
 import { TextMaskModule } from 'angular2-text-mask';
 import { TimerComponent } from './_shared/timer/timer.component';
+import { ReportComponent } from './report/report.component';
 // import { PdfmakeService } from 'ng-pdf-make';
 // import { PdfmakeModule } from 'ng-pdf-make';
 
@@ -90,6 +91,7 @@ import { TimerComponent } from './_shared/timer/timer.component';
     QuestionEdmonton9Component,
     FinalEdmontonComponent,
     TimerComponent,
+    ReportComponent,
   ],
   providers: [...providers,
     {

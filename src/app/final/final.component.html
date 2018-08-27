@@ -31,96 +31,96 @@
       <p >
         <strong>Q1)</strong> Nos últimos 12 meses (último ano) O(a) Sr(a) acha que perdeu peso sem fazer nenhuma dieta?
         <br>Resposta:
-        <ng-container *ngIf="test.q1_perdeu_peso === '1' || test.q1_perdeu_peso === 1">
+        <ng-container *ngIf="+test.q1_perdeu_peso === 1">
           <strong>Sim, {{test.q1_perdeu_peso_kg}} Kg</strong>
         </ng-container>
-        <ng-container *ngIf="test.q1_perdeu_peso === '2' || test.q1_perdeu_peso === 2">
+        <ng-container *ngIf="+test.q1_perdeu_peso === 2">
           <strong>Não</strong>
         </ng-container>
-        <ng-container *ngIf="test.q1_perdeu_peso === '3' || test.q1_perdeu_peso === 3">
+        <ng-container *ngIf="+test.q1_perdeu_peso === 3">
           <strong>Não Sabe</strong>
         </ng-container>
-        <ng-container *ngIf="test.q1_perdeu_peso === '4' || test.q1_perdeu_peso === 4">
+        <ng-container *ngIf="+test.q1_perdeu_peso === 4">
           <strong>Não Respondeu</strong>
         </ng-container>
       </p>
       <p>
         <strong>Q2)</strong> O(a) Sr(a) acha que faz menos atividades físicas do que há 12 meses atrás (há um ano)?
         <br>Resposta:
-        <ng-container *ngIf="test.q2_ativ_fisica === '1' || test.q2_ativ_fisica === 1">
+        <ng-container *ngIf="+test.q2_ativ_fisica === 1">
           <strong>Sim</strong>
         </ng-container>
-        <ng-container *ngIf="test.q2_ativ_fisica === '2' || test.q2_ativ_fisica === 2">
+        <ng-container *ngIf="+test.q2_ativ_fisica === 2">
           <strong>Não</strong>
         </ng-container>
-        <ng-container *ngIf="test.q2_ativ_fisica === '3' || test.q2_ativ_fisica === 3">
+        <ng-container *ngIf="+test.q2_ativ_fisica === 3">
           <strong>Não Sabe</strong>
         </ng-container>
-        <ng-container *ngIf="test.q2_ativ_fisica === '4' || test.q2_ativ_fisica === 4">
+        <ng-container *ngIf="+test.q2_ativ_fisica === 4">
           <strong>Não Respondeu</strong>
         </ng-container>
       </p>
       <p>
         <strong>Q3)</strong> Nos últimos 12 meses (último ano), o(a) Sr(a) acha que sua força diminuiu?
         <br>Resposta:
-        <ng-container *ngIf="test.q3_red_forca === '1' || test.q3_red_forca === 1">
+        <ng-container *ngIf="+test.q3_red_forca === 1">
           <strong>Sim</strong>
         </ng-container>
-        <ng-container *ngIf="test.q3_red_forca === '2' || test.q3_red_forca === 2">
+        <ng-container *ngIf="+test.q3_red_forca === 2">
           <strong>Não</strong>
         </ng-container>
-        <ng-container *ngIf="test.q3_red_forca === '3' || test.q3_red_forca === 3">
+        <ng-container *ngIf="+test.q3_red_forca === 3">
           <strong>Não Sabe</strong>
         </ng-container>
-        <ng-container *ngIf="test.q3_red_forca === '4' || test.q3_red_forca === 4">
+        <ng-container *ngIf="+test.q3_red_forca === 4">
           <strong>Não Respondeu</strong>
         </ng-container>
       </p>
       <p>
         <strong>Q4)</strong> O(a) Sr(a) acha que hoje está caminhando mais devagar do que caminhava há 12 meses atrás (um ano)?
         <br>Resposta:
-        <ng-container *ngIf="test.q4_red_caminhada === '1' || test.q4_red_caminhada === 1">
+        <ng-container *ngIf="+test.q4_red_caminhada === 1">
           <strong>Sim</strong>
         </ng-container>
-        <ng-container *ngIf="test.q4_red_caminhada === '2' || test.q4_red_caminhada === 2">
+        <ng-container *ngIf="+test.q4_red_caminhada === 2">
           <strong>Não</strong>
         </ng-container>
-        <ng-container *ngIf="test.q4_red_caminhada === '3' || test.q4_red_caminhada === 3">
+        <ng-container *ngIf="+test.q4_red_caminhada === 3">
           <strong>Não Sabe</strong>
         </ng-container>
-        <ng-container *ngIf="test.q4_red_caminhada === '4' || test.q4_red_caminhada === 4">
+        <ng-container *ngIf="+test.q4_red_caminhada === 4">
           <strong>Não Respondeu</strong>
         </ng-container>
       </p>
       <p>
         <strong>Q5)</strong> O(a) Sr(a) sentiu que teve que fazer algum esforço para dar conta de suas tarefas do dia-a-dia?
         <br>Resposta:
-        <ng-container *ngIf="test.q5_fadiga === '1' || test.q5_fadiga === 1">
+        <ng-container *ngIf="+test.q5_fadiga === 1">
           <strong>Nunca ou raramente</strong>
         </ng-container>
-        <ng-container *ngIf="test.q5_fadiga === '2' || test.q5_fadiga === 2">
+        <ng-container *ngIf="+test.q5_fadiga === 2">
           <strong>Às vezes</strong>
         </ng-container>
-        <ng-container *ngIf="test.q5_fadiga === '3' || test.q5_fadiga === 3">
+        <ng-container *ngIf="+test.q5_fadiga === 3">
           <strong>Frequentemente</strong>
         </ng-container>
-        <ng-container *ngIf="test.q5_fadiga === '4' || test.q5_fadiga === 4">
+        <ng-container *ngIf="+test.q5_fadiga === 4">
           <strong>Sempre</strong>
         </ng-container>
       </p>
       <p>
         <strong>Q6)</strong> O(a) Sr(a) sentiu que não conseguiria levar adiante as suas tarefas?
         <br>Resposta:
-        <ng-container *ngIf="test.q6_desanimo === '1' || test.q6_desanimo === 1">
+        <ng-container *ngIf="+test.q6_desanimo === 1">
           <strong>Nunca ou raramente</strong>
         </ng-container>
-        <ng-container *ngIf="test.q6_desanimo === '2' || test.q6_desanimo === 2">
+        <ng-container *ngIf="+test.q6_desanimo === 2">
           <strong>Às vezes</strong>
         </ng-container>
-        <ng-container *ngIf="test.q6_desanimo === '3' || test.q6_desanimo === 3">
+        <ng-container *ngIf="+test.q6_desanimo === 3">
           <strong>Frequentemente</strong>
         </ng-container>
-        <ng-container *ngIf="test.q6_desanimo === '4' || test.q6_desanimo === 4">
+        <ng-container *ngIf="+test.q6_desanimo === 4">
           <strong>Sempre</strong>
         </ng-container>
       </p>

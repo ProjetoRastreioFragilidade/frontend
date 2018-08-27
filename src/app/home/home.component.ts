@@ -37,6 +37,9 @@ export class HomeComponent implements OnInit {
       this.searchPatient();
     }
   }
+  public generateReport() {
+    this.router.navigate(['/relatorio']);
+  }
   public createPatient() {
     this.router.navigate(['/registra-paciente']); 
   }

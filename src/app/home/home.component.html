@@ -4,7 +4,8 @@
     <div style="margin-bottom:15px">
         <button type="button" class="btn btn-primary btn-large" (click)="createPatient()"><ng-container class="hide-text-min">Cadastrar Paciente</ng-container> <i class="fa fa-user"></i></button>
         <button type="button" class="btn btn-primary btn-large" (click)="createHealthCenter()"><ng-container class="hide-text-min">Cadastrar Unidade</ng-container> <i class="fa fa-medkit"></i></button>
-    </div>
+        <button type="button" class="btn btn-primary btn-large" (click)="generateReport()"><ng-container class="hide-text-min">Relatório</ng-container> <i class="fa fa-bar-chart"></i></button>
+      </div>
     <div class="one-col-grid src-div">
         <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
             {{errorMessage}}

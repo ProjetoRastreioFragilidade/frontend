@@ -7,7 +7,8 @@ import {
     UserService,
     SharedService,
     RouterService,
-    UploadService
+    UploadService,
+    ReportService
 } from '@services';
 
 import {
@@ -23,5 +24,6 @@ export const providers: Provider[] = [
     UserService,
     SharedService,
     RouterService,
-    UploadService
+    UploadService,
+    ReportService
 ];

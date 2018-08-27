@@ -11,6 +11,7 @@ import { RegisterPatientComponent } from 'app/register-patient/register-patient.
 import { LoginComponent } from 'app/login/login.component';
 import { HomeComponent } from 'app/home/home.component';
 import { FinalEdmontonComponent } from 'app/final-edmonton/final-edmonton.component';
+import { ReportComponent } from './report/report.component';
 
 const APP_ROUTES: Routes = [
     
@@ -26,7 +27,9 @@ const APP_ROUTES: Routes = [
 
     { path: 'registra-posto', component: RegisterHealthCenterComponent, canActivate: [AuthGuard]},
     { path: 'registra-paciente', component: RegisterPatientComponent, canActivate: [AuthGuard]},
-    
+
+    { path: 'relatorio', component: ReportComponent, canActivate: [AuthGuard]},
+
     { path: 'login', component: LoginComponent },
     { path: '', component: HomeComponent, canActivate: [AuthGuard]},
 ];

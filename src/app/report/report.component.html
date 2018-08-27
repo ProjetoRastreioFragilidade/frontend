@@ -1,0 +1,175 @@
+<div class="container" *ngIf="!isLoading">
+    <h1 class="primary-title">Subjetiva</h1>
+    <h2 class="secondary-title">Geral</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Não Frágil</th>
+                <th scope="col">Pré Frágil</th>
+                <th scope="col">Frágil</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Geral</th>
+                <td>{{report.geral.subjetiva.N | number}}%</td>
+                <td>{{report.geral.subjetiva.P | number}}%</td>
+                <td>{{report.geral.subjetiva.F | number}}%</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2 class="secondary-title">Sexo</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Não Frágil</th>
+                <th scope="col">Pré Frágil</th>
+                <th scope="col">Frágil</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Masculino</th>
+                <td>{{report.sexo.subjetiva.M.N | number}}%</td>
+                <td>{{report.sexo.subjetiva.M.P | number}}%</td>
+                <td>{{report.sexo.subjetiva.M.F | number}}%</td>
+            </tr>
+            <tr>
+                <th scope="row">Feminino</th>
+                <td>{{report.sexo.subjetiva.F.N | number}}%</td>
+                <td>{{report.sexo.subjetiva.F.P | number}}%</td>
+                <td>{{report.sexo.subjetiva.F.F | number}}%</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2 class="secondary-title">Idade</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Não Frágil</th>
+                <th scope="col">Pré Frágil</th>
+                <th scope="col">Frágil</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">00-69</th>
+                <td>{{report.idade.subjetiva["00-69"].N | number}}%</td>
+                <td>{{report.idade.subjetiva["00-69"].P | number}}%</td>
+                <td>{{report.idade.subjetiva["00-69"].F | number}}%</td>
+            </tr>
+            <tr>
+                <th scope="row">70-79</th>
+                <td>{{report.idade.subjetiva["70-79"].N | number}}%</td>
+                <td>{{report.idade.subjetiva["70-79"].P | number}}%</td>
+                <td>{{report.idade.subjetiva["70-79"].F | number}}%</td>
+            </tr>
+            <tr>
+                <th scope="row">80+</th>
+                <td>{{report.idade.subjetiva["80+"].N | number}}%</td>
+                <td>{{report.idade.subjetiva["80+"].P | number}}%</td>
+                <td>{{report.idade.subjetiva["80+"].F | number}}%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1 class="primary-title">Edmonton</h1>
+    <h2 class="secondary-title">Geral</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Não apresenta fragilidade</th>
+                <th scope="col">Aparentemente vulnerável</th>
+                <th scope="col">Fragilidade leve</th>
+                <th scope="col">Fragilidade moderada</th>
+                <th scope="col">Fragilidade severa</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Geral</th>
+                <td>{{report.geral.edmonton.N | number}}%</td>
+                <td>{{report.geral.edmonton.V | number}}%</td>
+                <td>{{report.geral.edmonton.L | number}}%</td>
+                <td>{{report.geral.edmonton.M | number}}%</td>
+                <td>{{report.geral.edmonton.S | number}}%</td>
+        </tbody>
+    </table>
+    <h2 class="secondary-title">Sexo</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Não apresenta fragilidade</th>
+                <th scope="col">Aparentemente vulnerável</th>
+                <th scope="col">Fragilidade leve</th>
+                <th scope="col">Fragilidade moderada</th>
+                <th scope="col">Fragilidade severa</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Masculino</th>
+                <td>{{report.sexo.edmonton.M.N | number}}%</td>
+                <td>{{report.sexo.edmonton.M.V | number}}%</td>
+                <td>{{report.sexo.edmonton.M.L | number}}%</td>
+                <td>{{report.sexo.edmonton.M.M | number}}%</td>
+                <td>{{report.sexo.edmonton.M.S | number}}%</td>
+            </tr>
+            <tr>
+                <th scope="row">Feminino</th>
+                <td>{{report.sexo.edmonton.F.N | number}}%</td>
+                <td>{{report.sexo.edmonton.F.V | number}}%</td>
+                <td>{{report.sexo.edmonton.F.L | number}}%</td>
+                <td>{{report.sexo.edmonton.F.M | number}}%</td>
+                <td>{{report.sexo.edmonton.F.S | number}}%</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2 class="secondary-title">Idade</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Não apresenta fragilidade</th>
+                <th scope="col">Aparentemente vulnerável</th>
+                <th scope="col">Fragilidade leve</th>
+                <th scope="col">Fragilidade moderada</th>
+                <th scope="col">Fragilidade severa</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">00-69</th>
+                <td>{{report.idade.edmonton["00-69"].N | number}}%</td>
+                <td>{{report.idade.edmonton["00-69"].V | number}}%</td>
+                <td>{{report.idade.edmonton["00-69"].L | number}}%</td>
+                <td>{{report.idade.edmonton["00-69"].M | number}}%</td>
+                <td>{{report.idade.edmonton["00-69"].S | number}}%</td>
+            </tr>
+            <tr>
+                <th scope="row">70-79</th>
+                <td>{{report.idade.edmonton["70-79"].N | number}}%</td>
+                <td>{{report.idade.edmonton["70-79"].V | number}}%</td>
+                <td>{{report.idade.edmonton["70-79"].L | number}}%</td>
+                <td>{{report.idade.edmonton["70-79"].M | number}}%</td>
+                <td>{{report.idade.edmonton["70-79"].S | number}}%</td>
+            </tr>
+            <tr>
+                <th scope="row">80+</th>
+                <td>{{report.idade.edmonton["80+"].N | number}}%</td>
+                <td>{{report.idade.edmonton["80+"].V | number}}%</td>
+                <td>{{report.idade.edmonton["80+"].L | number}}%</td>
+                <td>{{report.idade.edmonton["80+"].M | number}}%</td>
+                <td>{{report.idade.edmonton["80+"].S | number}}%</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="button-primary">
+        <button type="button" class="btn btn-primary btn-large" (click)="back()">Voltar</button>
+    </div>
+</div>
