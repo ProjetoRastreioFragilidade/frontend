@@ -51,7 +51,8 @@ import { ReportComponent } from './report/report.component';
 
 @NgModule({
   imports: [
-    BlockUIModule.forRoot(),
+    //retirar essa linha para build em prod
+    // BlockUIModule.forRoot(),
     BlockUIModule,
     BrowserModule,
     FormsModule,
