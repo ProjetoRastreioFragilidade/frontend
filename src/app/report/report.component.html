@@ -13,13 +13,13 @@
         <tbody>
             <tr>
                 <th scope="row">Geral</th>
-                <td>{{report.geral.subjetiva.N | number}}%</td>
-                <td>{{report.geral.subjetiva.P | number}}%</td>
-                <td>{{report.geral.subjetiva.F | number}}%</td>
+                <td>{{report.geral.subjetiva.N | number:'2.1-2'}}%</td>
+                <td>{{report.geral.subjetiva.P | number:'2.1-2'}}%</td>
+                <td>{{report.geral.subjetiva.F | number:'2.1-2'}}%</td>
             </tr>
         </tbody>
     </table>
-    <h2 class="secondary-title">Sexo</h2>
+    <h2 class="secondary-title">Por Sexo</h2>
     <table class="table">
         <thead>
             <tr>
@@ -32,19 +32,19 @@
         <tbody>
             <tr>
                 <th scope="row">Masculino</th>
-                <td>{{report.sexo.subjetiva.M.N | number}}%</td>
-                <td>{{report.sexo.subjetiva.M.P | number}}%</td>
-                <td>{{report.sexo.subjetiva.M.F | number}}%</td>
+                <td>{{report.sexo.subjetiva.M.N | number:'2.1-2'}}%</td>
+                <td>{{report.sexo.subjetiva.M.P | number:'2.1-2'}}%</td>
+                <td>{{report.sexo.subjetiva.M.F | number:'2.1-2'}}%</td>
             </tr>
             <tr>
                 <th scope="row">Feminino</th>
-                <td>{{report.sexo.subjetiva.F.N | number}}%</td>
-                <td>{{report.sexo.subjetiva.F.P | number}}%</td>
-                <td>{{report.sexo.subjetiva.F.F | number}}%</td>
+                <td>{{report.sexo.subjetiva.F.N | number:'2.1-2'}}%</td>
+                <td>{{report.sexo.subjetiva.F.P | number:'2.1-2'}}%</td>
+                <td>{{report.sexo.subjetiva.F.F | number:'2.1-2'}}%</td>
             </tr>
         </tbody>
     </table>
-    <h2 class="secondary-title">Idade</h2>
+    <h2 class="secondary-title">Por Idade</h2>
     <table class="table">
         <thead>
             <tr>
@@ -57,21 +57,21 @@
         <tbody>
             <tr>
                 <th scope="row">00-69</th>
-                <td>{{report.idade.subjetiva["00-69"].N | number}}%</td>
-                <td>{{report.idade.subjetiva["00-69"].P | number}}%</td>
-                <td>{{report.idade.subjetiva["00-69"].F | number}}%</td>
+                <td>{{report.idade.subjetiva["00-69"].N | number:'2.1-2'}}%</td>
+                <td>{{report.idade.subjetiva["00-69"].P | number:'2.1-2'}}%</td>
+                <td>{{report.idade.subjetiva["00-69"].F | number:'2.1-2'}}%</td>
             </tr>
             <tr>
                 <th scope="row">70-79</th>
-                <td>{{report.idade.subjetiva["70-79"].N | number}}%</td>
-                <td>{{report.idade.subjetiva["70-79"].P | number}}%</td>
-                <td>{{report.idade.subjetiva["70-79"].F | number}}%</td>
+                <td>{{report.idade.subjetiva["70-79"].N | number:'2.1-2'}}%</td>
+                <td>{{report.idade.subjetiva["70-79"].P | number:'2.1-2'}}%</td>
+                <td>{{report.idade.subjetiva["70-79"].F | number:'2.1-2'}}%</td>
             </tr>
             <tr>
                 <th scope="row">80+</th>
-                <td>{{report.idade.subjetiva["80+"].N | number}}%</td>
-                <td>{{report.idade.subjetiva["80+"].P | number}}%</td>
-                <td>{{report.idade.subjetiva["80+"].F | number}}%</td>
+                <td>{{report.idade.subjetiva["80+"].N | number:'2.1-2'}}%</td>
+                <td>{{report.idade.subjetiva["80+"].P | number:'2.1-2'}}%</td>
+                <td>{{report.idade.subjetiva["80+"].F | number:'2.1-2'}}%</td>
             </tr>
         </tbody>
     </table>
@@ -92,14 +92,14 @@
         <tbody>
             <tr>
                 <th scope="row">Geral</th>
-                <td>{{report.geral.edmonton.N | number}}%</td>
-                <td>{{report.geral.edmonton.V | number}}%</td>
-                <td>{{report.geral.edmonton.L | number}}%</td>
-                <td>{{report.geral.edmonton.M | number}}%</td>
-                <td>{{report.geral.edmonton.S | number}}%</td>
+                <td>{{report.geral.edmonton.N | number:'2.1-2'}}%</td>
+                <td>{{report.geral.edmonton.V | number:'2.1-2'}}%</td>
+                <td>{{report.geral.edmonton.L | number:'2.1-2'}}%</td>
+                <td>{{report.geral.edmonton.M | number:'2.1-2'}}%</td>
+                <td>{{report.geral.edmonton.S | number:'2.1-2'}}%</td>
         </tbody>
     </table>
-    <h2 class="secondary-title">Sexo</h2>
+    <h2 class="secondary-title">Por Sexo</h2>
     <table class="table">
         <thead>
             <tr>
@@ -114,23 +114,23 @@
         <tbody>
             <tr>
                 <th scope="row">Masculino</th>
-                <td>{{report.sexo.edmonton.M.N | number}}%</td>
-                <td>{{report.sexo.edmonton.M.V | number}}%</td>
-                <td>{{report.sexo.edmonton.M.L | number}}%</td>
-                <td>{{report.sexo.edmonton.M.M | number}}%</td>
-                <td>{{report.sexo.edmonton.M.S | number}}%</td>
+                <td>{{report.sexo.edmonton.M.N | number:'2.1-2'}}%</td>
+                <td>{{report.sexo.edmonton.M.V | number:'2.1-2'}}%</td>
+                <td>{{report.sexo.edmonton.M.L | number:'2.1-2'}}%</td>
+                <td>{{report.sexo.edmonton.M.M | number:'2.1-2'}}%</td>
+                <td>{{report.sexo.edmonton.M.S | number:'2.1-2'}}%</td>
             </tr>
             <tr>
                 <th scope="row">Feminino</th>
-                <td>{{report.sexo.edmonton.F.N | number}}%</td>
-                <td>{{report.sexo.edmonton.F.V | number}}%</td>
-                <td>{{report.sexo.edmonton.F.L | number}}%</td>
-                <td>{{report.sexo.edmonton.F.M | number}}%</td>
-                <td>{{report.sexo.edmonton.F.S | number}}%</td>
+                <td>{{report.sexo.edmonton.F.N | number:'2.1-2'}}%</td>
+                <td>{{report.sexo.edmonton.F.V | number:'2.1-2'}}%</td>
+                <td>{{report.sexo.edmonton.F.L | number:'2.1-2'}}%</td>
+                <td>{{report.sexo.edmonton.F.M | number:'2.1-2'}}%</td>
+                <td>{{report.sexo.edmonton.F.S | number:'2.1-2'}}%</td>
             </tr>
         </tbody>
     </table>
-    <h2 class="secondary-title">Idade</h2>
+    <h2 class="secondary-title">Por Idade</h2>
     <table class="table">
         <thead>
             <tr>
@@ -145,27 +145,27 @@
         <tbody>
             <tr>
                 <th scope="row">00-69</th>
-                <td>{{report.idade.edmonton["00-69"].N | number}}%</td>
-                <td>{{report.idade.edmonton["00-69"].V | number}}%</td>
-                <td>{{report.idade.edmonton["00-69"].L | number}}%</td>
-                <td>{{report.idade.edmonton["00-69"].M | number}}%</td>
-                <td>{{report.idade.edmonton["00-69"].S | number}}%</td>
+                <td>{{report.idade.edmonton["00-69"].N | number:'2.1-2'}}%</td>
+                <td>{{report.idade.edmonton["00-69"].V | number:'2.1-2'}}%</td>
+                <td>{{report.idade.edmonton["00-69"].L | number:'2.1-2'}}%</td>
+                <td>{{report.idade.edmonton["00-69"].M | number:'2.1-2'}}%</td>
+                <td>{{report.idade.edmonton["00-69"].S | number:'2.1-2'}}%</td>
             </tr>
             <tr>
                 <th scope="row">70-79</th>
-                <td>{{report.idade.edmonton["70-79"].N | number}}%</td>
-                <td>{{report.idade.edmonton["70-79"].V | number}}%</td>
-                <td>{{report.idade.edmonton["70-79"].L | number}}%</td>
-                <td>{{report.idade.edmonton["70-79"].M | number}}%</td>
-                <td>{{report.idade.edmonton["70-79"].S | number}}%</td>
+                <td>{{report.idade.edmonton["70-79"].N | number:'2.1-2'}}%</td>
+                <td>{{report.idade.edmonton["70-79"].V | number:'2.1-2'}}%</td>
+                <td>{{report.idade.edmonton["70-79"].L | number:'2.1-2'}}%</td>
+                <td>{{report.idade.edmonton["70-79"].M | number:'2.1-2'}}%</td>
+                <td>{{report.idade.edmonton["70-79"].S | number:'2.1-2'}}%</td>
             </tr>
             <tr>
                 <th scope="row">80+</th>
-                <td>{{report.idade.edmonton["80+"].N | number}}%</td>
-                <td>{{report.idade.edmonton["80+"].V | number}}%</td>
-                <td>{{report.idade.edmonton["80+"].L | number}}%</td>
-                <td>{{report.idade.edmonton["80+"].M | number}}%</td>
-                <td>{{report.idade.edmonton["80+"].S | number}}%</td>
+                <td>{{report.idade.edmonton["80+"].N | number:'2.1-2'}}%</td>
+                <td>{{report.idade.edmonton["80+"].V | number:'2.1-2'}}%</td>
+                <td>{{report.idade.edmonton["80+"].L | number:'2.1-2'}}%</td>
+                <td>{{report.idade.edmonton["80+"].M | number:'2.1-2'}}%</td>
+                <td>{{report.idade.edmonton["80+"].S | number:'2.1-2'}}%</td>
             </tr>
         </tbody>
     </table>
