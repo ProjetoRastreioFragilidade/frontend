@@ -12,9 +12,9 @@ import * as moment from 'moment';
 export class HomeComponent implements OnInit {
   // public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   public mask = [/[0-9]/, /\d/, /\d/, '.', /[0-9]/, /\d/, /\d/, /\d/, '.', /[0-9]/, /\d/, /\d/, /\d/, '.',  /[0-9]/, /\d/, /\d/, /\d/ ];
-  
+
   public susNumber: string;
-  
+
   public tests: Test[];
   public patient: Patient;
 
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.tests = [];
     this.susNumber = localStorage.getItem('nro_sus');
-    if(this.susNumber) {
+    if (this.susNumber) {
       this.searchPatient();
     }
   }
@@ -41,25 +41,25 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/relatorio']);
   }
   public createPatient() {
-    this.router.navigate(['/registra-paciente']); 
+    this.router.navigate(['/registra-paciente']);
   }
   public createHealthCenter() {
-    this.router.navigate(['/registra-posto']); 
+    this.router.navigate(['/registra-posto']);
   }
 
-  public newEdmonton() { //passa ir do paciente
-    this.router.navigate(['/edmonton', this.patient.id]); 
+  public newEdmonton() { // passa id do paciente
+    this.router.navigate(['/edmonton', this.patient.id]);
   }
 
-  public newSubjective() { //passa ir do paciente
-    this.router.navigate(['/subjetiva', this.patient.id]); 
+  public newSubjective() { // passa id do paciente
+    this.router.navigate(['/subjetiva', this.patient.id]);
   }
-  
+
   public seeResults(testId: number, testTipo: string) {
     if (testTipo === 'e') {
-      this.router.navigate(['/final-edmonton', testId]); 
+      this.router.navigate(['/final-edmonton', testId]);
     } else {
-      this.router.navigate(['/final', testId]); 
+      this.router.navigate(['/final', testId]);
     }
   }
 
@@ -67,17 +67,16 @@ export class HomeComponent implements OnInit {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
   }
-  
+
   public searchPatient() {
     this.susNumber = this.susNumber.replace(/\D+/g, '');
     this.tests = [];
     this.isEmpty = false;
     this.errorMessage = '';
     if (this.susNumber.length < 15) {
-      this.errorMessage = "Número SUS inválido!";
+      this.errorMessage = 'Número SUS inválido!';
       return;
     } else {
-      
       this.sharedService.startBlockUI();
       this.patientService.findBySUSNumber(this.susNumber).subscribe((patient: Patient) => {
         this.patient = patient;
@@ -91,12 +90,12 @@ export class HomeComponent implements OnInit {
           this.tests.forEach(test => {
             test.data_fim = moment(test.data_fim).format('DD/MM/YYYY - HH:mm');
             test.data_inicio = moment(test.data_inicio).format('DD/MM/YYYY - HH:mm');
-          })
+          });
           this.sharedService.stopBlockUI();
         });
         }, err => {
-          if(err.status === 404) {
-            this.errorMessage = "Usuário não encontrado";
+          if (err.status === 404) {
+            this.errorMessage = 'Usuário não encontrado';
           } else {
             this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
           }
@@ -108,8 +107,8 @@ export class HomeComponent implements OnInit {
   }
   public maskString(): string {
     let newString = '';
-    for(let i = 0; i < 15; i++) {
-      if(i === 3 || i === 7 || i === 11) {
+    for (let i = 0; i < 15; i++) {
+      if (i === 3 || i === 7 || i === 11) {
         newString = newString.concat('.');
         newString = newString.concat(this.patient.nro_sus[i]);
       } else {

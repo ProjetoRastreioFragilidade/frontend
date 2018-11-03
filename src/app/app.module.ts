@@ -40,18 +40,19 @@ import { QuestionEdmonton8Component } from './edmonton-analyze/question-edmonton
 import { QuestionEdmonton9Component } from './edmonton-analyze/question-edmonton-9/question-edmonton-9.component';
 import { FinalEdmontonComponent } from './final-edmonton/final-edmonton.component';
 
-import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { BlockUIModule } from 'ng-block-ui';
 import { SimpleTimer } from 'ng2-simple-timer';
 import { TextMaskModule } from 'angular2-text-mask';
 import { TimerComponent } from './_shared/timer/timer.component';
 import { ReportComponent } from './report/report.component';
+import { LoaderComponent } from './_utils/loader/loader.component';
 // import { PdfmakeService } from 'ng-pdf-make';
 // import { PdfmakeModule } from 'ng-pdf-make';
 
 @NgModule({
   imports: [
-    //retirar essa linha para build em prod
+    // retirar essa linha para build em prod
     // BlockUIModule.forRoot(),
     BlockUIModule,
     BrowserModule,
@@ -93,6 +94,7 @@ import { ReportComponent } from './report/report.component';
     FinalEdmontonComponent,
     TimerComponent,
     ReportComponent,
+    LoaderComponent,
   ],
   providers: [...providers,
     {
