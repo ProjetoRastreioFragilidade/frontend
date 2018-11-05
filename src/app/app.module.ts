@@ -47,6 +47,9 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { TimerComponent } from './_shared/timer/timer.component';
 import { ReportComponent } from './report/report.component';
 import { LoaderComponent } from './_utils/loader/loader.component';
+
+import { EdmontonPipe, SubjetivaPipe } from './_pipes';
+
 // import { PdfmakeService } from 'ng-pdf-make';
 // import { PdfmakeModule } from 'ng-pdf-make';
 
@@ -95,6 +98,8 @@ import { LoaderComponent } from './_utils/loader/loader.component';
     TimerComponent,
     ReportComponent,
     LoaderComponent,
+    EdmontonPipe,
+    SubjetivaPipe
   ],
   providers: [...providers,
     {

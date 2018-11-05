@@ -10,7 +10,11 @@ export class ReportService {
     private http: HttpClient
   ) { }
 
-  public getReport(healthCenter: string): Observable<any> {
+  public getReportByHealthCenter(healthCenter: string): Observable<any> {
       return this.http.get<any>(environment.baseUrl + 'relatorio/geral/' + healthCenter);
+  }
+
+  public getReportByPatient(patient: string): Observable<any> {
+    return this.http.get<any>(environment.baseUrl + 'relatorio/paciente/' + patient);
   }
 }

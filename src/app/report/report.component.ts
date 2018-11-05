@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService, SharedService, PostoService } from '@services';
-import { Report } from '@models/report';
+import { Report, PatientReport } from '@models';
 import { Router } from '@angular/router';
 import { Posto } from '@models';
 
@@ -12,6 +12,8 @@ import { Posto } from '@models';
 export class ReportComponent implements OnInit {
 
     public report: Report;
+    public patientReport: PatientReport;
+    public patientTitle: string;
     public postos: Posto[] = [];
     public isLoading = false;
 
@@ -31,19 +33,44 @@ export class ReportComponent implements OnInit {
           // this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
           this.sharedService.stopBlockUI();
         });
-        this.reportService.getReport('').subscribe(report => {
+        this.isLoading = true;
+        this.reportService.getReportByHealthCenter('').subscribe(report => {
             this.report = report;
+            this.isLoading = false;
+        }, err => {
+            // this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
+            this.isLoading = false;
+        });
+        this.isLoading = true;
+        this.reportService.getReportByPatient('').subscribe(report => {
+            this.patientReport = report;
+            this.isLoading = false;
+        }, err => {
+            // this.errorMessage = err.error[Object.keys(err.error)[0]][0] + ': ' + Object.keys(err.error)[0];
+            this.isLoading = false;
         });
     }
     public getReport(healthCenterId: string) {
         this.isLoading = true;
-        // this.sharedService.startBlockUI();
-        this.reportService.getReport(healthCenterId).subscribe(report => {
+        this.reportService.getReportByHealthCenter(healthCenterId).subscribe(report => {
             this.report = report;
             this.isLoading = false;
-            // this.sharedService.stopBlockUI();
         }, err => {
-            // this.sharedService.stopBlockUI();
+            console.log(err);
+            this.isLoading = false;
+        });
+    }
+    public getReportForPatient(healthCenterId: string, posto: string) {
+        this.isLoading = true;
+        if (healthCenterId) {
+            this.patientTitle = 'Todos os pacientes';
+        } else {
+
+        }
+        this.reportService.getReportByPatient(healthCenterId).subscribe(report => {
+            this.patientReport = report;
+            this.isLoading = false;
+        }, err => {
             console.log(err);
             this.isLoading = false;
         });

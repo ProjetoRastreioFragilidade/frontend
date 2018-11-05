@@ -1,8 +1,8 @@
 export interface Test {
-    id: number,
-    data_inicio: string,
-    data_fim: string,
-    tipo: string
+    id: number;
+    data_inicio: string;
+    data_fim: string;
+    tipo: string;
 }
 
 export interface Subjective {

@@ -1,193 +1,247 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-8">
-            <strong>Selecione uma unidade:</strong>
+<div class="container space">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Relatório Geral</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Relatório Paciente</a>
+        </li>
+    </ul>
+</div>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="container space">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <strong>Selecione uma unidade:</strong>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <select class="custom-select myInputTxt" #selectedHealthCenter (change)="getReport(selectedHealthCenter.value)">
+                        <option selected [value]="''">Todos</option>
+                        <option [value]="posto.id" *ngFor="let posto of postos">{{posto.nome}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="container" *ngIf="!isLoading">
+            <h1 class="primary-title">Subjetiva</h1>
+            <h2 class="secondary-title">Geral</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Não Frágil</th>
+                        <th scope="col">Pré Frágil</th>
+                        <th scope="col">Frágil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Geral</th>
+                        <td>{{report.geral.subjetiva.N | number:'2.1-2'}}%</td>
+                        <td>{{report.geral.subjetiva.P | number:'2.1-2'}}%</td>
+                        <td>{{report.geral.subjetiva.F | number:'2.1-2'}}%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="secondary-title">Por Sexo</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Não Frágil</th>
+                        <th scope="col">Pré Frágil</th>
+                        <th scope="col">Frágil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Masculino</th>
+                        <td>{{report.sexo.subjetiva.M.N | number:'2.1-2'}}%</td>
+                        <td>{{report.sexo.subjetiva.M.P | number:'2.1-2'}}%</td>
+                        <td>{{report.sexo.subjetiva.M.F | number:'2.1-2'}}%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Feminino</th>
+                        <td>{{report.sexo.subjetiva.F.N | number:'2.1-2'}}%</td>
+                        <td>{{report.sexo.subjetiva.F.P | number:'2.1-2'}}%</td>
+                        <td>{{report.sexo.subjetiva.F.F | number:'2.1-2'}}%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="secondary-title">Por Idade</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Não Frágil</th>
+                        <th scope="col">Pré Frágil</th>
+                        <th scope="col">Frágil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">00-69</th>
+                        <td>{{report.idade.subjetiva["00-69"].N | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.subjetiva["00-69"].P | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.subjetiva["00-69"].F | number:'2.1-2'}}%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">70-79</th>
+                        <td>{{report.idade.subjetiva["70-79"].N | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.subjetiva["70-79"].P | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.subjetiva["70-79"].F | number:'2.1-2'}}%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">80+</th>
+                        <td>{{report.idade.subjetiva["80+"].N | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.subjetiva["80+"].P | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.subjetiva["80+"].F | number:'2.1-2'}}%</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+            <h1 class="primary-title">Edmonton</h1>
+            <h2 class="secondary-title">Geral</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Não apresenta fragilidade</th>
+                        <th scope="col">Aparentemente vulnerável</th>
+                        <th scope="col">Fragilidade leve</th>
+                        <th scope="col">Fragilidade moderada</th>
+                        <th scope="col">Fragilidade severa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Geral</th>
+                        <td>{{report.geral.edmonton.N | number:'2.1-2'}}%</td>
+                        <td>{{report.geral.edmonton.V | number:'2.1-2'}}%</td>
+                        <td>{{report.geral.edmonton.L | number:'2.1-2'}}%</td>
+                        <td>{{report.geral.edmonton.M | number:'2.1-2'}}%</td>
+                        <td>{{report.geral.edmonton.S | number:'2.1-2'}}%</td>
+                </tbody>
+            </table>
+            <h2 class="secondary-title">Por Sexo</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Não apresenta fragilidade</th>
+                        <th scope="col">Aparentemente vulnerável</th>
+                        <th scope="col">Fragilidade leve</th>
+                        <th scope="col">Fragilidade moderada</th>
+                        <th scope="col">Fragilidade severa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Masculino</th>
+                        <td>{{report.sexo.edmonton.M.N | number:'2.1-2'}}%</td>
+                        <td>{{report.sexo.edmonton.M.V | number:'2.1-2'}}%</td>
+                        <td>{{report.sexo.edmonton.M.L | number:'2.1-2'}}%</td>
+                        <td>{{report.sexo.edmonton.M.M | number:'2.1-2'}}%</td>
+                        <td>{{report.sexo.edmonton.M.S | number:'2.1-2'}}%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Feminino</th>
+                        <td>{{report.sexo.edmonton.F.N | number:'2.1-2'}}%</td>
+                        <td>{{report.sexo.edmonton.F.V | number:'2.1-2'}}%</td>
+                        <td>{{report.sexo.edmonton.F.L | number:'2.1-2'}}%</td>
+                        <td>{{report.sexo.edmonton.F.M | number:'2.1-2'}}%</td>
+                        <td>{{report.sexo.edmonton.F.S | number:'2.1-2'}}%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="secondary-title">Por Idade</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Não apresenta fragilidade</th>
+                        <th scope="col">Aparentemente vulnerável</th>
+                        <th scope="col">Fragilidade leve</th>
+                        <th scope="col">Fragilidade moderada</th>
+                        <th scope="col">Fragilidade severa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">00-69</th>
+                        <td>{{report.idade.edmonton["00-69"].N | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.edmonton["00-69"].V | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.edmonton["00-69"].L | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.edmonton["00-69"].M | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.edmonton["00-69"].S | number:'2.1-2'}}%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">70-79</th>
+                        <td>{{report.idade.edmonton["70-79"].N | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.edmonton["70-79"].V | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.edmonton["70-79"].L | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.edmonton["70-79"].M | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.edmonton["70-79"].S | number:'2.1-2'}}%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">80+</th>
+                        <td>{{report.idade.edmonton["80+"].N | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.edmonton["80+"].V | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.edmonton["80+"].L | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.edmonton["80+"].M | number:'2.1-2'}}%</td>
+                        <td>{{report.idade.edmonton["80+"].S | number:'2.1-2'}}%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="button-primary">
+                <button type="button" class="btn btn-primary btn-large" (click)="back()">Voltar</button>
+            </div>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-8">
-            <select class="custom-select myInputTxt" #selectedHealthCenter (change)="getReport(selectedHealthCenter.value)">
-                <option selected [value]="''">Todos</option>
-                <option [value]="posto.id" *ngFor="let posto of postos">{{posto.nome}}</option>
-            </select>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <!-- h1 class="primary-title">Pacientes</h1 -->
+        <div class="container space">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <strong>Filtrar pacientes por unidade:</strong>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <select class="custom-select myInputTxt" #selectedHealthCenter2 (change)="getReportForPatient(selectedHealthCenter2.value, selectedHealthCenter2)">
+                        <option selected [value]="''">Todos</option>
+                        <option [value]="posto.id" *ngFor="let posto of postos">{{posto.nome}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="container space">
+            <h2 class="secondary-title">Pacientes</h2>
+            <table class="table" *ngIf="!isLoading">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Número SUS</th>
+                        <th scope="col">Avaliação Subjetiva</th>
+                        <th scope="col">Avaliação Edmonton</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let preport of patientReport">
+                        <td>{{preport.nome}}</td>
+                        <td>{{preport.n_sus}}</td>
+                        <td>{{preport.sub | subjetiva}}</td>
+                        <td>{{preport.edm | edmonton}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-<div class="container" *ngIf="!isLoading">
-    <h1 class="primary-title">Subjetiva</h1>
-    <h2 class="secondary-title">Geral</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Não Frágil</th>
-                <th scope="col">Pré Frágil</th>
-                <th scope="col">Frágil</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Geral</th>
-                <td>{{report.geral.subjetiva.N | number:'2.1-2'}}%</td>
-                <td>{{report.geral.subjetiva.P | number:'2.1-2'}}%</td>
-                <td>{{report.geral.subjetiva.F | number:'2.1-2'}}%</td>
-            </tr>
-        </tbody>
-    </table>
-    <h2 class="secondary-title">Por Sexo</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Não Frágil</th>
-                <th scope="col">Pré Frágil</th>
-                <th scope="col">Frágil</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Masculino</th>
-                <td>{{report.sexo.subjetiva.M.N | number:'2.1-2'}}%</td>
-                <td>{{report.sexo.subjetiva.M.P | number:'2.1-2'}}%</td>
-                <td>{{report.sexo.subjetiva.M.F | number:'2.1-2'}}%</td>
-            </tr>
-            <tr>
-                <th scope="row">Feminino</th>
-                <td>{{report.sexo.subjetiva.F.N | number:'2.1-2'}}%</td>
-                <td>{{report.sexo.subjetiva.F.P | number:'2.1-2'}}%</td>
-                <td>{{report.sexo.subjetiva.F.F | number:'2.1-2'}}%</td>
-            </tr>
-        </tbody>
-    </table>
-    <h2 class="secondary-title">Por Idade</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Não Frágil</th>
-                <th scope="col">Pré Frágil</th>
-                <th scope="col">Frágil</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">00-69</th>
-                <td>{{report.idade.subjetiva["00-69"].N | number:'2.1-2'}}%</td>
-                <td>{{report.idade.subjetiva["00-69"].P | number:'2.1-2'}}%</td>
-                <td>{{report.idade.subjetiva["00-69"].F | number:'2.1-2'}}%</td>
-            </tr>
-            <tr>
-                <th scope="row">70-79</th>
-                <td>{{report.idade.subjetiva["70-79"].N | number:'2.1-2'}}%</td>
-                <td>{{report.idade.subjetiva["70-79"].P | number:'2.1-2'}}%</td>
-                <td>{{report.idade.subjetiva["70-79"].F | number:'2.1-2'}}%</td>
-            </tr>
-            <tr>
-                <th scope="row">80+</th>
-                <td>{{report.idade.subjetiva["80+"].N | number:'2.1-2'}}%</td>
-                <td>{{report.idade.subjetiva["80+"].P | number:'2.1-2'}}%</td>
-                <td>{{report.idade.subjetiva["80+"].F | number:'2.1-2'}}%</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <h1 class="primary-title">Edmonton</h1>
-    <h2 class="secondary-title">Geral</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Não apresenta fragilidade</th>
-                <th scope="col">Aparentemente vulnerável</th>
-                <th scope="col">Fragilidade leve</th>
-                <th scope="col">Fragilidade moderada</th>
-                <th scope="col">Fragilidade severa</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Geral</th>
-                <td>{{report.geral.edmonton.N | number:'2.1-2'}}%</td>
-                <td>{{report.geral.edmonton.V | number:'2.1-2'}}%</td>
-                <td>{{report.geral.edmonton.L | number:'2.1-2'}}%</td>
-                <td>{{report.geral.edmonton.M | number:'2.1-2'}}%</td>
-                <td>{{report.geral.edmonton.S | number:'2.1-2'}}%</td>
-        </tbody>
-    </table>
-    <h2 class="secondary-title">Por Sexo</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Não apresenta fragilidade</th>
-                <th scope="col">Aparentemente vulnerável</th>
-                <th scope="col">Fragilidade leve</th>
-                <th scope="col">Fragilidade moderada</th>
-                <th scope="col">Fragilidade severa</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Masculino</th>
-                <td>{{report.sexo.edmonton.M.N | number:'2.1-2'}}%</td>
-                <td>{{report.sexo.edmonton.M.V | number:'2.1-2'}}%</td>
-                <td>{{report.sexo.edmonton.M.L | number:'2.1-2'}}%</td>
-                <td>{{report.sexo.edmonton.M.M | number:'2.1-2'}}%</td>
-                <td>{{report.sexo.edmonton.M.S | number:'2.1-2'}}%</td>
-            </tr>
-            <tr>
-                <th scope="row">Feminino</th>
-                <td>{{report.sexo.edmonton.F.N | number:'2.1-2'}}%</td>
-                <td>{{report.sexo.edmonton.F.V | number:'2.1-2'}}%</td>
-                <td>{{report.sexo.edmonton.F.L | number:'2.1-2'}}%</td>
-                <td>{{report.sexo.edmonton.F.M | number:'2.1-2'}}%</td>
-                <td>{{report.sexo.edmonton.F.S | number:'2.1-2'}}%</td>
-            </tr>
-        </tbody>
-    </table>
-    <h2 class="secondary-title">Por Idade</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Não apresenta fragilidade</th>
-                <th scope="col">Aparentemente vulnerável</th>
-                <th scope="col">Fragilidade leve</th>
-                <th scope="col">Fragilidade moderada</th>
-                <th scope="col">Fragilidade severa</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">00-69</th>
-                <td>{{report.idade.edmonton["00-69"].N | number:'2.1-2'}}%</td>
-                <td>{{report.idade.edmonton["00-69"].V | number:'2.1-2'}}%</td>
-                <td>{{report.idade.edmonton["00-69"].L | number:'2.1-2'}}%</td>
-                <td>{{report.idade.edmonton["00-69"].M | number:'2.1-2'}}%</td>
-                <td>{{report.idade.edmonton["00-69"].S | number:'2.1-2'}}%</td>
-            </tr>
-            <tr>
-                <th scope="row">70-79</th>
-                <td>{{report.idade.edmonton["70-79"].N | number:'2.1-2'}}%</td>
-                <td>{{report.idade.edmonton["70-79"].V | number:'2.1-2'}}%</td>
-                <td>{{report.idade.edmonton["70-79"].L | number:'2.1-2'}}%</td>
-                <td>{{report.idade.edmonton["70-79"].M | number:'2.1-2'}}%</td>
-                <td>{{report.idade.edmonton["70-79"].S | number:'2.1-2'}}%</td>
-            </tr>
-            <tr>
-                <th scope="row">80+</th>
-                <td>{{report.idade.edmonton["80+"].N | number:'2.1-2'}}%</td>
-                <td>{{report.idade.edmonton["80+"].V | number:'2.1-2'}}%</td>
-                <td>{{report.idade.edmonton["80+"].L | number:'2.1-2'}}%</td>
-                <td>{{report.idade.edmonton["80+"].M | number:'2.1-2'}}%</td>
-                <td>{{report.idade.edmonton["80+"].S | number:'2.1-2'}}%</td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="button-primary">
-        <button type="button" class="btn btn-primary btn-large" (click)="back()">Voltar</button>
-    </div>
-</div>
 <div class="container">
     <app-loader *ngIf="isLoading"></app-loader>
 </div>
