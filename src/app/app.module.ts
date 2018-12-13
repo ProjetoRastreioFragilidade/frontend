@@ -56,7 +56,7 @@ import { EdmontonPipe, SubjetivaPipe } from './_pipes';
 @NgModule({
   imports: [
     // retirar essa linha para build em prod
-    BlockUIModule.forRoot(),
+    // BlockUIModule.forRoot(),
     BlockUIModule,
     BrowserModule,
     FormsModule,
