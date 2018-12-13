@@ -73,6 +73,15 @@ export class FinalComponent implements OnInit, OnDestroy {
         
         this.testService.findSubjetivaById(this.testId).subscribe(subjective => {
         this.test = subjective;
+        if(+this.test.q1_perdeu_peso === 1) {
+          this.simulationTest.q1 = 'Sim, ' + this.test.q1_perdeu_peso_kg + ' Kg';
+        } else if (this.test.q1_perdeu_peso === 2) { 
+          this.simulationTest.q1 = 'Não';
+        } else if (this.test.q1_perdeu_peso === 3) {
+          this.simulationTest.q1 = 'Não Sabe';
+        } else if (this.test.q1_perdeu_peso === 4) {
+          this.simulationTest.q1 = 'Não Respondeu';
+        }
         const replaced = this.test.fatores.replace(/'/g, '"');
         this.fatores = JSON.parse(replaced);
         this.patientService.findById(this.test.paciente).subscribe(patient => this.patient = patient);
@@ -98,15 +107,6 @@ export class FinalComponent implements OnInit, OnDestroy {
       ];
       this.isLoading = false;
       this.sharedService.stopBlockUI();
-      if(+this.test.q1_perdeu_peso === 1) {
-        this.simulationTest.q1 = 'Sim, ' + this.test.q1_perdeu_peso_kg + ' Kg';
-      } else if (this.test.q1_perdeu_peso === 2) { 
-        this.simulationTest.q1 = 'Não';
-      } else if (this.test.q1_perdeu_peso === 3) {
-        this.simulationTest.q1 = 'Não Sabe';
-      } else if (this.test.q1_perdeu_peso === 4) {
-        this.simulationTest.q1 = 'Não Respondeu';
-      }
       });
     }
   }

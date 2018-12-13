@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     this.sharedService.startBlockUI();
     this.authService.authenticate(this.username, this.password)
     .subscribe(res => {
-      console.log(res);
       localStorage.setItem('currentUser', JSON.stringify({
         username: this.username, 
         token: res.token

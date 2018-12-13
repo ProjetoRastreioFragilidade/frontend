@@ -80,6 +80,14 @@ export class FinalEdmontonComponent implements OnInit {
       this.sharedService.startBlockUI();
       this.testService.findEdmontonById(this.testId).subscribe(edmonton => {
         this.test = edmonton;
+        const fragilidades = {
+          N: 'Não apresenta fragilidade',
+          V: 'Aparentemente vulnerável',
+          L: 'Fragilidade leve',
+          M: 'Fragilidade moderada',
+          S: 'Fragilidade severa',
+        }
+        this.fragilidade = fragilidades[this.test.fragilidade] || 'Inconclusivo';
         const replaced = this.test.fatores.replace(/'/g, '"');
         this.fatores = JSON.parse(replaced);
 
@@ -87,7 +95,6 @@ export class FinalEdmontonComponent implements OnInit {
         this.userService.getUserById(this.test.usuario).subscribe(user => this.user = user);
         this.sharedService.stopBlockUI();
       }, err => {
-        // TODO Ver se é assim que ele vai retornar o erro
         this.errorMessage = err.msg;
         console.log(err);
         this.sharedService.stopBlockUI();
@@ -108,19 +115,7 @@ export class FinalEdmontonComponent implements OnInit {
       this.sharedService.stopBlockUI();
       });
     }
-    if (this.test.fragilidade === 'N') {
-      this.fragilidade = 'Não apresenta fragilidade';
-    } else if (this.test.fragilidade === 'V') {
-      this.fragilidade = 'Aparentemente vulnerável';
-    } else if (this.test.fragilidade === 'L') {
-      this.fragilidade = 'Fragilidade leve';
-    } else if (this.test.fragilidade === 'M') {
-      this.fragilidade = 'Fragilidade moderada';
-    } else if (this.test.fragilidade === 'S') {
-      this.fragilidade = 'Fragilidade severa';
-    } else {
-      this.fragilidade = 'Inconclusivo';
-    }
+  
   }
 
   ngOnDestroy() {
