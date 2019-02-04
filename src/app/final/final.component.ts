@@ -45,7 +45,6 @@ export class FinalComponent implements OnInit, OnDestroy {
   public user: User = {};
 
   public simulation: Boolean;
-  public isLoading = true;
 
   public simulationTest =  {
     q1 : '',
@@ -86,6 +85,8 @@ export class FinalComponent implements OnInit, OnDestroy {
         this.fatores = JSON.parse(replaced);
         this.patientService.findById(this.test.paciente).subscribe(patient => this.patient = patient);
         this.userService.getUserById(this.test.usuario).subscribe(user => this.user = user);
+        console.log('bla');
+        
         this.sharedService.stopBlockUI();
       }, err => {
         // TODO Ver se é assim que ele vai retornar o erro
@@ -105,7 +106,6 @@ export class FinalComponent implements OnInit, OnDestroy {
         'Equilíbrio',
         'Mobilidade'
       ];
-      this.isLoading = false;
       this.sharedService.stopBlockUI();
       });
     }
